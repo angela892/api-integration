@@ -131,6 +131,7 @@
 | 錢包模式 | 單一錢包 | — | — |
 | Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Table/DG/DG1 | — | — |
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Table/DG/DG1 | — | — |
+| IP白名單需求 | 43.245.200.161 / 43.245.201.147 / 61.238.69.58 / 203.117.159.50 / 47.57.244.198 / 47.57.240.252 / 18.163.221.20 / 18.166.169.112 / 18.166.38.61 / 18.166.240.231 / 13.251.76.169 / 52.77.182.223 / 136.228.135.114 / 136.228.134.85 / 136.228.134.86 / 136.228.134.32 / 52.76.78.2 / 103.12.154.211 / 18.140.143.43 | — | — |
 | 後台帳號（測試站） | DGTE01075R | — | — |
 | 後台密碼（測試站） | dgw1rz | — | — |
 | 後台帳號（正式站） | DG08420201 | — | — |
@@ -202,7 +203,7 @@
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OKGO/OKGO1 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OKGO/OKGO2 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OKGO/OKGO3 |
 | 後台帳號（測試站） | KFFA3dev | KFFB6dev | KFFC10dev |
 | 後台密碼（測試站） | qwer1234 | qwer1234 | qwer1234 |
-| JWT（正式） | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiQWNjb3VudCI6ImtpbWZhZmEiLCJpYXQiOjE3NjU5NTMyMTB9.ZuGdhczgn5qreQlycNYwoaDsLb_wryuQEvYCoUWTuyA | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6NCwiQWNjb3VudCI6ImdWUyeENLZDV3M1VoMWZIam9QUSIsImlhdCI6MTc3MDEwNDQwOH0.cNIpLpFrDqrS4Jhx9tTJ3R3VCFtXrxoYMQIFrUP6nOw | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6NSwiQWNjb3VudCI6Inp3MVNhYVM0bmtJRjR3cUx5ZGh0IiwiaWF0IjoxNzcwMTA0NDA4fQ.mXpX7H6HY61RdAtve0pdNUqG1T-sECWYZ7oQVMA7HHY |
+| JWT（正式） | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiQWNjb3VudCI6ImtpbWZhZmEiLCJpYXQiOjE3NjU5NTMyMTB9.ZuGdhczgn5qreQlycNYwoaDsLb_wryuQEvYCoUWTuyA | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6NCwiQWNjb3VudCI6ImdWZTJ4Q0tkNXczVWgxZkhqb1BRIiwiaWF0IjoxNzcwMTA0NDA4fQ.cNIpLpFrDqrS4Jhx9tTJ3R3VCFtXrxoYMQIFrUP6nOw | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6NSwiQWNjb3VudCI6Inp3MVNhYVM0bmtJRjR3cUx5ZGh0IiwiaWF0IjoxNzcwMTA0NDA4fQ.mXpX7H6HY61RdAtve0pdNUqG1T-sECWYZ7oQVMA7HHY |
 | JWT（測試） | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MTksIkFjY291bnQiOiJraW1mYWZhIiwiaWF0IjoxNzU5ODI5MzQ3fQ.0Hs_6ZDvALtmDYQsriofvq_xcbMjr3RJqonfCNy6WfU | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MjcsIkFjY291bnQiOiJnVmUyeENLZDV3M1VoMWZIam9QUSIsImlhdCI6MTc3MDEwMzY2MH0.U2cUbZr2oFVww8-BcQgLd0x_P3fBQAQe-CaQSvRXXNA | eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MjgsIkFjY291bnQiOiJ6dzFTYWFTNG5rSUY0d3FMeWRodCIsImlhdCI6MTc3MDEwMzY3M30.yAqTurzngB_igplqvB-A08FYzknFoWrd3GjTfBUPRBg |
 | 商戶代碼（測試站）⚠️ | KFF | KFFB | KFFC |
 | 商戶代碼（正式站）⚠️ | KFF | KFFB | KFFC |
