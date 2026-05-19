@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Report — claude</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
+      <div>
+        <h1 class="text-xl font-bold text-gray-800">📁 claude</h1>
+        <p class="text-sm text-gray-500 mt-0.5">
+          1 個檔案 &nbsp;·&nbsp; 73.8 KB &nbsp;·&nbsp; 產出於 2026-05-13
+        </p>
+      </div>
+      <input
+        id="search"
+        type="text"
+        placeholder="搜尋檔名、路徑..."
+        class="w-72 px-4 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+      />
+    </div>
+  </header>
+
+  <!-- Type filters -->
+  <div class="max-w-7xl mx-auto px-6 py-3 flex gap-2 flex-wrap">
+    <button onclick="setFilter('all')" data-filter="all"
+      class="filter-btn px-3 py-1.5 rounded-full text-sm font-medium transition-colors">
+      全部
+    </button>
+    <button onclick="setFilter('document')" data-filter="document"
+      class="filter-btn px-3 py-1.5 rounded-full text-sm font-medium transition-colors">
+      📄 文件
+    </button>
+    <button onclick="setFilter('image')" data-filter="image"
+      class="filter-btn px-3 py-1.5 rounded-full text-sm font-medium transition-colors">
+      🖼️ 圖片
+    </button>
+    <button onclick="setFilter('code')" data-filter="code"
+      class="filter-btn px-3 py-1.5 rounded-full text-sm font-medium transition-colors">
+      💻 程式碼
+    </button>
+    <button onclick="setFilter('video')" data-filter="video"
+      class="filter-btn px-3 py-1.5 rounded-full text-sm font-medium transition-colors">
+      🎬 影片
+    </button>
+    <button onclick="setFilter('archive')" data-filter="archive"
+      class="filter-btn px-3 py-1.5 rounded-full text-sm font-medium transition-colors">
+      📦 壓縮檔
+    </button>
+    <button onclick="setFilter('other')" data-filter="other"
+      class="filter-btn px-3 py-1.5 rounded-full text-sm font-medium transition-colors">
+      📎 其他
+    </button>
+  </div>
+
+  <!-- Table -->
+  <main class="max-w-7xl mx-auto px-6 pb-16">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 border-b border-gray-200 text-xs uppercase tracking-wide">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold text-gray-500 cursor-pointer select-none hover:text-gray-800"
+                onclick="sortBy('name')">
+              檔名 <span id="sort-name" class="text-gray-300">↕</span>
+            </th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-500 cursor-pointer select-none hover:text-gray-800 w-28"
+                onclick="sortBy('type')">
+              類型 <span id="sort-type" class="text-gray-300">↕</span>
+            </th>
+            <th class="px-4 py-3 text-right font-semibold text-gray-500 cursor-pointer select-none hover:text-gray-800 w-24"
+                onclick="sortBy('size')">
+              大小 <span id="sort-size" class="text-gray-300">↕</span>
+            </th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-500 cursor-pointer select-none hover:text-gray-800 w-32"
+                onclick="sortBy('modified')">
+              修改日期 <span id="sort-modified" class="text-gray-300">↕</span>
+            </th>
+            <th class="px-4 py-3 text-left font-semibold text-gray-500 w-64">路徑</th>
+          </tr>
+        </thead>
+        <tbody id="tbody" class="divide-y divide-gray-100"></tbody>
+      </table>
+
+      <!-- Empty state -->
+      <div id="empty-state" class="hidden py-20 text-center text-gray-400">
+        <p class="text-5xl mb-3">🔍</p>
+        <p class="text-sm font-medium">找不到符合的檔案</p>
+        <p class="text-xs mt-1">試試其他關鍵字或移除篩選條件</p>
+      </div>
+    </div>
+
+    <p id="count-label" class="text-xs text-gray-400 mt-3 text-right"></p>
+  </main>
+
+  <script>
+    // ── Data ──────────────────────────────────────────────
+    const FILES = [{"name":"skill.md","type":"document","size":"73.8 KB","bytes":75570,"modified":"2026-05-13","path":"./skill.md"}];
+
+    // ── Config ────────────────────────────────────────────
+    const TYPE_ICON = {
+      document: '📄', image: '🖼️', video: '🎬',
+      code: '💻', archive: '📦', other: '📎'
+    };
+    const TYPE_BADGE = {
+      document: 'bg-blue-100 text-blue-700',
+      image:    'bg-emerald-100 text-emerald-700',
+      video:    'bg-purple-100 text-purple-700',
+      code:     'bg-orange-100 text-orange-700',
+      archive:  'bg-yellow-100 text-yellow-700',
+      other:    'bg-gray-100 text-gray-600'
+    };
+
+    // ── State ─────────────────────────────────────────────
+    let activeFilter = 'all';
+    let sort = { key: 'name', asc: true };
+
+    // ── Render ────────────────────────────────────────────
+    function render() {
+      const q = document.getElementById('search').value.toLowerCase().trim();
+
+      let rows = FILES.filter(f => {
+        const matchType   = activeFilter === 'all' || f.type === activeFilter;
+        const matchSearch = !q || f.name.toLowerCase().includes(q) || f.path.toLowerCase().includes(q);
+        return matchType && matchSearch;
+      });
+
+      rows.sort((a, b) => {
+        let va = sort.key === 'size' ? a.bytes   : a[sort.key];
+        let vb = sort.key === 'size' ? b.bytes   : b[sort.key];
+        if (va < vb) return sort.asc ? -1 : 1;
+        if (va > vb) return sort.asc ?  1 : -1;
+        return 0;
+      });
+
+      const tbody      = document.getElementById('tbody');
+      const emptyState = document.getElementById('empty-state');
+      const label      = document.getElementById('count-label');
+
+      if (rows.length === 0) {
+        tbody.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        label.textContent = '';
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      label.textContent = `顯示 ${rows.length} / ${FILES.length} 個檔案`;
+
+      tbody.innerHTML = rows.map(f => {
+        const badge = TYPE_BADGE[f.type] ?? TYPE_BADGE.other;
+        const icon  = TYPE_ICON[f.type]  ?? '📎';
+        return `
+          <tr class="hover:bg-blue-50/40 transition-colors">
+            <td class="px-4 py-3 font-medium text-gray-800 max-w-xs">
+              <span class="flex items-center gap-1.5 truncate" title="${esc(f.name)}">
+                <span class="shrink-0">${icon}</span>
+                <span class="truncate">${esc(f.name)}</span>
+              </span>
+            </td>
+            <td class="px-4 py-3">
+              <span class="px-2 py-0.5 rounded-full text-xs font-medium ${badge}">${f.type}</span>
+            </td>
+            <td class="px-4 py-3 text-right text-gray-600 tabular-nums">${esc(f.size)}</td>
+            <td class="px-4 py-3 text-gray-500 tabular-nums">${esc(f.modified)}</td>
+            <td class="px-4 py-3 text-gray-400 text-xs font-mono max-w-xs truncate" title="${esc(f.path)}">${esc(f.path)}</td>
+          </tr>`;
+      }).join('');
+    }
+
+    // ── Filter ────────────────────────────────────────────
+    function setFilter(type) {
+      activeFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        const active = btn.dataset.filter === type;
+        btn.className = btn.className
+          .replace(/\bbg-blue-600\b|\btext-white\b|\bbg-gray-100\b|\btext-gray-700\b|\bhover:bg-gray-200\b/g, '')
+          .trim();
+        if (active) {
+          btn.classList.add('bg-blue-600', 'text-white');
+        } else {
+          btn.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+        }
+      });
+      render();
+    }
+
+    // ── Sort ──────────────────────────────────────────────
+    function sortBy(key) {
+      if (sort.key === key) sort.asc = !sort.asc;
+      else sort = { key, asc: true };
+
+      ['name', 'type', 'size', 'modified'].forEach(k => {
+        const el = document.getElementById(`sort-${k}`);
+        if (!el) return;
+        el.textContent = k === key ? (sort.asc ? '↑' : '↓') : '↕';
+        el.className   = k === key ? 'text-blue-500' : 'text-gray-300';
+      });
+
+      render();
+    }
+
+    // ── Utils ─────────────────────────────────────────────
+    function esc(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    // ── Init ──────────────────────────────────────────────
+    document.getElementById('search').addEventListener('input', render);
+    setFilter('all');   // sets button styles and calls render()
+  </script>
+</body>
+</html>
