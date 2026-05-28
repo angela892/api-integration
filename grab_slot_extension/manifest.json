@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "inline.app 搶位助手",
+  "version": "1.0",
+  "description": "自動偵測可用時段並搶位",
+  "permissions": ["activeTab"],
+  "host_permissions": ["https://inline.app/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://inline.app/booking/-NxWP2_vJt5UGbg1i5DW*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

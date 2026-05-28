@@ -245,25 +245,75 @@
 |------|-------|-------|--------|
 | 對接類型 | API | — | — |
 | 幣別支援 | TWD | — | — |
-| 測試環境網址 | https://api-int.qtplatform.com | — | — |
-| 正式環境網址 | https://api.qtplatform.com | — | — |
+| 測試環境網址（API） | https://api-int.qtplatform.com | — | — |
+| 測試環境網址（後台） | https://bo-int.qtplatform.com | — | — |
+| 正式環境網址（API） | https://api.qtplatform.com | — | — |
+| 正式環境網址（後台） | https://bo.qtplatform.com | — | — |
 | 認證方式 | Username / Password + Passkey | — | — |
-| Base URL | 正式：https://api.qtplatform.com / 測試：https://api-int.qtplatform.com | — | — |
+| Base URL | 測試：https://api-int.qtplatform.com / 正式：待補充 | — | — |
 | 錢包模式 | 單一錢包 | — | — |
-| Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/QT/QT1 | — | — |
-| Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/QT/QT1 | — | — |
-| IP白名單需求 | 52.77.32.26 / 54.169.140.105 / 34.241.71.150 / 18.162.217.103 / 18.184.243.189 / 34.243.156.16 / 52.79.203.127 / 52.76.231.168 / 2.136.53.153 | — | — |
-| 後台帳號（測試站） | api_kimfafa | — | — |
-| 後台密碼（測試站） | Snoexs10 | — | — |
-| 後台帳號（正式站） | api_kimfafa | — | — |
-| 後台密碼（正式站） | nvtbrUz4 | — | — |
-| API Key/Secret ⚠️（正式） | qWMyiFiU3BpCiEgF（Passkey） | — | — |
-| API Key/Secret ⚠️（測試） | qWMyiFiU3BpCiEgF（Passkey） | — | — |
-| 商戶代碼（測試站）⚠️ | qa_kimfafa | — | — |
-| 商戶代碼（正式站）⚠️ | manager_kimfafa | — | — |
+| Callback（測試站） | https://devkff8.com/v2/3rdParty/Slot/QT/QT1 | — | — |
+| Reward Callback（測試站） | https://devkff8.com/v2/3rdParty/Slot/QT/QT1/bonus/rewards | — | — |
+| Callback（正式站） | https://intg.kimfafa.com/v2/3rdParty/Slot/QT/QT1 | — | — |
+| Reward Callback（正式站） | https://intg.kimfafa.com/v2/3rdParty/Slot/QT/QT1/bonus/rewards | — | — |
+| IP白名單需求 | 待補充 | — | — |
+| 商戶帳號（測試站）⚠️ | KFFN | — | — |
+| 商戶帳號（正式站）⚠️ | KFFN | — | — |
+| API 帳號（測試站） | api_kffn | — | — |
+| API 密碼（測試站） | Jynfmoe0 | — | — |
+| 後台帳號（測試站） | qa_kffn | — | — |
+| 後台密碼（測試站） | gbjko%V1 | — | — |
+| API 帳號（正式站） | api_kffn | — | — |
+| API 密碼（正式站） | bbHpnfe3 | — | — |
+| 後台帳號（正式站） | manager_kffn | — | — |
+| 後台密碼（正式站） | %udxTar2 | — | — |
+| API Key/Secret ⚠️（正式） | TlttoroBKV29Xbj3（Passkey） | — | — |
+| API Key/Secret ⚠️（測試） | N9pfYWpLjWIi4YqS（Passkey） | — | — |
 | 文件收集 | 待補充 | — | — |
 | 測試環境 | 待補充 | — | — |
 | 正式上線 | 待補充 | — | — |
+
+#### 舊設置備存（kimfafa）
+
+<div style="background:#fffde7; border:1px solid #f9a825; border-radius:6px; padding:8px;">
+
+**測試站（KFFN — 舊 Callback）**
+
+| 欄位 | 內容 |
+|------|------|
+| Callback | https://intg.devkimfafa.com/v2/3rdParty/Slot/QT/QT1 |
+| Reward Callback | https://intg.devkimfafa.com/v2/3rdParty/Slot/QT/QT1/bonus/rewards |
+
+**正式站（KFFN — 舊 Callback）**
+
+| 欄位 | 內容 |
+|------|------|
+| Callback | https://kff8.tw/v2/3rdParty/Slot/QT/QT1 |
+| Reward Callback | https://kff8.tw/v2/3rdParty/Slot/QT/QT1/bonus/rewards |
+
+**測試站（kimfafa）**
+
+| 欄位 | 內容 |
+|------|------|
+| API 帳號 | api_kimfafa |
+| API 密碼 | Snoexs10 |
+| 後台帳號（商戶代碼） | qa_kimfafa |
+| Passkey ⚠️ | qWMyiFiU3BpCiEgF |
+
+**正式站**
+
+| 欄位 | 內容 |
+|------|------|
+| 正式環境網址 | https://api.qtplatform.com |
+| Base URL | https://api.qtplatform.com |
+| IP白名單需求 | 52.77.32.26 / 54.169.140.105 / 34.241.71.150 / 18.162.217.103 / 18.184.243.189 / 34.243.156.16 / 52.79.203.127 / 52.76.231.168 / 2.136.53.153 |
+| 後台帳號 | api_kimfafa |
+| 後台密碼 | nvtbrUz4 |
+| 商戶代碼 ⚠️ | manager_kimfafa |
+| Passkey ⚠️ | qWMyiFiU3BpCiEgF |
+| Callback | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/QT/QT1 |
+
+</div>
 
 ---
 

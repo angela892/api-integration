@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path \"$env:USERPROFILE\\\\.claude\\\\commands\" -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-ChildItem -Path \"$env:USERPROFILE\\\\.claude\" -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-ChildItem -Path \"$env:USERPROFILE\\\\.claude\\\\plugins\" -ErrorAction SilentlyContinue)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git remote *)",
+      "Bash(git branch *)",
+      "Bash(git push *)",
+      "Bash(rm file-report.md)",
+      "Bash(git rm *)",
+      "Bash(mkdir -p api-integration/docs/vendors limited-offer)",
+      "Bash(git mv *)",
+      "Bash(python -c \"import openpyxl; print\\('openpyxl ok'\\)\")",
+      "Bash(pip install *)",
+      "Bash(python -c \"import openpyxl; print\\('ok'\\)\")",
+      "Bash(C:\\\\Users\\\\QA000\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe -m pip install openpyxl --quiet)",
+      "Bash(C:\\\\Users\\\\QA000\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe -c \"import openpyxl; print\\('ok'\\)\")",
+      "PowerShell(pip install openpyxl --quiet)",
+      "PowerShell(python -c \"import openpyxl; print\\('ok'\\)\")",
+      "PowerShell(& \"C:\\\\Users\\\\QA000\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe\" -m pip install openpyxl)",
+      "PowerShell(& \"C:\\\\Users\\\\QA000\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe\" -c \"import openpyxl; print\\('ok'\\)\")"
+    ]
+  }
+}
