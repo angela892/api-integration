@@ -22,7 +22,28 @@
       "PowerShell(pip install openpyxl --quiet)",
       "PowerShell(python -c \"import openpyxl; print\\('ok'\\)\")",
       "PowerShell(& \"C:\\\\Users\\\\QA000\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe\" -m pip install openpyxl)",
-      "PowerShell(& \"C:\\\\Users\\\\QA000\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe\" -c \"import openpyxl; print\\('ok'\\)\")"
+      "PowerShell(& \"C:\\\\Users\\\\QA000\\\\AppData\\\\Local\\\\Python\\\\pythoncore-3.14-64\\\\python.exe\" -c \"import openpyxl; print\\('ok'\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(curl -s \"https://api.trello.com/1/members/me/boards?fields=name&key=452c24d67c8a505c7bfef97e0dada122&token=c2e9ae9df9c74c024beda8685a52b36cb2186bb5a7b97b38af1995a6a2965741\")",
+      "Bash(curl -s \"https://api.trello.com/1/members/me?key=61f9c283c610b2ab4c92ca755e7fa090&token=fbf2b3b2684c299f90899a1b0afc902f7c1731706eb22c47158eaee4a269a02d&fields=fullName,username\")",
+      "Bash(curl -s \"https://api.trello.com/1/members/me?key=61f9c283c610b2ab4c92ca755e7fa090&token=ATTA2d95bf31d1ccd9a1b9963446979ada9a754616f68f4dd942d431af4cef174e6e1DEA9C4A&fields=fullName,username\")",
+      "Bash(curl -s -X DELETE \"https://api.trello.com/1/cards/6a22340597112713c803a685?key=61f9c283c610b2ab4c92ca755e7fa090&token=ATTA2d95bf31d1ccd9a1b9963446979ada9a754616f68f4dd942d431af4cef174e6e1DEA9C4A\")",
+      "Bash(curl -s \"https://api.trello.com/1/cards/m2hILt3u?key=61f9c283c610b2ab4c92ca755e7fa090&token=ATTA2d95bf31d1ccd9a1b9963446979ada9a754616f68f4dd942d431af4cef174e6e1DEA9C4A&fields=name,idList,idBoard\")",
+      "Bash(curl -s -X POST 'https://api.trello.com/1/cards?key=61f9c283c610b2ab4c92ca755e7fa090&token=ATTA2d95bf31d1ccd9a1b9963446979ada9a754616f68f4dd942d431af4cef174e6e1DEA9C4A' -H 'Content-Type: application/json' -d '{\"idCardSource\":\"6960d2f4b2dea24157cb5d28\",\"keepFromSource\":\"all\",\"idList\":\"68e5d161f3f3d58dc23c1045\",\"name\":\"[金發發]20260605 PRD Hotfix\"}')",
+      "Bash(curl -s -X PUT 'https://api.trello.com/1/cards/6a2242866fb300d7cb20b541?key=61f9c283c610b2ab4c92ca755e7fa090&token=ATTA2d95bf31d1ccd9a1b9963446979ada9a754616f68f4dd942d431af4cef174e6e1DEA9C4A' -H 'Content-Type: application/json' -d '{\"desc\":\"Release Note : [https://docs.google.com/spreadsheets/d/1gbQSkT9mr7qMCK0_Pc1yQAuXb-3VW4TVUZGY6MOFdlQ/edit?gid=127488967#gid=127488967]\\(https://docs.google.com/spreadsheets/d/1gbQSkT9mr7qMCK0_Pc1yQAuXb-3VW4TVUZGY6MOFdlQ/edit?gid=127488967#gid=127488967\\)\\\\n\\\\n---\\\\n\\\\n主要更新項目 :\\\\n1.ATG 指定遊戲在LIFF上強制開啟橫式參數view_mode=landscape\"}')",
+      "Bash(curl -s \"https://api.trello.com/1/cards/NQHMzjFP?key=61f9c283c610b2ab4c92ca755e7fa090&token=ATTA2d95bf31d1ccd9a1b9963446979ada9a754616f68f4dd942d431af4cef174e6e1DEA9C4A&fields=name,desc,idChecklists\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('name:', d['name']\\); print\\('checklists:', d['idChecklists']\\); print\\('desc:', d['desc'][:300]\\)\")",
+      "Bash(curl -s \"https://api.trello.com/1/cards/NQHMzjFP?key=61f9c283c610b2ab4c92ca755e7fa090&token=ATTA2d95bf31d1ccd9a1b9963446979ada9a754616f68f4dd942d431af4cef174e6e1DEA9C4A&fields=name,idChecklists\")",
+      "Bash(curl -s \"https://api.trello.com/1/cards/6a2242866fb300d7cb20b541/checklists?key=61f9c283c610b2ab4c92ca755e7fa090&token=ATTA2d95bf31d1ccd9a1b9963446979ada9a754616f68f4dd942d431af4cef174e6e1DEA9C4A&fields=name&checkItem_fields=name,state\")",
+      "Bash(curl -s -X POST 'https://api.trello.com/1/checklists/6a2242866fb300d7cb20b590/checkItems?key=61f9c283c610b2ab4c92ca755e7fa090&token=ATTA2d95bf31d1ccd9a1b9963446979ada9a754616f68f4dd942d431af4cef174e6e1DEA9C4A' -H 'Content-Type: application/json' -d '{\"name\":\"https://trello.com/c/NQHMzjFP\"}')",
+      "PowerShell(Invoke-RestMethod -Uri \"https://api.trello.com/1/members/me/boards?fields=name,id,closed&key=61f9c283c610b2ab4c92ca755e7fa090&token=ATTA2d95bf31d1ccd9a1b9963446979ada9a754616f68f4dd942d431af4cef174e6e1DEA9C4A\" -Method GET | Where-Object { $_.closed -eq $false } | Select-Object name, id | Format-Table -AutoSize)",
+      "Bash(mkdir -p \"c:/Users/QA000/Desktop/claude/openspec/changes/gift-kff\")",
+      "Bash(git clone *)",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\QA000\\\\Downloads\\\\Telegram Desktop\\\\Screenshot 2026-06-05 at 12.57.30.png\" \"C:\\\\Users\\\\QA000\\\\Desktop\\\\claude\\\\openspec\\\\changes\\\\gift-kff\\\\machine-lobby.png\")",
+      "PowerShell(Add-Type -AssemblyName System.Windows.Forms; $img = [System.Windows.Forms.Clipboard]::GetImage\\(\\); if \\($img\\) { $img.Save\\(\"C:\\\\Users\\\\QA000\\\\Desktop\\\\claude\\\\openspec\\\\changes\\\\gift-kff\\\\machine-lobby.png\"\\); Write-Output \"saved\" } else { Write-Output \"no image in clipboard\" })"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\QA000\\Desktop\\claude\\openspec\\changes"
     ]
   }
 }

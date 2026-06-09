@@ -1,14 +1,16 @@
 // ============================================================
 //  個人資料（修改這裡）
 // ============================================================
-const MY_NAME  = "蔡允喬";
-const MY_PHONE = "0955413111";
-const MY_EMAIL = "s0912287123@yahoo.com.tw";
+const MY_NAME  = "周冠諭";
+const MY_PHONE = "0920688970";
+const MY_EMAIL = "service-dev@idollar.com.tw";
 const PEOPLE   = 1;
 
-const EXTENSION_NAME = "搶位助手2_監控空位";
+const EXTENSION_NAME = "搶位助手4_監控日期";
 const CHECK_INTERVAL = 6000;
-const TARGET_TIME    = null;   // null=任何時段，或填 "19:00"
+const TARGET_TIME    = null;        // null=任何時段，或填 "19:00"
+const TARGET_DATES   = ["6/5"];     // 指定要搶的日期，可多個，例如 ["6/7", "6/14"]
+                                    // 空陣列 [] = 不限日期
 // ============================================================
 
 // 防止 SPA 路由切換時 content script 被重複注入
@@ -382,7 +384,6 @@ function afterSlotClick() {
                 log(`✓ 點擊「${btn.textContent.trim().slice(0, 20)}」`);
                 setTimeout(() => {
                   if (paused) return;
-                  // 輪詢等 modal 消失（最多 3 秒）
                   const closeStart = Date.now();
                   (function waitModalClose() {
                     if (paused) return;
@@ -470,28 +471,76 @@ function isBotChallenge() {
     || document.body.innerText.includes("確認您是人類");
 }
 
+// 從 data-cy="date-picker" 讀取目前選擇的日期
+function getPageDate() {
+  // 直接讀 date-picker 元素
+  const picker = document.querySelector('[data-cy="date-picker"]') || document.querySelector('#date-picker');
+  if (picker) {
+    const text = picker.textContent.trim();
+    const m = text.match(/(\d{1,2})月(\d{1,2})日/);
+    if (m) return `${parseInt(m[1])}/${parseInt(m[2])}`;
+  }
+  return null;
+}
+
+// 等待 date-picker 出現並回傳日期（最多等 3 秒）
+function waitForPageDate(onFound, onTimeout) {
+  const start = Date.now();
+  (function poll() {
+    if (paused) return;
+    const date = getPageDate();
+    if (date) { onFound(date); return; }
+    if (Date.now() - start > 3000) { onTimeout(); return; }
+    setTimeout(poll, 150);
+  })();
+}
+
 log(`【${EXTENSION_NAME}】啟動！`);
 setStatus(`【${EXTENSION_NAME}】偵測中…`, "info");
-setTimeout(() => { // 200ms 等頁面渲染完成
+setTimeout(() => {
   if (isBotChallenge()) {
     log("⚠ 偵測到人類驗證畫面，自動重整已暫停，請手動通過後重新整理頁面");
     setStatus("🤖 需要人類驗證！請按住按鈕通過，再手動重整頁面", "error");
     return;
   }
-  debugButtons();
-  const slot = findAvailableSlot();
-  if (slot) {
-    booked = true;
-    const t = getSlotTime(slot);
-    log(`找到今日可用時段：${t}，點擊中…`);
-    setStatus(`⚡ 找到 ${t}，搶位中…`, "warn");
-    realClick(slot);
-    setTimeout(afterSlotClick, 1500);
-  } else {
-    log(`目前無今日可用時段，${CHECK_INTERVAL / 1000} 秒後重整…`);
-    setStatus("😴 目前無空位，等待重整…", "info");
-    _reloadTimer = setTimeout(() => { if (!paused) window.location.reload(); }, CHECK_INTERVAL);
-  }
+
+  waitForPageDate(
+    (current) => {
+      if (paused) return;
+      debugButtons();
+      if (TARGET_DATES && TARGET_DATES.length > 0) {
+        const match = TARGET_DATES.some(d => {
+          const [m, day] = d.split("/").map(Number);
+          const [cm, cday] = current.split("/").map(Number);
+          return m === cm && day === cday;
+        });
+        if (!match) {
+          log(`目前日期 ${current} 不在目標清單（${TARGET_DATES.join("、")}），跳過`);
+          setStatus(`😴 非目標日期(${current})，等待重整…`, "info");
+          _reloadTimer = setTimeout(() => { if (!paused) window.location.reload(); }, CHECK_INTERVAL);
+          return;
+        }
+      }
+      const slot = findAvailableSlot();
+      if (slot) {
+        booked = true;
+        const t = getSlotTime(slot);
+        log(`找到可用時段：${t}，點擊中…`);
+        setStatus(`⚡ 找到 ${t}，搶位中…`, "warn");
+        realClick(slot);
+        setTimeout(afterSlotClick, 1500);
+      } else {
+        log(`目標日期(${current}) 無可用時段，${CHECK_INTERVAL / 1000} 秒後重整…`);
+        setStatus(`😴 ${current} 無空位，等待重整…`, "info");
+        _reloadTimer = setTimeout(() => { if (!paused) window.location.reload(); }, CHECK_INTERVAL);
+      }
+    },
+    () => {
+      // 3秒內找不到 date-picker，直接重整
+      log("⚠ date-picker 未出現，重整重試…");
+      _reloadTimer = setTimeout(() => { if (!paused) window.location.reload(); }, 1000);
+    }
+  );
 }, 300);
 
 } // end window._grabSlotStarted guard

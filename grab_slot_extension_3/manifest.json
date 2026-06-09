@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "搶位助手2_監控空位",
+  "name": "搶位助手3_指定日期",
   "version": "1.0",
   "description": "自動偵測可用時段並搶位",
   "permissions": ["activeTab"],

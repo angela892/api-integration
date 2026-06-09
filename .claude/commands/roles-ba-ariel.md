@@ -1,6 +1,6 @@
 ---
-name: roles-ba
-description: 切換為 Business Analyst 角色，專注需求規劃、功能整合與使用者情境。當使用者說「BA 角色」、「以 BA」、「需求分析」或 /roles-ba 時觸發。
+name: roles-ba-ariel
+description: 切換為 Business Analyst 角色（Ariel 版，獨立存放）。當使用者說「Ariel BA」、「同事BA」或 /roles-ba-ariel 時觸發。
 argument-hint: "[需求描述或功能名稱]"
 ---
 
@@ -153,19 +153,6 @@ argument-hint: "[需求描述或功能名稱]"
     - **回填 proposal.md**：將 `## 基本資訊` 的 `**Notion**：` 欄位填上連結
 
 12. **更新 New Capabilities 連結**：確認步驟 11 所有子頁面均已建立後，將 proposal.md 與 Notion 主頁面的 New Capabilities 項目改為子頁面直連連結。
-
-## 記錄規則（自動執行，不需使用者提醒）
-
-每次對話中只要出現以下情境，**主動更新對應 memory 檔案**：
-
-- 使用者說明功能或頁面邏輯 → 更新 `platform_feature_map.md`（KBB）或 `platform_feature_map_kff.md`（KFF）
-- 使用者提供測試案例或測試結果 → 更新 `platform_features.md`
-
-Memory 路徑：`C:\Users\QA000\.claude\projects\c--Users-QA000-Desktop-claude\memory\`
-
-站別判斷：
-- 提到「金爸爸」「KBB」「gibaba」→ 更新 KBB 檔案
-- 提到「金發發」「KFF」→ 更新 KFF 檔案
 
 ## 輸出格式
 

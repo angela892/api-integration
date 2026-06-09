@@ -170,10 +170,10 @@
             <table class="w-full text-sm border-collapse">
               <thead>
                 <tr class="bg-slate-100">
-                  <th class="px-3 py-2 text-left font-semibold text-slate-700 border border-slate-200">遊戲商</th>
-                  <th class="px-3 py-2 text-center font-semibold text-green-700 border border-slate-200 w-20">金發發</th>
-                  <th class="px-3 py-2 text-center font-semibold text-blue-700 border border-slate-200 w-20">金爸爸</th>
-                  <th class="px-3 py-2 text-center font-semibold text-purple-700 border border-slate-200 w-20">日本站</th>
+                  <th class="px-3 py-2 text-left font-semibold text-slate-700 border border-slate-200 w-40">遊戲商</th>
+                  <th class="px-3 py-2 text-center font-semibold text-blue-700 border border-slate-200 w-28">金爸爸</th>
+                  <th class="px-3 py-2 text-center font-semibold text-green-700 border border-slate-200 w-28">金發發</th>
+                  <th class="px-3 py-2 text-center font-semibold text-purple-700 border border-slate-200 w-28">日本站</th>
                 </tr>
               </thead>
               <tbody id="overview-tbody"></tbody>
@@ -199,67 +199,77 @@
 // ==================== DATA ====================
 
 const overviewData = [
-  {name:'ATG',       kff:true,  kbb:true,  jp:false},
-  {name:'BE/BE(CQ9)',kff:true,  kbb:true,  jp:false},
-  {name:'BNG',       kff:true,  kbb:true,  jp:true },
-  {name:'DG',        kff:true,  kbb:false, jp:false},
-  {name:'L9',        kff:true,  kbb:false, jp:false},
-  {name:'MT',        kff:true,  kbb:false, jp:false},
-  {name:'OKGO',      kff:true,  kbb:false, jp:false},
-  {name:'OSEG',      kff:true,  kbb:true,  jp:false},
-  {name:'QT',        kff:true,  kbb:true,  jp:true },
-  {name:'RSGSW',     kff:true,  kbb:true,  jp:false},
-  {name:'VA',        kff:true,  kbb:true,  jp:false},
-  {name:'5G(FVG)',   kff:false, kbb:true,  jp:false},
-  {name:'BL',        kff:false, kbb:true,  jp:false},
-  {name:'BLE',       kff:false, kbb:true,  jp:false},
-  {name:'BT',        kff:false, kbb:true,  jp:false},
-  {name:'FC',        kff:false, kbb:true,  jp:true },
-  {name:'GIO',       kff:false, kbb:true,  jp:false},
-  {name:'I8',        kff:false, kbb:true,  jp:false},
-  {name:'KBB',       kff:false, kbb:true,  jp:false},
-  {name:'RG',        kff:false, kbb:true,  jp:true },
-  {name:'RK5',       kff:false, kbb:true,  jp:false},
-  {name:'TAG',       kff:false, kbb:true,  jp:false},
-  {name:'VPG',       kff:false, kbb:true,  jp:false},
-  {name:'YB',        kff:false, kbb:true,  jp:false},
-  {name:'ZG',        kff:false, kbb:true,  jp:false},
-  {name:'CQ9',       kff:false, kbb:false, jp:true },
-  {name:'EVO',       kff:false, kbb:false, jp:true },
-  {name:'PG',        kff:false, kbb:false, jp:true },
+  {name:'ATG',            kff:true,    kbb:true,    jp:false},
+  {name:'BE/BE(CQ9)',     kff:true,    kbb:true,    jp:false},
+  {name:'BNG',            kff:true,    kbb:true,    jp:true },
+  {name:'DG',             kff:true,    kbb:'down',  jp:false},
+  {name:'L9',             kff:true,    kbb:false,   jp:false},
+  {name:'MT',             kff:true,    kbb:false,   jp:false},
+  {name:'OKGO',           kff:true,    kbb:false,   jp:false},
+  {name:'OSEG',           kff:true,    kbb:true,    jp:false},
+  {name:'QT',             kff:true,    kbb:true,    jp:true },
+  {name:'RSGSW',          kff:true,    kbb:true,    jp:false},
+  {name:'VA',             kff:true,    kbb:true,    jp:false},
+  {name:'5G(FVG)',        kff:false,   kbb:true,    jp:false},
+  {name:'AMS',            kff:false,   kbb:'down',  jp:false},
+  {name:'AVX',            kff:false,   kbb:'down',  jp:false},
+  {name:'BL',             kff:false,   kbb:true,    jp:false},
+  {name:'BLE',            kff:false,   kbb:true,    jp:false},
+  {name:'BOD',            kff:false,   kbb:true,    jp:false},
+  {name:'BT',             kff:false,   kbb:true,    jp:false},
+  {name:'EVOTW',          kff:false,   kbb:'down',  jp:false},
+  {name:'FC',             kff:false,   kbb:true,    jp:true },
+  {name:'GIO',            kff:false,   kbb:true,    jp:false},
+  {name:'GM',             kff:false,   kbb:'down',  jp:false},
+  {name:'I8',             kff:false,   kbb:true,    jp:false},
+  {name:'KBB',            kff:false,   kbb:true,    jp:false},
+  {name:'RG',             kff:false,   kbb:true,    jp:true },
+  {name:'RK5',            kff:false,   kbb:true,    jp:false},
+  {name:'TAG',            kff:false,   kbb:true,    jp:false},
+  {name:'VPG',            kff:false,   kbb:'down',  jp:false},
+  {name:'YB',             kff:false,   kbb:true,    jp:false},
+  {name:'ZG',             kff:false,   kbb:true,    jp:false},
+  {name:'CQ9',            kff:false,   kbb:false,   jp:true },
+  {name:'CQ9-Motivation', kff:false,   kbb:false,   jp:true },
+  {name:'EVO',            kff:false,   kbb:false,   jp:true },
+  {name:'PG',             kff:false,   kbb:false,   jp:true },
 ];
 
 // KBB fields order
 const kbbFields = [
-  '對接類型','幣別支援','測試環境網址','正式環境網址',
-  '認證方式','Base URL','錢包模式',
+  '對接類型','幣別支援',
+  '認證方式','Base URL（正式）','Base URL（測試）','錢包模式','玩家帳號模式',
   'Callback（測試站）','Callback（正式站）',
   'IP白名單（測試站）','IP白名單（正式站）',
-  '測試帳號','API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','MerchID ⚠️（測試站）','MerchID ⚠️（正式站）',
+  'API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','MerchID ⚠️（測試站）','MerchID ⚠️（正式站）',
+  '測試環境網址','後台帳號（測試）','正式環境網址','後台帳號（正式）',
   '文件收集','測試環境','正式上線'
 ];
 const kbbFieldsSingleIP = [
-  '對接類型','幣別支援','測試環境網址','正式環境網址',
-  '認證方式','Base URL','錢包模式',
+  '對接類型','幣別支援',
+  '認證方式','Base URL（正式）','Base URL（測試）','錢包模式','玩家帳號模式',
   'Callback（測試站）','Callback（正式站）',
   'IP 白名單',
-  '測試帳號','API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','MerchID ⚠️（測試站）','MerchID ⚠️（正式站）',
+  'API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','MerchID ⚠️（測試站）','MerchID ⚠️（正式站）',
+  '測試環境網址','後台帳號（測試）','正式環境網址','後台帳號（正式）',
   '文件收集','測試環境','正式上線'
 ];
 const kbbFieldsSingleMerchID = [
-  '對接類型','幣別支援','測試環境網址','正式環境網址',
-  '認證方式','Base URL','錢包模式',
+  '對接類型','幣別支援',
+  '認證方式','Base URL（正式）','Base URL（測試）','錢包模式','玩家帳號模式',
   'Callback（測試站）','Callback（正式站）',
   'IP白名單（測試站）','IP白名單（正式站）',
-  '測試帳號','API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','MerchID ⚠️',
+  'API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','MerchID ⚠️',
+  '測試環境網址','後台帳號（測試）','正式環境網址','後台帳號（正式）',
   '文件收集','測試環境','正式上線'
 ];
 const kbbFieldsSingleIPSingleMerchID = [
-  '對接類型','幣別支援','測試環境網址','正式環境網址',
-  '認證方式','Base URL','錢包模式',
+  '對接類型','幣別支援',
+  '認證方式','Base URL（正式）','Base URL（測試）','錢包模式','玩家帳號模式',
   'Callback（測試站）','Callback（正式站）',
   'IP 白名單',
-  '測試帳號','API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','MerchID ⚠️',
+  'API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','MerchID ⚠️',
+  '測試環境網址','後台帳號（測試）','正式環境網址','後台帳號（正式）',
   '文件收集','測試環境','正式上線'
 ];
 
@@ -271,330 +281,348 @@ const NS = '不支援';
 const kbbProviders = [
   {
     name:'ATG', fieldSet:'split',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API','點數（1:130）','https://admin.godeebxp.com','https://admin.godeebxp.com','X-Operator + X-Key（HTTP Header）','https://api.godeebxp.com/','https://api.godeebxp.com/','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/ATG',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/ATG',
       W,['43.198.180.83','18.163.82.39'],
-      W,W,'KBB_P130_beta','KBB_P130_prod',W,W,W],
-    diamond:['API','TWD',W,W,W,W,'單一錢包',
+      'KBB_P130_beta / CjZ^3Gtg4W（後台）','X-Operator: KBB_P130_prod / X-Key: d3c463f8629d4f9daf094f601393569f（正式）/ X-Operator: KBB_P130_beta / X-Key: 1c13c5c3770b414185e1209db7d8df31（測試）','KBB_P130_beta','KBB_P130_prod',W,'已上線','已上線'],
+    diamond:['API','TWD','https://admin.godeebxp.com','https://admin.godeebxp.com','X-Operator + X-Key（HTTP Header）','https://api.godeebxp.com/','https://api.godeebxp.com/','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/diamond/Slot/ATG',
       'https://intg.kimbaba.com.tw/3rdParty/diamond/Slot/ATG',
       W,['43.198.180.83','18.163.82.39'],
-      W,W,'KBBD_game_beta','KBBD_game_prod',W,W,W],
+      'KBBD_game_beta / Pw%GsS6Y96（後台）','X-Operator: KBBD_game_prod / X-Key: 6953ed5e71314386b6846b0bf5691260（正式）/ X-Operator: KBBD_game_beta / X-Key: 5db839b2a0094734864ed8e3c390d092（測試）','KBBD_game_beta','KBBD_game_prod',W,'已上線','已上線'],
   },
   {
     name:'BE(CQ9)', fieldSet:'split',
-    babei:['API','TWD',W,W,W,W,'單一錢包',
+    babei:['API','TWD','https://int-bo.rebirth.games','https://bo.rebirth.games','JWT Token','https://api.rebirth.games','https://int-api.rebirth.games','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/Cq9',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/Cq9',
       ['34.84.30.48','20.24.30.203','35.194.115.194','211.23.49.51','113.196.184.234','175.98.168.194','104.199.186.229','35.201.151.61'],
       ['20.24.30.203','34.146.25.167','35.194.124.109','175.98.168.194','34.81.144.197','104.199.176.123'],
-      W,W,'kimbabadevenv','kimbaba_prod',W,W,W],
-    diamond:['API','TWD',W,W,W,W,'單一錢包',
+      'kimbabadevenv / qwer1234（後台測試）','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...ZPLYapg2TziQTZoEDBEKmxmnLTZO3fd3MKltljFGkVw（正式）/ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...WWeiPY31qjknH6xv2PRUrQMulwooSYgJ8QQxMzWP3kk（測試）','kimbabadevenv','kimbaba_prod','[申請表單](https://docs.google.com/document/d/1Jg_ZTLWYvr5ZJMfZP6dM39VAiWqnFbT6/edit?rtpof=true)','已上線','已上線'],
+    diamond:['API','TWD','https://int-bo.rebirth.games','https://bo.rebirth.games','JWT Token','https://api.rebirth.games','https://int-api.rebirth.games','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/diamond/Slot/Cq9',
       'https://intg.kimbaba.com.tw/3rdParty/diamond/Slot/Cq9',
       ['34.84.30.48','20.24.30.203','35.194.115.194','211.23.49.51','113.196.184.234','175.98.168.194','104.199.186.229','35.201.151.61'],
       ['20.24.30.203','34.146.25.167','35.194.124.109','175.98.168.194','34.81.144.197','104.199.176.123'],
-      W,W,'gbbdiamond','kbbdiamond',W,W,W],
+      'gbbdiamond / gbbdiamond01（後台測試）','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...AsIUgCetIaWhZE4QASEkqUoTCMXv_JyxHjrO5uqqepY（正式）/ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...7_i0zW58Shfr3SQeZcGX9n7aykvj2-ux1vm87USjnvY（測試）','gbbdiamond','kbbdiamond','[申請表單](https://docs.google.com/document/d/1Jg_ZTLWYvr5ZJMfZP6dM39VAiWqnFbT6/edit?rtpof=true)','已上線','已上線'],
   },
   {
     name:'BL', fieldSet:'split',
-    babei:['API','DALE',W,W,W,W,'單一錢包',
+    babei:['API','DALE',W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Table/BL',
       'https://intg.kimbaba.com.tw/3rdParty/Table/BL',
       ['8.210.234.255','16.162.10.255','119.9.91.232','47.56.188.243','54.254.169.68'],
       ['8.210.234.255','16.162.10.255','119.9.91.232','47.56.188.243','54.254.169.68'],
-      W,W,'dale@test.com','dale@admin.com',W,W,W],
-    diamond:['API','TWD',W,W,W,W,'單一錢包',W,W,
+      W,W,'dale@test.com','dale@admin.com','[API文件](https://www.eolink.com/share/index?shareCode=lW9LXp)（密碼：ABCD）','已上線','已上線'],
+    diamond:['API','TWD',W,W,'AccessKeyId + AccessKeySecret','https://api2.bole-game.com','https://api2.bole-game.com','單一錢包',W,
+      'https://intg.gibaba.com/3rdParty/diamond/Table/BL',
+      'https://intg.kimbaba.com.tw/3rdParty/diamond/Table/BL',
       ['8.210.234.255','16.162.10.255','119.9.91.232','47.56.188.243','54.254.169.68'],
       ['8.210.234.255','16.162.10.255','119.9.91.232','47.56.188.243','54.254.169.68'],
-      W,W,'kbbdiamond@test.com','kbbdiamond@admin.com',W,W,W],
+      'kbbdiamond@test.com / kbb168!^*（後台測試）','AccessKeyId: 9e77d783-4337-4930-b930-f42f6fa3d179 / AccessKeySecret: A41761F1056D3386E3C651684597F359AA92E3DE / 授權ID: bl3sfg81ulttqgd9burryl287（正式）/ AccessKeyId: 9e77d6a1-c03e-4bef-a57c-18bb4b404ffb / AccessKeySecret: 67CF3A24A6A2AA86CF91EAB5CB58167AEEF98D7F / 授權ID: bl3sfg81ulttqgd9burryl888（測試）','kbbdiamond@test.com','kbbdiamond@admin.com','[API文件](https://www.eolink.com/share/index?shareCode=lW9LXp)（密碼：ABCD）','已上線','已上線'],
   },
   {
     name:'BLE', fieldSet:'split',
-    babei:['API','TWD',W,W,W,W,'單一錢包',
+    babei:['API','TWD / TWDx130','https://goslo-publish-agency.yxjgux.com','https://agentbz.slotmal.xyz','AccessKeyId + AccessKeySecret','https://brgoapi.juan365.games','https://goslo-publish-api.yxjgux.com','無縫錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/BLE',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/BLE',
       ['13.231.108.244','43.206.228.66'],
       ['34.97.69.142','35.79.242.74','34.97.243.245','54.248.77.40','54.248.152.18','54.168.46.193','57.181.120.54','57.182.29.206','18.177.207.72','52.194.26.76','52.196.69.118','56.124.0.32','56.125.113.89','34.95.252.236','34.151.208.37','35.198.61.70'],
-      W,W,'kimbabaPRD@admin.com','kimbabaPRD1',W,W,W],
+      'kimbaba / kimbabaG7@（後台測試）','AccessKeyId: cd698da9-af0e-4e04-ab5f-b5ebd636ebc6 / AccessKeySecret: 1B93B12AD940A4BA768EC90AC6F061539078B53A（正式）/ AccessKeyId: 1de42415-0cb5-43e4-bc76-5745c22046fd / AccessKeySecret: C5FB91B3467CE2E1B4F917F3FB1AE9A98BB0C98A（測試）','kimbabaPRD@admin.com','kimbabaPRD@admin.com','[正式API](https://apifox.com/apidoc/shared-3c74fd05-6817-401b-ad14-9d8aad8366f6?pwd=MKmXneSR) / [測試API](https://apifox.com/apidoc/shared-2488ecd4-a304-4319-a106-382b6d97ea89)','已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'BNG', fieldSet:'split',
-    babei:['API','KBB',W,W,W,W,'單一錢包',
+    babei:['API','KBB',W,W,'PROJECT_NAME + API_TOKEN + WL','https://gate2.betsrv.com/op/','https://gate2.betsrv.com/op/','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/Bng',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/Bng',
       '54.151.243.48','54.255.99.233',
-      W,W,'gibaba','gibaba',W,W,W],
-    diamond:['API','TWD',W,W,W,W,'單一錢包',
+      W,'PROJECT_NAME: gibaba / API_TOKEN: wolRH1O2ck / WL: prod（正式）/ 待補充（測試）','gibaba','gibaba',W,'已上線','已上線'],
+    diamond:['API','NT（TWD）',W,W,'PROJECT_NAME + API_TOKEN + WL','https://gate.c3.bng.games/op/','https://gate.stage1.bng.games/op/','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/diamond/Slot/Bng',
       'https://intg.kimbaba.com.tw/3rdParty/diamond/Slot/Bng',
-      '54.151.243.48','54.255.99.233',
-      W,W,'kbbdiamond-stage','kbbdiamond-stage',W,W,W],
+      ['54.151.243.48','3.0.152.5','18.142.75.213','13.214.254.26'],
+      ['54.254.71.39','52.221.84.83','54.179.217.26','47.130.85.176'],
+      'service-dev@idollar.com.tw / KBBDiamond（後台）','PROJECT_NAME: kbbdiamond / API_TOKEN: bdLYSDD8Ew / WL: prod（正式）/ PROJECT_NAME: kbbdiamond-stage / API_TOKEN: 2Hp9OALrDW / WL: prod（測試）','kbbdiamond-stage','kbbdiamond',W,'已上線','已上線'],
   },
   {
     name:'BT', fieldSet:'split',
-    babei:['API','UGX',W,W,W,W,'單一錢包',
+    babei:['API','UGX（1:130）',W,W,'account_id + md5_key + security_code','https://btapi.g8game.net/v2','http://game.stgkg.btgame777.com/v2','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Fish/BT',
       'https://intg.kimbaba.com.tw/3rdParty/Fish/BT',
       W,
       ['125.229.7.212','125.229.75.127','13.213.241.219','54.251.100.11','18.138.63.45','3.0.238.89'],
-      W,W,'goldfa_UGX','goldfa_UGX',W,W,W],
+      'goldfa_UGX / 88888888（後台兩站）','account_id: 758245611340107 / md5_key: fc1ee8543665543c13d0ddd81b3e753fefd22d45 / security_code: e256f428363ec98b0ee56c825e899891（正式）/ account_id: 345232281813185 / md5_key: be5fa976fc48b67923651047207425d40c53c6cd / security_code: d0df703f873aa2bee287a3263cd417c9（測試）','goldfa_UGX','goldfa_UGX','[遊戲素材](https://drive.google.com/drive/folders/1AInR3VELTS5PocJQys3yyDXpE-OIi7lG?usp=sharing)','已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'FC', fieldSet:'split',
-    babei:['API','KIM',W,W,W,W,'單一錢包',
+    babei:['API','KIM','https://agent.fcg666.net/login','https://gk9xz5df-agent.fhloston-paradise.net/login','AgentCode + AgentKey','https://ap9.fhloston-paradise.net/','https://api.fcg666.net/','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/FC',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/FC',
       ['104.199.132.230','35.194.132.52','34.124.156.179','35.240.215.42'],
       ['60.244.118.100','202.153.187.76','34.81.32.162','35.201.202.78','34.81.220.98','35.221.177.184','35.229.232.56','35.201.195.88','202.55.239.2','202.153.187.74','34.87.102.31','35.240.203.135','52.74.90.151','47.131.40.226','54.254.23.15','52.77.75.110','52.220.77.167','13.215.111.8'],
-      W,W,'FCPAPAKIM3002','FCPAPAKIMNT3001',W,W,W],
-    diamond:['API','KIMN',W,W,W,W,'單一錢包',
-      'https://intg.gibaba.com/3rdParty/Slot/FC',
-      'https://intg.kimbaba.com.tw/3rdParty/Slot/FC',
+      'FCPAPAKIM3002 / mHlQ8lsJiy（後台測試）','商戶代碼: PPKN / 金鑰: 4Z8DgASLBHp55M3t（正式）/ 商戶代碼: PPKN / 金鑰: Fv6S3Bs9wPqaNyK4（測試）','FCPAPAKIM3002','FCPAPAKIMNT3001',W,'已上線','已上線'],
+    diamond:['API','KIMN',W,W,W,W,W,'單一錢包',W,
+      'https://intg.gibaba.com/3rdParty/diamond/Slot/FC',
+      'https://intg.kimbaba.com.tw/3rdParty/diamond/Slot/FC',
       ['104.199.132.230','35.194.132.52','34.124.156.179','35.240.215.42'],
       ['60.244.118.100','202.153.187.76','34.81.32.162','35.201.202.78','34.81.220.98','35.221.177.184','35.229.232.56','35.201.195.88','202.55.239.2','202.153.187.74','34.87.102.31','35.240.203.135','52.74.90.151','47.131.40.226','54.254.23.15','52.77.75.110','52.220.77.167','13.215.111.8'],
-      W,W,'FCPAPAKIM3005','FCPAPAKIMNT113002',W,W,W],
+      'FCPAPAKIM3005 / BeHEW5ksvv（後台）','商戶代碼: GBBD / 金鑰: 0ZLofgvxKHtubnC0（正式）/ 商戶代碼: PPKN1 / 金鑰: eBpi2ydkzNVuySkF（測試）','FCPAPAKIM3005','FCPAPAKIMNT113002',W,'已上線','已上線'],
   },
   {
     name:'5G(FVG)', fieldSet:'split',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API',W,'https://backstage-agent-stage.5gg.dev','https://backstage-agent.figoogoo.com',W,'https://api-hk01.figoogoo.com',W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/5G',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/5G',
-      ['18.167.114.0','18.167.238.54'],
-      ['43.198.145.166','16.163.224.110'],
-      W,W,'kbbadmin','kbbadmin',W,W,W],
+      ['43.199.82.158'],
+      ['43.199.82.158','13.251.22.117','18.230.80.189','34.201.202.214','54.232.124.207','54.94.100.200','56.126.92.186','16.163.16.115','18.167.232.184','43.198.158.140','3.211.82.8','98.80.29.24','98.95.190.37','52.77.174.16','3.1.169.136','13.251.252.130'],
+      'kbbadmin / Gibaba01（後台測試）','kbbadmin / 0000（後台正式）（待補充 API Key）','kbbadmin','kbbadmin','[單一錢包API文件](https://reurl.cc/xNL3ve) / [遊戲清單](https://docs.google.com/spreadsheets/d/1DTpLBQxh2HVMNSpPcClU4IlHzBGa5-O7/edit#gid=464863830)','已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'GIO', fieldSet:'singleIP',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API',W,W,'https://bo.giocoplus.vip',W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/Gio',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/Gio',
-      W,
-      W,W,'gdd_admin',W,W,W],
+      ['154.222.0.143','49.128.65.4'],
+      ['45.200.132.252','45.65.70.4','49.128.65.4','49.128.73.4','45.200.132.99'],
+      W,W,'gdd_admin',W,'已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'I8', fieldSet:'split',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API',W,W,'https://agent.vcg88.com','安全密鑰','https://api.i8-gaming.net',W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/I8',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/I8',
       '34.80.225.248',
       ['34.80.29.128','104.155.192.200'],
-      W,W,W,'KIMBABA',W,W,W],
+      'KIMBABA_HALL / 6Sc8zqqS（後台正式）','安全密鑰: 8d74cc13f94314cb5d216dff8129ffd6daca42225a951511e39c73501ea2eb91（正式）/ RSA PubKey（測試）','KIMBABA_AgentS','KIMBABA','[API文件](https://drive.google.com/drive/folders/1PU5E3WZjG0trZ3THdm7YbkSJur3MK7qF)','已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'KBB', fieldSet:'singleIP',
-    babei:['API','KBB',W,W,W,W,'單一錢包',
+    babei:['API','KBB',W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/KBB',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/KBB',
       W,
-      W,W,'devkbb_Admin','kbb_Admin',W,W,W],
-    diamond:['API','KBD',W,W,W,W,'單一錢包',
+      W,W,'devkbb_Admin','kbb_Admin',W,'已上線','已上線'],
+    diamond:['API','KBD',W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/diamond/Slot/KBB',
       'https://intg.kimbaba.com.tw/3rdParty/diamond/Slot/KBB',
       W,
-      W,W,'devkbd_Admin','kbd_Admin',W,W,W],
+      W,W,'devkbd_Admin','kbd_Admin',W,'已上線','已上線'],
   },
   {
     name:'OSEG（168game）', fieldSet:'split',
-    babei:['API','REX(130)',W,W,W,W,'單一錢包',
+    babei:['API','REX(130)',W,W,'JWT Token','https://apii.cqgame.cc','https://api.cqgame.games','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/OSEG',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/OSEG',
       ['211.23.49.51','113.196.184.234','175.98.168.194','35.187.201.14','104.199.186.229'],
       ['175.98.168.194','34.81.144.197'],
-      W,W,'kbbREX_sw','kimbaba',W,W,W],
-    diamond:['API','REX(1)',W,W,W,W,'單一錢包',
+      'kbbREX_sw / n1oWMmCK（後台測試）','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...qfgJDJUzSwPSggCSImYIIWqh72X3S14b60gx-Au5Nig（正式）/ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...RQM_kBQQ70n8fTxfudnHgLB_ZtWCxY11yJjtvltj_GM（測試）','kbbREX_sw','kimbaba',W,'已上線','已上線'],
+    diamond:['API','REX(1)',W,W,'JWT Token','https://apii.cqgame.cc','https://api.cqgame.games','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/diamond/Slot/OSEG',
       'https://intg.kimbaba.com.tw/3rdParty/diamond/Slot/OSEG',
       ['211.23.49.51','113.196.184.234','175.98.168.194','35.187.201.14','104.199.186.229'],
       ['175.98.168.194','34.81.144.197'],
-      W,W,'kbbREX1_sw','KBBDiamond',W,W,W],
+      'kbbREX1_sw / OhYAPtTz（後台測試）','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...uPpjNdmoI68q_YrlJscSRPx0X85meVwFQlgSD4eYKP8（正式）/ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...XMksP8uNDT-cg-IPP1r9C80jEO_i-1KY-rsR7szm1lA（測試）','kbbREX1_sw','KBBDiamond',W,'已上線','已上線'],
   },
   {
     name:'QT', fieldSet:'split',
-    babei:['API','COP',W,W,W,W,'單一錢包',
+    babei:['API','COP',W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/QT',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/QT',
       ['3.1.243.244','202.175.253.62'],
       ['52.77.32.26','34.241.71.150','18.162.217.103','18.184.243.189','34.243.156.16','52.79.203.127','52.76.231.168','202.175.253.62'],
-      W,W,'qa_kimbaba','kimbaba',W,W,W],
-    diamond:['API','NT',W,W,W,W,'單一錢包',
-      'https://intg.gibaba.com/3rdParty/Slot/QT',
-      'https://intg.kimbaba.com.tw/3rdParty/Slot/QT',
+      'qa_kimbaba / ggJfiha9（後台）','zGXbvMRHpPw4dEQM（Passkey）（正式）/ BfLP4ktG8Hn7giFk（Passkey）（測試）','qa_kimbaba','kimbaba','[環境資訊](https://drive.google.com/drive/folders/1iMs4i8RB1B_Kgf-K-RlzWBhpLrkCcx3c?usp=sharing)','已上線','已上線'],
+    diamond:['API','NT',W,W,W,W,W,'單一錢包',W,
+      'https://intg.gibaba.com/3rdParty/diamond/Slot/QT',
+      'https://intg.kimbaba.com.tw/3rdParty/diamond/Slot/QT',
       ['3.1.243.244','202.175.253.62'],
       ['52.77.32.26','34.241.71.150','18.162.217.103','18.184.243.189','34.243.156.16','52.79.203.127','52.76.231.168','202.175.253.62'],
-      W,W,'KBBDiamond','KBBDiamond',W,W,W],
+      W,'3eKudE4dX7jEkd50（Passkey）（正式）/ K2qfiqN9SGeQ6IpW（Passkey）（測試）','KBBDiamond','KBBDiamond','[正式環境資訊](https://drive.google.com/file/d/1bht4Inzf-at71vrE-5AUsFYDI4DfpR5l/view?usp=sharing) / [測試環境資訊](https://drive.google.com/file/d/1Y3iFnVb4doRtN_oDwYX9rk3wL90UDEOj/view?usp=sharing)','已上線','已上線'],
   },
   {
     name:'RG', fieldSet:'split',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API','TWD130','https://hall-agent.rg888.dev/','https://agent.rgslotgame.com/','appkey + appSecret + wtoken','https://openapi.rgslotgame.com/','https://hall-openapi.rg888.dev/','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/RG',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/RG',
       '34.97.182.158',
       ['34.97.225.83','34.97.146.191'],
-      W,W,'kimbaba','kimbaba',W,W,W],
-    diamond:['API','TWD',W,W,W,W,'單一錢包',
+      'kimbaba / a123456（代理）','appkey: TrjbzZ86MfE4 / appSecret: X3TtB5mbHCp5pfm5DetTSVNhsKpgPqLb / wtoken: 7W7y5D2KSrf6TXdeHL2ZXyen-cgZ1t（正式）/ appkey: BsxzUGm6yaKF / appSecret: ePCn2qmBcJgzuzd9LVFTGD4qvTdvLzGA / wtoken: xJwsjf2X78-YzkB4yDEoEQ_hL_3NfL（測試）','kimbaba','kimbaba','[錢包文件](https://hall-openapi.rg888.dev/zh_TW/wallet-api-docs)','已上線','已上線'],
+    diamond:['API','TWD','https://hall-agent.rg888.dev/','https://agent.rgslotgame.com/','appkey + appSecret + wtoken','https://openapi.rgslotgame.com/','https://hall-openapi.rg888.dev/','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/diamond/Slot/RG',
       'https://intg.kimbaba.com.tw/3rdParty/diamond/Slot/RG',
       '34.97.182.158',
       ['34.97.225.83','34.97.146.191'],
-      W,W,'kimbaba','KBBDiamond',W,W,W],
+      'KBBDiamond / a123456（代理）','appkey: Z9nNCmLQes8z / appSecret: 2HDtUpP9LqSjmBztefJkd7zrSvyMeRNm / wtoken: GSBbevHR_vLtBiCnVIGi4HzVmNH8WB-cgZ1t（正式）/ appkey: cC5xMZ5kCcMc / appSecret: 5Vy7LQaizJDVQzcghVHuFSS35pAJwKLN / wtoken: KdG06d9GWYuGrzzzmbctJtb942Kl5b（測試）','kimbaba','KBBDiamond','[錢包文件](https://hall-openapi.rg888.dev/zh_TW/wallet-api-docs)','已上線','已上線'],
   },
   {
     name:'RK5', fieldSet:'singleIPSingleMerchID',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API',W,W,'https://gbb-admin.rk5.online',W,'https://gbb-api.rk5.online','https://gbb-api.rk5.online','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/RK5',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/RK5',
-      W,
-      W,W,W,'gbb',W,W,W],
+      '15.165.183.199',
+      '13.125.172.105',
+      'gbbadmin / 0000（後台兩站）','Host ID: 811ab975152764afff0ba26496878b17',W,'gbb',W,'已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'RSGSW', fieldSet:'split',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API',W,W,W,'Client ID + Client Secret + DesKey + DesIV','http://kbbsw-api.rsgaming888.com/SingleWallet','http://tsgbb-api.royalgaming777.com/WithBalance','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/RSGSW',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/RSGSW',
       '52.76.139.21',
       ['13.214.250.190','52.76.139.21'],
-      W,W,'gbbSys','kbbswSys',W,W,W],
-    diamond:['API','NT',W,W,W,W,'單一錢包',
+      'gbbSys / 8J7Y49FH（後台測試）','ClientID: cxr3if266fs5 / Secret: 3DUW8SGL / DesKey: 6T8GJ3SE / DesIV: KTZCS584 / SystemCode: kbbsw（正式）/ ClientID: 8rv28fsq5tad / Secret: 2V6VWEMG / DesKey: EK8LWF8X / DesIV: DVJLM7EL / SystemCode: gbb（測試）','gbbSys','kbbswSys',W,'已上線','已上線'],
+    diamond:['API','NT',W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/diamond/Slot/RSGSW',
       'https://intg.kimbaba.com.tw/3rdParty/diamond/Slot/RSGSW',
       '52.76.139.21',
       ['13.214.250.190','52.76.139.21'],
-      W,W,'gbbdiamond','KBBDiamond',W,W,W],
+      W,W,'gbbdiamond','KBBDiamond',W,'已上線','已上線'],
   },
   {
     name:'TAG', fieldSet:'split',
-    babei:['API','TWD130',W,W,W,W,'單一錢包',
+    babei:['API','TWD130','https://bp-office.taggame.online','https://bp-office.taggamerun.com',W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/TAG',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/TAG',
       ['34.84.186.61','54.64.211.196'],
       ['34.146.58.253','54.64.211.196'],
-      W,W,'kbb','kbb',W,W,W],
+      'kbb_001 / Ww8aFvVsrMuW（後台測試）','kbb_001 / FWAw88DRTJmP（後台正式）（待補充 API Key）','kbb','kbb','[API文件](https://api-doc.taggame.online/)','已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'VA(KBB)', fieldSet:'split',
-    babei:['API','SDTWD',W,W,W,W,'單一錢包',
+    babei:['API','SDTWD','https://vtw.victory-art.com/agent_manage/login','https://vtw.victory-art.tw/agent_manage/login','Authorization + APIKey','https://api.victory-art.tw/vendor','https://api.victory-art.com','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/VA',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/VA',
-      ['210.242.228.200','54.255.119.181','18.143.87.64'],
-      ['210.242.228.200','54.255.119.181','54.251.231.106'],
-      W,W,'KBB','KBB','https://drive.google.com/file/d/1_xo7DK6OzHVnL6iPVyv0DDoArsduPfxA/view?usp=sharing',W],
+      ['43.213.9.12','18.138.181.203','18.141.122.251'],
+      ['18.138.181.203','18.141.122.251','43.212.146.187'],
+      'KBB / Gibaba01@（後台測試）','Authorization: aa241dd80da3400faaf6fa6086fda3a9 / APIKey: 80da34（正式）/ Token: c05bccd4cdfe45e7acc6b86121b6a12b / APIKey: 4cdfe4（測試）','KBB','KBB','[VA介接文件](https://drive.google.com/file/d/1_xo7DK6OzHVnL6iPVyv0DDoArsduPfxA/view?usp=sharing)','已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'VPG', fieldSet:'split',
-    babei:['API','TWD',W,W,W,W,'單一錢包',
+    babei:['API','TWD（1:1）',W,W,'Agent + AESKey + MD5key','https://api.smfhd436.com/channelHandle','https://wc-api.orz16.com/channelHandle','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/VPG/sw',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/VPG/sw',
       ['34.80.32.155','35.229.201.209'],
       '35.241.101.185',
-      W,W,'JINBABA（Agent：60434）','JINBABA',W,W,W],
-    diamond:['API','TWD',W,W,W,W,'單一錢包',
+      'JINBABA / Kimbaba01@（後台兩站）','Agent: 60235 / AESKey: 0D5D3C917A5E6B28 / MD5key: 2206C78A8B79B5BA（正式）/ Agent: 60434 / AESKey: 4B3F5F717CF01C8A / MD5key: 234A07C332C5B653（測試）','JINBABA（Agent：60434）','JINBABA','[API文件 & 美術素材](https://drive.google.com/drive/folders/13Pt_p6K6XKDzkdysRvaEyLdLuwHiUYaS?usp=sharing)','已下架','已下架'],
+    diamond:['API','TWD',W,W,'Agent + AESKey + MD5key','https://api.smfhd436.com/channelHandle','https://wc-api.orz16.com/channelHandle','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/diamond/Slot/VPG/sw',
       'https://intg.kimbaba.com.tw/3rdParty/diamond/Slot/VPG/sw',
       ['34.80.32.155','35.229.201.209'],
       '35.241.101.185',
-      W,W,'gbbdiamond（Agent：60435）',W,W,W,W],
+      'kbbdiamond / Kbbdiamond01@1（後台正式）/ gbbdiamond / Gbbdiamond01@（後台測試）','Agent: 60248 / AESKey: C51778AC3C6EB456 / MD5key: BBE9BF2FEA05CA5C（正式）/ Agent: 60435 / AESKey: EC9FC4E37E86DD4C / MD5key: A842026F30E1DE0E（測試）','gbbdiamond（Agent：60435）','kbbdiamond（Agent：60248）','[API文件 & 美術素材](https://drive.google.com/drive/folders/13Pt_p6K6XKDzkdysRvaEyLdLuwHiUYaS?usp=sharing)','已下架','已下架'],
   },
   {
     name:'YB', fieldSet:'split',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API',W,'https://agent.odyssey-cyclopes.net','https://agent.venus-diana.net',W,'https://api.jupiter-neptunus.net/apiRequest.do','https://api.imperial-minerva.net/apiRequest.do','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/YB',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/YB',
       '35.221.189.164',
       '34.87.184.98',
-      W,W,W,'kbbskbbag',W,W,W],
+      'kbbskbbag / db（後台正式）','安全碼: KBBS（正式）（待補充 API Key）',W,'kbbskbbag','[API文件](https://docs.ybgaming777.net)','已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'ZG', fieldSet:'split',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API',W,'https://fud.ds1kx.fun/login','https://ag.kbbfatsai.com/',W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/ZG',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/ZG',
       ['35.185.134.195','34.87.105.120'],
       ['34.85.125.127','35.247.133.37','34.87.180.25','34.87.153.224','34.87.43.0','34.87.181.9','35.247.186.149','34.87.151.215','35.187.235.134','34.87.5.235','34.87.28.166'],
-      W,W,'DALE0001UAT','DALE0001pTTT',W,W,W],
+      'DALE0001UAT / 3KHSfjCbU264（後台測試）','DALE0001pTTT / Us864zQc9vFA（後台正式）（待補充 API Key）','DALE0001UAT','DALE0001pTTT','[API文件](https://sapi.zgdoc1668.com)（帳號：zebra）','已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'AMS', fieldSet:'singleIP',
-    babei:['API','100TWD',W,W,W,W,'單一錢包',
+    babei:['API','100TWD','https://ag-uat.askmeslot.io/','https://ag.askmeslot.io/','Partner + Agent + Secret','https://api.askmeslot.io/','https://api-uat.askmeslot.io/','單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Slot/AMS',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/AMS',
       W,
-      W,W,'kbb100twduataa','kbb100twdaa',W,W,W],
+      ['54.255.98.164','18.142.99.49','13.213.115.59'],
+      'kbb100twduataa / Ry5By8Ru3（後台測試，驗證碼:889588）','Partner: KBB / Agent: kbb100twdaa / Secret: 32d996cb6b1a5786045a94dadffa412e（正式）/ Partner: GBB / Agent: kbb100twduataa / Secret: ccc09db33692c53a0c9c19e68632bc2f（測試）','kbb100twduataa','kbb100twdaa','[API文件](https://api-document.gitbook.io/askmeslot-api-document)','已下架','已下架'],
     diamond:'unsupported',
   },
   {
     name:'AVX', fieldSet:'singleIP',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API',W,W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Fish/AVX',
       'https://intg.kimbaba.com.tw/3rdParty/Fish/AVX',
       W,
-      W,W,'kimbaba','kimbaba',W,W,W],
+      W,W,'kimbaba','kimbaba','[英文API文件](https://docs.aviatrix.bet/en/integration/)','已下架','已下架'],
     diamond:'unsupported',
   },
   {
     name:'BOD', fieldSet:'singleIPSingleMerchID',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API','FAYF（1:130）','https://opsnext-stage.ob.games/en/login','https://opsnext-ky.ob.games/en/login',W,'https://rgsservice-ky.ob.games','https://rgsservice-stage.ob.games','單一錢包','memberid_Account (18835_CXu4576)',
       'https://intg.gibaba.com/3rdParty/Slot/BOD',
       'https://intg.kimbaba.com.tw/3rdParty/Slot/BOD',
-      W,
-      W,W,W,W,W,W],
+      ['54.199.149.205','3.114.1.148','35.74.155.112','23.27.219.46'],
+      ['3.113.138.249','57.181.86.201','54.249.76.122','13.114.133.67','23.27.219.46'],
+      'goldpapa@ops.com / zcl8i0q1cd)!（後台測試）','Secret: s2okCuDSyagLvRODX4Xh / API_key: goldpapa（測試，KYG提供）',W,'[API文件](https://drive.google.com/file/d/1Xi8C0OCDo9DZZlNkENqyQlNdPQdT_U6r/view?usp=sharing)','已上線','已上線'],
     diamond:'unsupported',
   },
   {
     name:'DG(KBB)', fieldSet:'singleIP',
-    babei:['API','TWD',W,W,W,W,'單一錢包',
+    babei:['API','TWD',W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Table/DG',
       'https://intg.kimbaba.com.tw/3rdParty/Table/DG',
       W,
-      W,W,'DGTE0105UI','DG084201',W,W,W],
-    diamond:['API','TWD',W,W,W,W,'單一錢包',
+      W,W,'DGTE0105UI','DG084201','[API文件](https://static.dg012.com/dgnew/doc/cn/api.html)','已下架','已下架'],
+    diamond:['API','TWD',W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/diamond/Table/DG',
       'https://intg.kimbaba.com.tw/3rdParty/diamond/Table/DG',
       W,
-      W,W,'GBBdiamond','KBBdiamond',W,W,W],
+      W,W,'GBBdiamond','KBBdiamond','[API文件](https://static.dg012.com/dgnew/doc/cn/api.html)','已下架','已下架'],
   },
   {
     name:'EVOTW', fieldSet:'singleIPSingleMerchID',
-    babei:['API',W,W,W,W,W,'單一錢包',
+    babei:['API',W,W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Table/EVOTW',
       '❓ 未提供（正式站）',
       W,
-      W,W,W,W,W,W],
+      W,W,W,'已下架','已下架'],
     diamond:'unsupported',
   },
   {
     name:'GM', fieldSet:'singleIP',
-    babei:['API','KBB',W,W,W,W,'單一錢包',
+    babei:['API','KBB',W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/Fish/GM',
       'https://intg.kimbaba.com.tw/3rdParty/Fish/GM',
       W,
-      W,W,'tfoqk001283','kbb-j31p',W,W,W],
-    diamond:['API','TWD',W,W,W,W,'單一錢包',
+      W,W,'tfoqk001283','kbb-j31p',W,'已下架','已下架'],
+    diamond:['API','TWD',W,W,W,W,W,'單一錢包',W,
       'https://intg.gibaba.com/3rdParty/diamond/Fish/GM',
       'https://intg.kimbaba.com.tw/3rdParty/diamond/Fish/GM',
       W,
-      W,W,'kbb-diamond-keo','kbb-diamond',W,W,W],
+      W,W,'kbb-diamond-keo','kbb-diamond',W,'已下架','已下架'],
   },
 ];
 
 // KFF fields order
 const kffFields = [
   '對接類型','幣別支援','測試環境網址','正式環境網址',
-  '認證方式','Base URL','錢包模式',
+  '認證方式','Base URL（正式）','Base URL（測試）','錢包模式','玩家帳號模式',
   'Callback（測試站）','Callback（正式站）',
   'IP白名單需求',
   '後台帳號（測試站）','後台密碼（測試站）',
+  '後台帳號（正式站）','後台密碼（正式站）',
+  'API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','商戶代碼（測試站）⚠️','商戶代碼（正式站）⚠️',
+  '文件收集','測試環境','正式上線'
+];
+const kffFieldsVA = [
+  '對接類型','幣別支援','測試環境網址','正式環境網址',
+  '認證方式','Base URL（正式）','Base URL（測試）','錢包模式','玩家帳號模式',
+  'Callback（測試站）','Callback（正式站）',
+  'IP白名單需求',
+  '後台帳號（測試站）','後台密碼（測試站）',
+  '平台帳號（測試站）','平台密碼（測試站）',
   '後台帳號（正式站）','後台密碼（正式站）',
   'API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','商戶代碼（測試站）⚠️','商戶代碼（正式站）⚠️',
   '文件收集','測試環境','正式上線'
@@ -606,117 +634,117 @@ const kffProviders = [
     name:'ATG',
     tiers:[
       ['API','TWD','https://admin.godeebxp.com','https://admin.godeebxp.com',
-        'X-Operator + X-Key（HTTP Header）','https://api.godeebxp.com/','單一錢包',
+        'X-Operator + X-Key（HTTP Header）','https://api.godeebxp.com/','https://api.godeebxp.com/','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/ATG/ATG1',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/ATG/ATG1',
         '43.198.180.83',
         'KFF_beta','Qwer_##12345',
         'KFF_game_prod','No?b}^G}UW4.',
         'X-Operator：KFF_game_prod / X-Key：500228a7a01a4ad9a39dbe51cd81581b（正式）/ X-Operator：KFF2 / X-Key：98f99e54742b49199d35bbd9c6dbedd5（測試）',
-        'KFF_beta','KFF_game_prod',W,W,W],
+        'KFF_beta','KFF_game_prod',W,'✅ 已上線','✅ 已上線'],
       ['API','TWD','https://admin.godeebxp.com','https://admin.godeebxp.com',
-        'X-Operator + X-Key（HTTP Header）','https://api.godeebxp.com/','單一錢包',
+        'X-Operator + X-Key（HTTP Header）','https://api.godeebxp.com/','https://api.godeebxp.com/','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/ATG/ATG2',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/ATG/ATG2',
         '43.198.180.83',
         'KFFB6_dev','Qwer_@1234',
         'KFFB_prd','Qwer_@1234',
         'X-Operator：KFFB / X-Key：b477ba6e236e4d64a21ac06278282b56（正式）/ X-Operator：KFFB6_dev / X-Key：05e33eb7cb26444982cc20e6ef58eb98（測試）',
-        'KFFB6_dev','KFFB_prd',W,W,W],
+        'KFFB6_dev','KFFB_prd',W,'✅ 已上線','✅ 已上線'],
       ['API','TWD','https://admin.godeebxp.com','https://admin.godeebxp.com',
-        'X-Operator + X-Key（HTTP Header）','https://api.godeebxp.com/','單一錢包',
+        'X-Operator + X-Key（HTTP Header）','https://api.godeebxp.com/','https://api.godeebxp.com/','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/ATG/ATG3',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/ATG/ATG3',
         '43.198.180.83',
         'KFFC10_dev','Qwer_@1234',
         'KFFC_prd','Qwer_@1234',
         'X-Operator：KFFC / X-Key：4be921e4ad8f431d9bed201d82c18513（正式）/ X-Operator：KFFC10_dev / X-Key：eeea6ee187094a989bf876d2361b7e0f（測試）',
-        'KFFC10_dev','KFFC_prd',W,W,W],
+        'KFFC10_dev','KFFC_prd',W,'✅ 已上線','✅ 已上線'],
     ]
   },
   {
     name:'BE',
     tiers:[
       ['API','TWD','https://int-bo.rebirth.games','https://bo.rebirth.games',
-        'JWT Bearer Token','正式：https://api.rebirth.games / 測試：https://int-api.rebirth.games','單一錢包',
+        'JWT Bearer Token','https://api.rebirth.games','https://int-api.rebirth.games','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/BE/BE1',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BE/BE1',
         '35.194.124.109',
         'kimfafa1v1','qwer1234',
         'KimfafaPRD','qwer1234',
         'API Token（正式）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTQxMGM1YmE4YmQwNjFjZTNhYjQ0YmQiLCJhY2NvdW50IjoiS2ltZmFmYVBSRCIsIm93bmVyIjoiNjk0MTBjNWJhOGJkMDYxY2UzYWI0NGJkIiwicGFyZW50Ijoic2VsZiIsImN1cnJlbmN5IjoiVFdEIiwiYnJhbmQiOiIxNjhhcGkiLCJqdGkiOiI3OTM4OTU1NjciLCJpYXQiOjE3NjU4NzA2ODMsImlzcyI6IkN5cHJlc3MiLCJzdWIiOiJTU1Rva2VuIn0.zgN6ClwFWOCGaRh5bmtIVRHJSbhEBna15H1cSm-GeD / Wallet Token（正式）：1509e64ff9534360bf7f-ff4e1869c66c / API Token（測試）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTQwZjNkNjdmMjg0NGNiOGE2OGQyMDIiLCJhY2NvdW50Ijoia2ltZmFmYTF2MSIsIm93bmVyIjoiNjk0MGYzZDY3ZjI4NDRjYjhhNjhkMjAyIiwicGFyZW50Ijoic2VsZiIsImN1cnJlbmN5IjoiVFdEIiwiYnJhbmQiOiIxNjhhcGkiLCJqdGkiOiI0NTE5MjAxMDUiLCJpYXQiOjE3NjU4NjQ0MDYsImlzcyI6IkN5cHJlc3MiLCJzdWIiOiJTU1Rva2VuIn0.LQ1Dd6PIulOuDg6NHKYxyZLLHytx2m0bM6cHFM-A9pw / Wallet Token（測試）：6512888b217a439b9ae132737a8cbc47',
-        'kimfafa1v1','KimfafaPRD',W,W,W],
+        'kimfafa1v1','KimfafaPRD',W,'✅ 已上線','✅ 已上線'],
       ['API','TWD','https://int-bo.rebirth.games','https://bo.rebirth.games',
-        'JWT Bearer Token','正式：https://api.rebirth.games / 測試：https://int-api.rebirth.games','單一錢包',
+        'JWT Bearer Token','https://api.rebirth.games','https://int-api.rebirth.games','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/BE/BE2',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BE/BE2',
         '35.194.124.109',
         'KFFB','qwer1234',
         'KFFBPrd','qwer1234',
         'API Token（正式）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTgyZjM2ZTA1ODY5N2Q1M2I4ZDU0MTUiLCJhY2NvdW50IjoiS0ZGQlByZCIsIm93bmVyIjoiNjk0MTBjNWJhOGJkMDYxY2UzYWI0NGJkIiwicGFyZW50IjoiNjk0MTBjNWJhOGJkMDYxY2UzYWI0NGJkIiwiY3VycmVuY3kiOiJUV0QiLCJicmFuZCI6IjE2OGFwaSIsImp0aSI6IjQ4NzI0ODEzNSIsImlhdCI6MTc3MDE4OTY3OCwiaXNzIjoiQ3lwcmVzcyIsInN1YiI6IlNTVG9rZW4ifQ.KXOV5BNb4lepb-X8orLrqcADvVNQVbWlkvygi9vhNxM / Wallet Token（正式）：1509e64ff9534360bf7f-ff4e1869c66c / API Token（測試）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTgyYWVkOWZiYmFlZWU0OWQzYjM5NTciLCJhY2NvdW50IjoiS0ZGQiIsIm93bmVyIjoiNjk0MGYzZDY3ZjI4NDRjYjhhNjhkMjAyIiwicGFyZW50IjoiNjk0MGYzZDY3ZjI4NDRjYjhhNjhkMjAyIiwiY3VycmVuY3kiOiJUV0QiLCJicmFuZCI6IjE2OGFwaSIsImp0aSI6IjIzMjQyNDY2IiwiaWF0IjoxNzcwMTcyMTIxLCJpc3MiOiJDeXByZXNzIiwic3ViIjoiU1NUb2tlbiJ9.aAnKpSXAK7UxjoCnlXHgFXYHOp8QZGDfa4i44Z4iTVE / Wallet Token（測試）：6512888b217a439b9ae132737a8cbc47',
-        'KFFB','KFFBPrd',W,W,W],
+        'KFFB','KFFBPrd',W,'✅ 已上線','✅ 已上線'],
       ['API','TWD','https://int-bo.rebirth.games','https://bo.rebirth.games',
-        'JWT Bearer Token','正式：https://api.rebirth.games / 測試：https://int-api.rebirth.games','單一錢包',
+        'JWT Bearer Token','https://api.rebirth.games','https://int-api.rebirth.games','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/BE/BE3',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BE/BE3',
         '35.194.124.109',
         'KFFC','qwer1234',
         'KFFCPrd','qwer1234',
         'API Token（正式）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTgyZjNhMTA1ODY5N2Q1M2I4ZDU0MWIiLCJhY2NvdW50IjoiS0ZGQ1ByZCIsIm93bmVyIjoiNjk0MTBjNWJhOGJkMDYxY2UzYWI0NGJkIiwicGFyZW50IjoiNjk0MTBjNWJhOGJkMDYxY2UzYWI0NGJkIiwiY3VycmVuY3kiOiJUV0QiLCJicmFuZCI6IjE2OGFwaSIsImp0aSI6Ijk3NzU5Mzc2MSIsImlhdCI6MTc3MDE4OTcyOSwiaXNzIjoiQ3lwcmVzcyIsInN1YiI6IlNTVG9rZW4ifQ.8TLuPYm6ABJxpuAzfRaVIfcJ6JC4yhMmUBZkLc7Y-Vs / Wallet Token（正式）：1509e64ff9534360bf7f-ff4e1869c66c / API Token（測試）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTgyYmEyYWZiYmFlZWU0OWQzYjM5NWIiLCJhY2NvdW50IjoiS0ZGQyIsIm93bmVyIjoiNjk0MGYzZDY3ZjI4NDRjYjhhNjhkMjAyIiwicGFyZW50IjoiNjk0MGYzZDY3ZjI4NDRjYjhhNjhkMjAyIiwiY3VycmVuY3kiOiJUV0QiLCJicmFuZCI6IjE2OGFwaSIsImp0aSI6IjU3OTI2NTg1NCIsImlhdCI6MTc3MDE3NTAxOCwiaXNzIjoiQ3lwcmVzcyIsInN1YiI6IlNTVG9rZW4ifQ.yjv2nuY48pT7SIuNiSoYx6bihifdS3qSZtZEYs-7zoU / Wallet Token（測試）：6512888b217a439b9ae132737a8cbc47',
-        'KFFC','KFFCPrd',W,W,W],
+        'KFFC','KFFCPrd',W,'✅ 已上線','✅ 已上線'],
     ]
   },
   {
     name:'BNG',
     tiers:[
       ['API','TWD','https://booonker.bng.games','https://booonker.bng.games',
-        'PROJECT_NAME + API_TOKEN + WL','正式：https://gate.c4.bng.games/op/ / 測試：https://gate.stage1.bng.games/op','單一錢包',
+        'PROJECT_NAME + API_TOKEN + WL','https://gate.c4.bng.games/op/','https://gate.stage1.bng.games/op','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/BNG/BNG1',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BNG/BNG1',
         ['54.179.221.90','52.74.143.243','52.221.122.77'],
         'angela@idollar.com.tw','qwer1234',
         'angela@idollar.com.tw','qwer1234',
         'PROJECT_NAME：kimfafa / API_TOKEN：oSyuCK+m;*e_4iT5O!R7 / WL：prod（正式）/ PROJECT_NAME：kimfafa-stage / API_TOKEN：L;EhX#Alm>ie%5*:F2Nk / WL：prod（測試）',
-        'kimfafa-stage','kimfafa',W,W,W],
+        'kimfafa-stage','kimfafa',W,'✅ 已上線','✅ 已上線'],
       ['API','TWD','https://booonker.bng.games','https://booonker.bng.games',
-        'PROJECT_NAME + API_TOKEN + WL','正式：https://gate.c4.bng.games/op/ / 測試：https://gate.stage1.bng.games/op','單一錢包',
+        'PROJECT_NAME + API_TOKEN + WL','https://gate.c4.bng.games/op/','https://gate.stage1.bng.games/op','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/BNG/BNG2',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BNG/BNG2',
         ['54.179.221.90','52.74.143.243','52.221.122.77'],
         'ariel.chan@idollar.com.tw','qwer1234',
         'ariel.chan@idollar.com.tw','qwer1234',
         'PROJECT_NAME：kff6 / API_TOKEN：HP%g];7AY21WhFs_w[^a / WL：prod（正式）/ PROJECT_NAME：kff6-stage / API_TOKEN：L9D4y@zGMtr&IPO$*s+| / WL：prod（測試）',
-        'kff6-stage','kff6',W,W,W],
+        'kff6-stage','kff6',W,'✅ 已上線','✅ 已上線'],
       ['API','TWD','https://booonker.bng.games','https://booonker.bng.games',
-        'PROJECT_NAME + API_TOKEN + WL','正式：https://gate.c4.bng.games/op/ / 測試：https://gate.stage1.bng.games/op','單一錢包',
+        'PROJECT_NAME + API_TOKEN + WL','https://gate.c4.bng.games/op/','https://gate.stage1.bng.games/op','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/BNG/BNG3',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BNG/BNG3',
         ['54.179.221.90','52.74.143.243','52.221.122.77'],
         'briangong@idollar.com.tw','qwer1234',
         'briangong@idollar.com.tw','qwer1234',
         'PROJECT_NAME：kff10 / API_TOKEN：T_.ADL,kuv4)2M#ImV78 / WL：prod（正式）/ PROJECT_NAME：kff10-stage / API_TOKEN：g?pJcNu1wWvhnsSq_9*: / WL：prod（測試）',
-        'kff10-stage','kff10',W,W,W],
+        'kff10-stage','kff10',W,'✅ 已上線','✅ 已上線'],
     ]
   },
   {
     name:'DG',
     tiers:[
       ['API','TWD','https://jj14t5com.com','https://jj14t5com.com',
-        'API账號 + API密钥',W,'單一錢包',
+        'API账號 + API密钥',W,W,'單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Table/DG/DG1',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Table/DG/DG1',
         ['43.245.200.161','43.245.201.147','61.238.69.58','203.117.159.50','47.57.244.198','47.57.240.252','18.163.221.20','18.166.169.112','18.166.38.61','18.166.240.231','13.251.76.169','52.77.182.223','136.228.135.114','136.228.134.85','136.228.134.86','136.228.134.32','52.76.78.2','103.12.154.211','18.140.143.43'],
         'DGTE01075R','dgw1rz',
         'DG08420201','9u4g5c',
         'API账號：DG08420201 / 密钥：17de9a075c6843c691d85c9d2563b76e / AgentFix：28576 / APP后缀：TBL（正式）/ API账號：DGTE01075R / 密钥：03f5bc9cacda4a918e5eee55adafe491 / AgentFix：3213 / APP后缀：YWO（測試）',
-        'DGTE01075R','DG08420201',W,W,W],
+        'DGTE01075R','DG08420201',W,'✅ 已上線','✅ 已上線'],
       '—','—'
     ]
   },
   {
     name:'L9',
     tiers:[
-      ['API',W,W,W,W,W,'單一錢包',
+      ['API',W,W,W,W,W,W,'單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Table/L9/L91',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Table/L9/L91',
         W,W,W,W,W,W,W,W,W,W,W],
@@ -727,14 +755,14 @@ const kffProviders = [
     name:'MT',
     tiers:[
       ['API','TW2','https://ag30.ofa16899.net','http://uag533.ofalive99.net',
-        'Client ID + Client Secret + DesKey + DesIV','正式：https://goomen.ofapi168.net/api/sapphire/ / 測試：https://zone10.ofa16899.net/api/sapphire/','單一錢包',
+        'Client ID + Client Secret + DesKey + DesIV','https://goomen.ofapi168.net/api/sapphire/','https://zone10.ofa16899.net/api/sapphire/','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Table/MT/MT1',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Table/MT/MT1',
         W,
         'KFF01','KFF01555',
         'KFFPRD0180355','KFFPRD0180355666',
         'ClientID：NvSWunVENX / Secret：7rG93SGa4E / DesKey：AcvvuZmF / DesIV：3NBkdNsV / system_code：KFF / web_id：KFFPRD01（正式）/ ClientID：r7yfVHxpW9 / Secret：3fukFLNyZU / DesKey：ReaYuvde / DesIV：ZZ1Jr6ah / system_code：KFF / web_id：KFF01（測試）',
-        'KFF01','KFFPRD0180355',W,W,W],
+        'KFF01','KFFPRD0180355',W,'✅ 已上線','✅ 已上線'],
       '—','—'
     ]
   },
@@ -742,75 +770,79 @@ const kffProviders = [
     name:'OKGO',
     tiers:[
       ['API','TWD（1:1）',W,W,
-        'JWT Bearer Token',W,'單一錢包',
+        'JWT Bearer Token',W,W,'單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/OKGO/OKGO1',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OKGO/OKGO1',
         W,
         'KFFA3dev','qwer1234',W,W,
         'JWT（正式）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MywiQWNjb3VudCI6ImtpbWZhZmEiLCJpYXQiOjE3NjU5NTMyMTB9.ZuGdhczgn5qreQlycNYwoaDsLb_wryuQEvYCoUWTuyA / JWT（測試）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MTksIkFjY291bnQiOiJraW1mYWZhIiwiaWF0IjoxNzU5ODI5MzQ3fQ.0Hs_6ZDvALtmDYQsriofvq_xcbMjr3RJqonfCNy6WfU',
-        'KFF','KFF',W,W,W],
+        'KFF','KFF',W,'✅ 已上線','✅ 已上線'],
       ['API','TWD（1:1）',W,W,
-        'JWT Bearer Token',W,'單一錢包',
+        'JWT Bearer Token',W,W,'單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/OKGO/OKGO2',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OKGO/OKGO2',
         W,
         'KFFB6dev','qwer1234',W,W,
         'JWT（正式）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6NCwiQWNjb3VudCI6ImdWZTJ4Q0tkNXczVWgxZkhqb1BRIiwiaWF0IjoxNzcwMTA0NDA4fQ.cNIpLpFrDqrS4Jhx9tTJ3R3VCFtXrxoYMQIFrUP6nOw / JWT（測試）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MjcsIkFjY291bnQiOiJnVmUyeENLZDV3M1VoMWZIam9QUSIsImlhdCI6MTc3MDEwMzY2MH0.U2cUbZr2oFVww8-BcQgLd0x_P3fBQAQe-CaQSvRXXNA',
-        'KFFB','KFFB',W,W,W],
+        'KFFB','KFFB',W,'✅ 已上線','✅ 已上線'],
       ['API','TWD（1:1）',W,W,
-        'JWT Bearer Token',W,'單一錢包',
+        'JWT Bearer Token',W,W,'單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/OKGO/OKGO3',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OKGO/OKGO3',
         W,
         'KFFC10dev','qwer1234',W,W,
         'JWT（正式）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6NSwiQWNjb3VudCI6Inp3MVNhYVM0bmtJRjR3cUx5ZGh0IiwiaWF0IjoxNzcwMTA0NDA4fQ.mXpX7H6HY61RdAtve0pdNUqG1T-sECWYZ7oQVMA7HHY / JWT（測試）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MjgsIkFjY291bnQiOiJ6dzFTYWFTNG5rSUY0d3FMeWRodCIsImlhdCI6MTc3MDEwMzY3M30.yAqTurzngB_igplqvB-A08FYzknFoWrd3GjTfBUPRBg',
-        'KFFC','KFFC',W,W,W],
+        'KFFC','KFFC',W,'✅ 已上線','✅ 已上線'],
     ]
   },
   {
     name:'OSEG',
     tiers:[
       ['API','REX1','https://bo.cqgame.games','https://booi.cqgame.cc',
-        'JWT Bearer Token','正式：https://apii.cqgame.cc / 測試：https://api.cqgame.games','單一錢包',
+        'JWT Bearer Token','https://apii.cqgame.cc',
+      'https://api.cqgame.games','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/OSEG/OSEG1',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OSEG/OSEG1',
         ['34.80.150.142','104.199.254.127','175.98.168.194'],
         'devKimfafa','Kimfafa01',
         'kimfafa','kimfafa01',
         'API Token（正式）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTM2OWI2NTU2ZmQ4MzdjYWNhYzVkZmQiLCJhY2NvdW50Ijoia2ltZmFmYSIsIm93bmVyIjoiNjkzNjliNjU1NmZkODM3Y2FjYWM1ZGZkIiwicGFyZW50Ijoic2VsZiIsImN1cnJlbmN5IjoiUkVYKDEpIiwiYnJhbmQiOiIxNjhnYW1lIiwianRpIjoiNDM0MzA2Njk5IiwiaWF0IjoxNzY1MTg2NDA1LCJpc3MiOiJDeXByZXNzIiwic3ViIjoiU1NUb2tlbiJ9.qwQbJjnP7lOiswaq_8EHDvhzEe0QOgBXT5FbWZUQrag / Wallet Token：ab13837f-d408-41a3-85bd-e3050be06aa3 / API Token（測試）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OGU0OGQyMWExZWY5M2M2NDg4NjNlZjciLCJhY2NvdW50IjoiZGV2S2ltZmFmYSIsIm93bmVyIjoiNjg2NTAxZmQ3MWI3MzU3MjJkNzVmOGFmIiwicGFyZW50IjoiNjg2NTAxZmQ3MWI3MzU3MjJkNzVmOGFmIiwiY3VycmVudGN5IjoiUkVYKDEpIiwiYnJhbmQiOiIxNjhnYW1lIiwianRpIjoiNjM3Mzg0NzU2IiwiaWF0IjoxNzU5ODA4ODAxLCJpc3MiOiJDeXByZXNzIiwic3ViIjoiU1NUb2tlbiJ9.CbDZAINyZt6b1OVQZNrBGn53OBgkAKv2EH9bHcTC778',
-        'devKimfafa','kimfafa',W,W,W],
+        'devKimfafa','kimfafa',W,'✅ 已上線','✅ 已上線'],
       ['API','REX1','https://bo.cqgame.games','https://booi.cqgame.cc',
-        'JWT Bearer Token','正式：https://apii.cqgame.cc / 測試：https://api.cqgame.games','單一錢包',
+        'JWT Bearer Token','https://apii.cqgame.cc',
+      'https://api.cqgame.games','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/OSEG/OSEG2',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OSEG/OSEG2',
         ['34.80.150.142','104.199.254.127','175.98.168.194'],
         'KFFB','qwer1234',
         'KFFBPrd','qwer1234',
         'API Token（正式）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTgzMDYwNjQwZmM2OTcxNTkxMTMwZTYiLCJhY2NvdW50IjoiS0ZGQlByZCIsIm93bmVyIjoiNjkzNjliNjU1NmZkODM3Y2FjYWM1ZGZkIiwicGFyZW50IjoiNjkzNjliNjU1NmZkODM3Y2FjYWM1ZGZkIiwiY3VycmVudGN5IjoiUkVYKDEpIiwiYnJhbmQiOiIxNjhnYW1lIiwianRpIjoiNzg3OTYwODYxIiwiaWF0IjoxNzcwMTk0NDM4LCJpc3MiOiJDeXByZXNzIiwic3ViIjoiU1NUb2tlbiJ9.VsbaX8_y2dB8IiOTM2Ax-2aje9bJ4upqnf58kNZD2B8 / API Token（測試）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTgzMDEzOGUwMGJiYmRkOGM0NzA4NjciLCJhY2NvdW50IjoiS0ZGQiIsIm93bmVyIjoiNjg2NTAxZmQ3MWI3MzU3MjJkNzVmOGFmIiwicGFyZW50IjoiNjg2NTAxZmQ3MWI3MzU3MjJkNzVmOGFmIiwiY3VycmVudGN5IjoiUkVYKDEpIiwiYnJhbmQiOiIxNjhnYW1lIiwianRpIjoiMzY4MzU4MDk0IiwiaWF0IjoxNzcwMTkzMjA4LCJpc3MiOiJDeXByZXNzIiwic3ViIjoiU1NUb2tlbiJ9.l1yFWgJ0at-zUaGkTDWjPzRnstsb2pLI8ULOuTytylc',
-        'KFFB','KFFBPrd',W,W,W],
+        'KFFB','KFFBPrd',W,'✅ 已上線','✅ 已上線'],
       ['API','REX1','https://bo.cqgame.games','https://booi.cqgame.cc',
-        'JWT Bearer Token','正式：https://apii.cqgame.cc / 測試：https://api.cqgame.games','單一錢包',
+        'JWT Bearer Token','https://apii.cqgame.cc',
+      'https://api.cqgame.games','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/OSEG/OSEG3',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OSEG/OSEG3',
         ['34.80.150.142','104.199.254.127','175.98.168.194'],
         'KFFC','qwer1234',
         'KFFCPrd','qwer1234',
         'API Token（正式）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTgzMDY1ODkzZjQ1NDk5Y2NhODMxZGMiLCJhY2NvdW50IjoiS0ZGQ1ByZCIsIm93bmVyIjoiNjkzNjliNjU1NmZkODM3Y2FjYWM1ZGZkIiwicGFyZW50IjoiNjkzNjliNjU1NmZkODM3Y2FjYWM1ZGZkIiwiY3VycmVudGN5IjoiUkVYKDEpIiwiYnJhbmQiOiIxNjhnYW1lIiwianRpIjoiNDI4MDcwNTQ1IiwiaWF0IjoxNzcwMTk0NTIwLCJpc3MiOiJDeXByZXNzIiwic3ViIjoiU1NUb2tlbiJ9.AUO9G4FLzyQ8AoDj9RNDyaqvxNIm8bR8qHhemZvNbtk / API Token（測試）：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2OTgzMDE1N2UwMGJiYmRkOGM0NzA4NmMiLCJhY2NvdW50IjoiS0ZGQyIsIm93bmVyIjoiNjg2NTAxZmQ3MWI3MzU3MjJkNzVmOGFmIiwicGFyZW50IjoiNjg2NTAxZmQ3MWI3MzU3MjJkNzVmOGFmIiwiY3VycmVudGN5IjoiUkVYKDEpIiwiYnJhbmQiOiIxNjhnYW1lIiwianRpIjoiMzQwOTYwMTM2IiwiaWF0IjoxNzcwMTkzMjM5LCJpc3MiOiJDeXByZXNzIiwic3ViIjoiU1NUb2tlbiJ9.qGoFMafGLrr4O3Mb5xNDSWO7_IdT50DowY-3monMwgM',
-        'KFFC','KFFCPrd',W,W,W],
+        'KFFC','KFFCPrd',W,'✅ 已上線','✅ 已上線'],
     ]
   },
   {
     name:'QT',
     tiers:[
       ['API','TWD','https://api-int.qtplatform.com','https://api.qtplatform.com',
-        'Username / Password + Passkey','正式：https://api.qtplatform.com / 測試：https://api-int.qtplatform.com','單一錢包',
+        'Username / Password + Passkey','https://api.qtplatform.com',
+      'https://api-int.qtplatform.com','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/QT/QT1',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/QT/QT1',
         ['52.77.32.26','54.169.140.105','34.241.71.150','18.162.217.103','18.184.243.189','34.243.156.16','52.79.203.127','52.76.231.168','2.136.53.153'],
         'api_kffn','Jynfmoe0',
-        'api_kimfafa','nvtbrUz4',
-        'qWMyiFiU3BpCiEgF（Passkey）（正式）/ N9pfYWpLjWIi4YqS（Passkey）（測試）',
-        'KFFN','manager_kimfafa',W,W,W],
+        'api_kffn','bbHpnfe3',
+        'TlttoroBKV29Xbj3（Passkey）（正式）/ N9pfYWpLjWIi4YqS（Passkey）（測試）',
+        'KFFN','manager_kffn',W,'✅ 已上線','✅ 已上線'],
       '—','—'
     ]
   },
@@ -818,45 +850,65 @@ const kffProviders = [
     name:'RSGSW',
     tiers:[
       ['API','NT','https://tsgamectrl.royalgaming777.com/','https://gamectrl.rsgaming888.com/',
-        'Client ID + Client Secret + DesKey + DesIV','正式：http://kff-api.rsgaming888.com/SingleWallet / 測試：http://tskff-api.royalgaming777.com/SingleWallet','單一錢包',
+        'Client ID + Client Secret + DesKey + DesIV','http://kff-api.rsgaming888.com/SingleWallet','http://tskff-api.royalgaming777.com/SingleWallet','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/RSGSW',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/RSGSW',
         '正式：13.214.250.190 / 測試：52.76.139.21',
         'KFFSys','L1VFB8EP',
         'KFFSys','E77BB033',
         'ClientID：g04uxz2dbzan / Secret：IU14A8AK / DesKey：ZO56T6NU / DesIV：CKNNXF11（正式）/ ClientID：90t0rqkgaybo / Secret：LE2ZJFQM / DesKey：93D5VPRZ / DesIV：8XDKYP5R（測試）',
-        'dev','prd',W,W,W],
+        'dev','prd',W,'✅ 已上線','✅ 已上線'],
       ['API','NT','https://tsgamectrl.royalgaming777.com/','https://gamectrl.rsgaming888.com/',
-        'Client ID + Client Secret + DesKey + DesIV','正式：http://kff-api.rsgaming888.com/SingleWallet / 測試：http://tskff-api.royalgaming777.com/SingleWallet','單一錢包',
+        'Client ID + Client Secret + DesKey + DesIV','http://kff-api.rsgaming888.com/SingleWallet','http://tskff-api.royalgaming777.com/SingleWallet','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/RSGSW',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/RSGSW',
         '正式：13.214.250.190 / 測試：52.76.139.21',
         '與3代理相同','與3代理相同',
         '與3代理相同','與3代理相同',
-        '與3代理相同','kimfafa6','kimfafa6',W,W,W],
+        '與3代理相同','kimfafa6','kimfafa6',W,'✅ 已上線','✅ 已上線'],
       ['API','NT','https://tsgamectrl.royalgaming777.com/','https://gamectrl.rsgaming888.com/',
-        'Client ID + Client Secret + DesKey + DesIV','正式：http://kff-api.rsgaming888.com/SingleWallet / 測試：http://tskff-api.royalgaming777.com/SingleWallet','單一錢包',
+        'Client ID + Client Secret + DesKey + DesIV','http://kff-api.rsgaming888.com/SingleWallet','http://tskff-api.royalgaming777.com/SingleWallet','單一錢包',W,
         'https://intg.devkimfafa.com/v2/3rdParty/Slot/RSGSW',
         'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/RSGSW',
         '正式：13.214.250.190 / 測試：52.76.139.21',
         '與3代理相同','與3代理相同',
         '與3代理相同','與3代理相同',
-        '與3代理相同','kimfafa10','kimfafa10',W,W,W],
+        '與3代理相同','kimfafa10','kimfafa10',W,'✅ 已上線','✅ 已上線'],
     ]
   },
   {
-    name:'VA',
+    name:'VA', fieldSet:'va',
     tiers:[
       ['API','VTW1','https://vtw.victory-art.com/agent_manage/login','尚未申請',
-        'Authorization + APIKey','測試：https://api.victory-art.com/','單一錢包',
-        'https://intg.devkimfafa.com/v2/3rdParty/Slot/VA',
-        'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/VA',
-        W,
+        'Authorization + APIKey',W,'https://api.victory-art.com/','單一錢包',W,
+        'https://intg.devkimfafa.com/v2/3rdParty/Slot/VA/VA1',
+        'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/VA/VA1',
+        '測試：18.138.181.203 / 18.141.122.251 / 43.213.9.12 / 正式：18.138.181.203 / 18.141.122.251 / 43.212.146.187 / 43.213.153.140 / 43.213.192.232',
         'kimfafa_3','W+6Q)$jf_N',
+        W,W,
         '尚未申請','尚未申請',
         'Authorization：d787afc0a2b54e9a8739e00b1140b940 / APIKey：0a2b54（測試）/ 正式：尚未申請',
-        W,W,'https://drive.google.com/file/d/1_xo7DK6OzHVnL6iPVyv0DDoArsduPfxA/view?usp=sharing',W,W],
-      '—','—'
+        W,W,'[VA介接文件](https://drive.google.com/file/d/1_xo7DK6OzHVnL6iPVyv0DDoArsduPfxA/view?usp=sharing)',W,W],
+      ['API','VTW1（1:1）','https://vtw.victory-art.com/agent_manage/login','尚未申請',
+        'Authorization + APIKey','尚未申請','https://api.victory-art.com/','單一錢包',W,
+        'https://intg.devkimfafa.com/v2/3rdParty/Slot/VA/VA2',
+        'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/VA/VA2',
+        '同左',
+        'kimfafa_6','YsKOM@9k&5',
+        'KFF6','3sdJf0=NVb',
+        '尚未申請','尚未申請',
+        'Authorization：116d42f26ec34d42824018fdbcf5ab33 / APIKey：26ec34（測試）/ 正式：尚未申請',
+        W,W,W,W,W],
+      ['API','VTW1（1:1）','https://vtw.victory-art.com/agent_manage/login','尚未申請',
+        'Authorization + APIKey','尚未申請','https://api.victory-art.com/','單一錢包',W,
+        'https://intg.devkimfafa.com/v2/3rdParty/Slot/VA/VA3',
+        'https://intg.kimfafa.com.tw/v2/3rdParty/Slot/VA/VA3',
+        '同左',
+        'kimfafa_10','ZWeP^eq+0_',
+        'KFF10','nY2lT0^UX-',
+        '尚未申請','尚未申請',
+        'Authorization：499b699ae9c740c1a61af70ae9e849f6 / APIKey：ae9c74（測試）/ 正式：尚未申請',
+        W,W,W,W,W]
     ]
   },
 ];
@@ -864,16 +916,16 @@ const kffProviders = [
 // JP fields
 const jpFields = [
   '對接類型','幣別支援','測試環境網址','正式環境網址',
-  '認證方式','Base URL','錢包模式',
-  'Callback/Webhook URL',
+  '認證方式','Base URL（正式）','Base URL（測試）','錢包模式','玩家帳號模式',
+  'Callback（測試站）','Callback（正式站）',
   'IP白名單（測試站）','IP白名單（正式站）',
   '測試帳號','API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','商戶代碼 ⚠️',
   '文件收集','測試環境','正式上線'
 ];
 const jpFieldsSingleIP = [
   '對接類型','幣別支援','測試環境網址','正式環境網址',
-  '認證方式','Base URL','錢包模式',
-  'Callback/Webhook URL',
+  '認證方式','Base URL（正式）','Base URL（測試）','錢包模式','玩家帳號模式',
+  'Callback（測試站）','Callback（正式站）',
   'IP 白名單',
   '測試帳號','API Key/Secret ⚠️（正式）','API Key/Secret ⚠️（測試）','商戶代碼 ⚠️',
   '文件收集','測試環境','正式上線'
@@ -882,49 +934,143 @@ const jpFieldsSingleIP = [
 const jpProviders = [
   {
     name:'BNG', fieldSet:'split',
-    data:['API',W,W,W,W,W,'單一錢包',W,
-      '54.151.243.48','54.255.99.233',
-      W,W,W,W,W,W],
+    data:['API',W,W,W,
+      'PROJECT_NAME + API_TOKEN + WL',
+      'https://gate2.betsrv.com/op/panahama',
+      'https://gate-stage.betsrv.com/op/panahama-stage',
+      '單一錢包',W,
+      'https://intg.devpanahama.jp/3rdParty/Slot/BNG',
+      'https://intg.panahama.jp/3rdParty/Slot/BNG',
+      ['213.227.130.69','213.227.145.249','213.227.145.238'],
+      ['64.120.111.88','23.106.126.6'],
+      'it@panahama.jp / 8895@Help（後台）',
+      'PROJECT_NAME: panahama / API_TOKEN: WcS60jDD7g / WL: prod（正式）/ PROJECT_NAME: panahama-stage / API_TOKEN: jYrOUE8lTQ / WL: prod（測試）',
+      'panahama（正式）/ panahama-stage（測試）',
+      W,'已上線','已上線'],
   },
   {
-    name:'CQ9', fieldSet:'split',
-    data:['API',W,W,W,W,W,'單一錢包',W,
+    name:'CQ9-Slot', fieldSet:'split',
+    data:['API','JPY',
+      'https://bo.cqgame.games',
+      'https://booi.cqgame.cc',
+      'JWT Token + 錢包密鑰',
+      'https://apii.cqgame.cc',
+      'https://api.cqgame.games',
+      '單一錢包',W,
+      'https://intg.devpanahama.jp/3rdParty/Slot/CQ9',
+      'https://intg.panahama.jp/3rdParty/Slot/CQ9',
       ['60.249.60.121','175.99.248.34','211.23.49.51','113.196.184.234','35.187.201.14'],
       ['60.249.60.121','175.99.248.34','34.80.150.142','34.81.68.167','104.199.254.127'],
-      W,W,W,W,W,W],
+      'Panahama_8895 / Pnhm_8895（後台正式）/ lhy_sw / qwer1234（後台測試）',
+      'JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...QZZmvRM9lB2MA7smRo3l6ClLDBYoB4hj0FAD8Nr-vzY / 錢包密鑰: yb5r5mxed3rfxyd3xc348c2kcdgd8yt57mshk7a8（正式）/ JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...DA4G7VHYwiA9Ii9PFxm4d9v4xTBEQjiwpa9URS__bPo / 錢包密鑰: yb5r5mxed3rfxyd3xc348c2kcdgd8yt57mshk7a8（測試）',
+      'Panahama_8895',
+      '[Slot/Table文件](https://hackmd.io/juByNDpcQQytCFlDzYgK1Q?view) / [Sport/Lotto文件](https://hackmd.io/lyROjTelQtG4sxpWtjJDag?view)','已上線','已上線'],
+  },
+  {
+    name:'CQ9-Motivation', fieldSet:'split',
+    data:['API','JPY',
+      'https://bo.motivations.games',
+      'https://bo.motivations.cc',
+      'JWT Token + 錢包密鑰',
+      'https://api.motivations.cc',
+      'https://api.motivations.games',
+      '單一錢包',W,
+      'https://intg.devpanahama.jp/3rdParty/Slot/CQ9',
+      'https://intg.panahama.jp/3rdParty/Slot/CQ9',
+      ['60.249.60.121','175.99.248.34','211.23.49.51','113.196.184.234','35.187.201.14'],
+      ['60.249.60.121','175.99.248.34','34.80.150.142','34.81.68.167','104.199.254.127'],
+      'panahama / Pnhm8895（後台正式）/ lhy_sw / qwer1234（後台測試）',
+      'JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...pbAIxcsFJ-PKP2Ow0n8asgkAqjfVIolwKdjuKb5aFlk / 錢包密鑰: yb5r5mxed3rfxyd3xc348c2kcdgd8yt57mshk7a8（正式）/ JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...FXhmnpBDklu6OCWDUzZK8U_Nl3hDf0pSj9xSS8Wq-UA（測試）',
+      'panahama',
+      '[Live/真人視訊文件](https://hackmd.io/iiMmRrBURG6OkMDiT4nG3g?view)','已上線','已上線'],
   },
   {
     name:'EVO', fieldSet:'split',
-    data:['API',W,W,W,W,W,'單一錢包',W,
+    data:['API','JPY',
+      'https://stage-admin.asia-live.com',
+      'https://bo.nimstad99.com/login',
+      'Merchant ID + Casino Key + Auth Token',
+      'https://api.luckylivegames.com',
+      'http://staging.evolution.asia-live.com',
+      '單一錢包',W,
+      'https://intg.devpanahama.jp/3rdParty/Table/EVO',
+      'https://intg.panahama.jp/3rdParty/Table/EVO',
       '3.120.233.170',
       ['3.120.107.58','3.120.216.199','3.73.86.249'],
-      W,W,W,W,W,W],
+      '573001STA / 112233（後台測試）',
+      'Merchant ID: 573001 / Casino Key: o8ahxa1daxgyrmeq / Auth Token: 37e5534f4d633dbba1e1f1bb07e535f2（正式）/ Merchant ID: 573001STA / Casino Key: aziq4g2whh2xinj3 / Auth Token: 99f5c9c321bc912362802130e9d24afd（測試）',
+      '573001（正式）/ 573001STA（測試）',
+      W,'已上線','已上線'],
   },
   {
     name:'FC', fieldSet:'split',
-    data:['API',W,W,W,W,W,'單一錢包',W,
+    data:['API','JPY',
+      'https://agent.fcg666.net',
+      'https://agent.fcg1688.net',
+      'AgentCode + AgentKey',
+      'https://ap1.fcg1688.net',
+      'https://api.fcg666.net',
+      '單一錢包',W,
+      'https://intg.devpanahama.jp/3rdParty/Slot/FC',
+      'https://intg.panahama.jp/3rdParty/Slot/FC',
       ['104.199.132.230','35.194.132.52','34.124.156.179','35.240.215.42'],
       ['60.244.118.100','202.153.187.76','34.81.32.162','35.201.202.78','34.81.220.98','35.221.177.184','35.229.232.56','35.201.195.88','202.55.239.2','202.153.187.74'],
-      W,W,W,W,W,W],
+      W,
+      'AgentCode: PNHM / AgentKey: uk2EMjSgmyR4lfby（正式）/ AgentCode: PNHM / AgentKey: gDquLsdfOeFuvwbY（測試）',
+      'PNHM',
+      '[API文件](https://drive.google.com/file/d/1Ug_ytvuYauMpk-EAspgusptGyr0YXA-w/view?usp=sharing)','已上線','已上線'],
   },
   {
     name:'PG', fieldSet:'split',
-    data:['API',W,W,W,W,W,'單一錢包',W,
+    data:['API','JPY',
+      'https://www.pg-bo.me/#/login?code=panahama',
+      'https://www.pg-bo.net/#/login?code=PANAHAMA',
+      'operator_token + secret_key + salt',
+      W,W,
+      '單一錢包',W,
+      'https://intg.devpanahama.jp/3rdParty/Slot/PG',
+      'https://intg.panahama.jp/3rdParty/Slot/PG',
       '8.210.145.251','47.56.146.87',
-      W,W,W,W,W,W],
+      'panahama / x{m$q1b}（Agent 正式）/ panahama / dev@gibaba8895（Agent 測試）',
+      'operator_token: 03A31E02-F6F0-4167-8034-3E0F8F647B62 / secret_key: 1CAB7535A4FC4BE084F9BBF7C7083EC0 / salt: D5C80B9AB2EA43818F72B4A8A16AB502（正式）/ operator_token: c70438de307743eb1ecb6e191f614656 / secret_key: 24c2a2714c6ee16b3bb687d69cf0e6eb / salt: 599adb0992d7a005963021d8d617a07b（測試）',
+      'panahama',
+      '[API文件](https://docs.google.com/document/d/1Wo38lAwQQebhRHX0xG_oa7OranzE1lJL/edit)','已上線','已上線'],
   },
   {
     name:'QT(JP)', fieldSet:'split',
-    data:['API',W,W,W,W,W,'單一錢包',W,
+    data:['API','JPY',
+      'https://bo-int.qtplatform.com',
+      'https://bo.qtplatform.com',
+      'Username + Password',
+      'https://api.qtplatform.com',
+      'https://api-int.qtplatform.com',
+      '單一錢包',W,
+      'https://intg.devpanahama.jp/3rdParty/Slot/QT',
+      'https://intg.panahama.jp/3rdParty/Slot/QT',
       ['3.1.243.244','202.175.253.62'],
       ['52.77.32.26','34.241.71.150','18.162.217.103','18.184.243.189','34.243.156.16','52.79.203.127','52.76.231.168','202.175.253.62'],
-      W,W,W,W,W,W],
+      'qa_panahama / rubXm$j8（後台測試）',
+      'api_panahama / ptodOtk9（正式）/ api_panahama / aipu)za4（測試）',
+      'panahama',
+      W,'已上線','已上線'],
   },
   {
-    name:'RG(JP)', fieldSet:'singleIP',
-    data:['API',W,W,W,W,W,'單一錢包',W,
-      W,
-      W,W,W,W,W,W],
+    name:'RG(JP)', fieldSet:'split',
+    data:['API','JPY',
+      'https://hall-agent.rg888.dev/',
+      'https://agent.rgslotgame.com/',
+      'appkey + appSecret + wtoken',
+      'https://openapi.rgslotgame.com/',
+      'https://hall-openapi.rg888.dev/',
+      '單一錢包',W,
+      'https://intg.devpanahama.jp/3rdParty/Slot/RG',
+      'https://intg.panahama.jp/3rdParty/Slot/RG',
+      '34.97.182.158',
+      ['34.97.225.83','34.97.146.191'],
+      'panahama / a123456（日本代理，兩站同）',
+      'appkey: nHWPTTMH58QA / appSecret: dk2w6GFbg5h9h8iShYCwxgtwjdjUKKvS / wtoken: c2pA7p7cekT52AOcIrSh3TQsR_ZFzi（正式）/ appkey: vktk5yFrU8ZA / appSecret: B4v2PkxM9zNy7U9wNdiGg4m9VAPVa7Sb / wtoken: gGGQ7QuBNA13eNwWtMpcvK43vuQ1Us（測試）',
+      'panahama',
+      '[錢包文件](https://hall-openapi.rg888.dev/zh_TW/wallet-api-docs)','已上線','已上線'],
   },
 ];
 
@@ -956,13 +1102,17 @@ function renderValue(val) {
   if (Array.isArray(val)) {
     return val.map(ip => `<div class="flex items-center gap-1 group"><span class="mono-ip text-slate-700">${ip}</span><button class="copy-btn opacity-0 group-hover:opacity-100" onclick="copyToClipboard('${ip.replace(/'/g,"\\'")}',this)" title="複製">⎘</button></div>`).join('');
   }
+  if (typeof val === 'string' && /\[([^\]]+)\]\(([^)]+)\)/.test(val)) {
+    return val.replace(/\[([^\]]+)\]\(([^)]+)\)/g,
+      '<a href="$2" target="_blank" class="inline-flex items-center gap-0.5 text-xs text-blue-600 hover:underline font-medium mr-1">$1 ↗</a>');
+  }
   if (typeof val === 'string' && (val.startsWith('http') || val.startsWith('https'))) {
-    return `<span class="font-mono text-xs text-blue-600 break-all">${val}</span><button class="copy-btn ml-1" onclick="copyToClipboard('${val.replace(/'/g,"\\'")}',this)" title="複製 URL">⎘</button>`;
+    return `<a href="${val}" target="_blank" class="font-mono text-xs text-blue-600 break-all hover:underline">${val}</a><button class="copy-btn ml-1" onclick="copyToClipboard('${val.replace(/'/g,"\\'")}',this)" title="複製 URL">⎘</button>`;
   }
   if (val === W) return `<span class="text-amber-700 text-xs italic">${val}</span>`;
   if (val === NS) return `<span class="text-gray-400 text-xs">${val}</span>`;
   if (val === '—') return `<span class="text-gray-300">—</span>`;
-  return `<span class="text-xs text-slate-800">${val}</span>`;
+  return `<span class="text-xs text-slate-800 break-all">${val}</span>`;
 }
 
 function fieldNameHtml(name) {
@@ -1013,9 +1163,9 @@ function buildKBBTable(provider) {
 
   const isDiamondUnsupported = provider.diamond === 'unsupported';
 
-  let html = `<div class="overflow-x-auto"><table class="w-full text-sm border-collapse">`;
+  let html = `<div class="overflow-x-auto"><table class="w-full text-sm border-collapse table-fixed">`;
   html += `<thead><tr class="bg-slate-100">`;
-  html += `<th class="px-3 py-2 text-left font-semibold text-slate-600 border border-slate-200 text-xs w-40">欄位</th>`;
+  html += `<th class="px-3 py-2 text-left font-semibold text-slate-600 border border-slate-200 text-xs" style="width:160px">欄位</th>`;
   html += `<th class="px-3 py-2 text-center font-semibold text-blue-700 border border-slate-200 text-xs">爸幣模式</th>`;
   html += `<th class="px-3 py-2 text-center font-semibold text-purple-700 border border-slate-200 text-xs">鑽石模式</th>`;
   html += `</tr></thead><tbody>`;
@@ -1036,11 +1186,12 @@ function buildKBBTable(provider) {
 
     const bClass = tdClass(bVal);
     const dClass = isDiamondUnsupported ? 'bg-gray-50' : tdClass(dVal);
+    const dAlign = isDiamondUnsupported ? ' text-center' : '';
 
     html += `<tr class="border-b border-slate-100 hover:bg-slate-50">`;
     html += `<td class="px-3 py-2 font-medium text-slate-600 text-xs border border-slate-200 whitespace-nowrap">${fieldNameHtml(field)}</td>`;
-    html += `<td class="px-3 py-2 border border-slate-200 ${bClass}">${renderValue(bVal)}</td>`;
-    html += `<td class="px-3 py-2 border border-slate-200 ${dClass} text-center">${isDiamondUnsupported ? `<span class="text-gray-400 text-xs">${NS}</span>` : renderValue(dVal)}</td>`;
+    html += `<td class="px-3 py-2 border border-slate-200 overflow-hidden ${bClass}">${renderValue(bVal)}</td>`;
+    html += `<td class="px-3 py-2 border border-slate-200 overflow-hidden ${dClass}${dAlign}">${isDiamondUnsupported ? `<span class="text-gray-400 text-xs">${NS}</span>` : renderValue(dVal)}</td>`;
     html += `</tr>`;
   }
 
@@ -1052,9 +1203,9 @@ function buildKFFTable(provider) {
   const tiers = provider.tiers;
   const tierLabels = ['3代理','6代理','10代理'];
 
-  let html = `<div class="overflow-x-auto"><table class="w-full text-sm border-collapse">`;
+  let html = `<div class="overflow-x-auto"><table class="w-full text-sm border-collapse table-fixed">`;
   html += `<thead><tr class="bg-slate-100">`;
-  html += `<th class="px-3 py-2 text-left font-semibold text-slate-600 border border-slate-200 text-xs w-40">欄位</th>`;
+  html += `<th class="px-3 py-2 text-left font-semibold text-slate-600 border border-slate-200 text-xs" style="width:160px">欄位</th>`;
   for (let t = 0; t < 3; t++) {
     const label = tierLabels[t];
     const c = t === 0 ? 'text-green-700' : t === 1 ? 'text-teal-700' : 'text-cyan-700';
@@ -1062,9 +1213,10 @@ function buildKFFTable(provider) {
   }
   html += `</tr></thead><tbody>`;
 
+  const fields = provider.fieldSet === 'va' ? kffFieldsVA : kffFields;
   let dataShift = 0;
-  for (let i = 0; i < kffFields.length; i++) {
-    const field = kffFields[i];
+  for (let i = 0; i < fields.length; i++) {
+    const field = fields[i];
     const isApiProd = field === "API Key/Secret ⚠️（正式）";
     const isApiTest = field === "API Key/Secret ⚠️（測試）";
     if (isApiTest) dataShift = 1;
@@ -1079,7 +1231,7 @@ function buildKFFTable(provider) {
         let val = tier[dataIdx] !== undefined ? tier[dataIdx] : W;
         if (isApiProd || isApiTest) val = extractApiKey(val, isApiProd);
         const cls = tdClass(val);
-        html += `<td class="px-3 py-2 border border-slate-200 ${cls}">${renderValue(val)}</td>`;
+        html += `<td class="px-3 py-2 border border-slate-200 overflow-hidden ${cls}">${renderValue(val)}</td>`;
       }
     }
     html += `</tr>`;
@@ -1147,18 +1299,31 @@ function buildProviderCard(id, name, tableHtml, colorClass) {
 function buildOverviewTable() {
   const tbody = document.getElementById('overview-tbody');
   let html = '';
-  overviewData.forEach((row, i) => {
+  const yes  = `<span class="text-green-500 text-base font-bold">✅</span>`;
+  const no   = `<span class="text-gray-300">—</span>`;
+  const down = `<span class="text-red-400 text-base font-bold">✖</span>`;
+  const cell = v => v === true ? yes : v === 'down' ? down : no;
+  const rank = v => v === true ? 0 : v === 'down' ? 1 : 2;
+  const sorted = [...overviewData].sort((a, b) => rank(a.kbb) - rank(b.kbb));
+  sorted.forEach((row, i) => {
     const bg = i % 2 === 0 ? 'bg-white' : 'bg-slate-50';
-    const yes = `<span class="text-green-500 text-base font-bold">✅</span>`;
-    const no = `<span class="text-gray-300">—</span>`;
     html += `<tr class="${bg} hover:bg-blue-50">
       <td class="px-3 py-2 font-medium text-slate-700 border border-slate-200">${row.name}</td>
-      <td class="px-3 py-2 text-center border border-slate-200">${row.kff ? yes : no}</td>
-      <td class="px-3 py-2 text-center border border-slate-200">${row.kbb ? yes : no}</td>
-      <td class="px-3 py-2 text-center border border-slate-200">${row.jp ? yes : no}</td>
+      <td class="px-3 py-2 text-center border border-slate-200">${cell(row.kbb)}</td>
+      <td class="px-3 py-2 text-center border border-slate-200">${cell(row.kff)}</td>
+      <td class="px-3 py-2 text-center border border-slate-200">${cell(row.jp)}</td>
     </tr>`;
   });
   tbody.innerHTML = html;
+}
+
+function vendorIcon(p) {
+  const arr = p.babei || p.data || (p.tiers && p.tiers[0] !== '—' ? p.tiers[0] : null);
+  if (!arr) return '';
+  const last = arr[arr.length - 1];
+  if (last === '已上線' || last === '✅ 已上線') return '<span class="text-green-500 mr-1">✅</span>';
+  if (last === '已下架') return '<span class="text-red-400 mr-1">✖</span>';
+  return '<span class="mr-1">⚠️</span>';
 }
 
 // Build KBB section
@@ -1172,7 +1337,7 @@ function buildKBBSection() {
     const id = 'kbb-' + p.name.replace(/[^a-zA-Z0-9]/g, '_');
     const tableHtml = buildKBBTable(p);
     html += buildProviderCard(id, p.name, tableHtml, 'bg-slate-700');
-    sidebarHtml += `<div class="sidebar-item px-3 py-1.5 text-sm cursor-pointer rounded-sm mx-1" onclick="scrollToId('${id}')">${p.name}</div>`;
+    sidebarHtml += `<div class="sidebar-item px-3 py-1.5 text-sm cursor-pointer rounded-sm mx-1" onclick="scrollToId('${id}')">${vendorIcon(p)}${p.name}</div>`;
   });
 
   section.innerHTML = html;
@@ -1190,7 +1355,7 @@ function buildKFFSection() {
     const id = 'kff-' + p.name.replace(/[^a-zA-Z0-9]/g, '_');
     const tableHtml = buildKFFTable(p);
     html += buildProviderCard(id, p.name, tableHtml, 'bg-green-800');
-    sidebarHtml += `<div class="sidebar-item px-3 py-1.5 text-sm cursor-pointer rounded-sm mx-1" onclick="scrollToId('${id}')">${p.name}</div>`;
+    sidebarHtml += `<div class="sidebar-item px-3 py-1.5 text-sm cursor-pointer rounded-sm mx-1" onclick="scrollToId('${id}')">${vendorIcon(p)}${p.name}</div>`;
   });
 
   section.innerHTML = html;
@@ -1208,7 +1373,7 @@ function buildJPSection() {
     const id = 'jp-' + p.name.replace(/[^a-zA-Z0-9]/g, '_');
     const tableHtml = buildJPTable(p);
     html += buildProviderCard(id, p.name, tableHtml, 'bg-purple-800');
-    sidebarHtml += `<div class="sidebar-item px-3 py-1.5 text-sm cursor-pointer rounded-sm mx-1" onclick="scrollToId('${id}')">${p.name}</div>`;
+    sidebarHtml += `<div class="sidebar-item px-3 py-1.5 text-sm cursor-pointer rounded-sm mx-1" onclick="scrollToId('${id}')">${vendorIcon(p)}${p.name}</div>`;
   });
 
   section.innerHTML = html;

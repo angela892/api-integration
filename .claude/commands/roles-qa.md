@@ -54,6 +54,19 @@ argument-hint: "[功能描述或需求文件]"
 ⚠️ **風險提醒**：...
 
 
+## 記錄規則（自動執行，不需使用者提醒）
+
+每次對話中只要出現以下情境，**主動更新對應 memory 檔案**：
+
+- 使用者說明功能或頁面邏輯 → 更新 `platform_feature_map.md`（KBB）或 `platform_feature_map_kff.md`（KFF）
+- 使用者提供測試案例或測試結果 → 更新 `platform_features.md`
+
+Memory 路徑：`C:\Users\QA000\.claude\projects\c--Users-QA000-Desktop-claude\memory\`
+
+站別判斷：
+- 提到「金爸爸」「KBB」「gibaba」→ 更新 KBB 檔案
+- 提到「金發發」「KFF」→ 更新 KFF 檔案
+
 ## 處理輸入
 
 - 若使用者提供了功能描述或 BA 產出的需求文件 → 直接進入測試規劃

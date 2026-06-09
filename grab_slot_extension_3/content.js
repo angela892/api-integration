@@ -6,9 +6,10 @@ const MY_PHONE = "0955413111";
 const MY_EMAIL = "s0912287123@yahoo.com.tw";
 const PEOPLE   = 1;
 
-const EXTENSION_NAME = "搶位助手2_監控空位";
+const EXTENSION_NAME = "搶位助手3_指定日期";
 const CHECK_INTERVAL = 6000;
-const TARGET_TIME    = null;   // null=任何時段，或填 "19:00"
+const TARGET_TIME    = null;      // null=任何時段，或填 "19:00"
+const TARGET_DATES   = ["6/6", "6/7"];        // 空陣列=不限日期；指定多天例如 ["6/7", "6/8", "6/14"]
 // ============================================================
 
 // 防止 SPA 路由切換時 content script 被重複注入
@@ -382,20 +383,14 @@ function afterSlotClick() {
                 log(`✓ 點擊「${btn.textContent.trim().slice(0, 20)}」`);
                 setTimeout(() => {
                   if (paused) return;
-                  // 輪詢等 modal 消失（最多 3 秒）
-                  const closeStart = Date.now();
-                  (function waitModalClose() {
-                    if (paused) return;
-                    const nextModal = document.querySelector(".ReactModal__Content");
-                    if (!nextModal) { afterAllModals(); return; }
-                    if (nextModal !== btn.closest(".ReactModal__Content")) {
-                      log("偵測到另一個規則視窗，繼續處理…");
-                      agreeAndContinue(afterAllModals); return;
-                    }
-                    if (Date.now() - closeStart > 3000) { afterAllModals(); return; }
-                    setTimeout(waitModalClose, 150);
-                  })();
-                }, 0);
+                  const nextModal = document.querySelector(".ReactModal__Content");
+                  if (nextModal) {
+                    log("偵測到另一個規則視窗，繼續處理…");
+                    agreeAndContinue(afterAllModals);
+                  } else {
+                    afterAllModals();
+                  }
+                }, 1500);
               } else if (Date.now() - start < 8000) {
                 doScrollHere();
                 setTimeout(tryBtn, 400);
@@ -431,8 +426,8 @@ function afterSlotClick() {
                       log("✓ 所有步驟完成！請確認訂位結果。");
                       setStatus("🎉 訂位送出成功！請確認結果", "success");
                     });
-                  }, 800);
-                }, 500);
+                  }, 2000);
+                }, 1500);
               } else {
                 setTimeout(waitForm, 200);
               }
@@ -470,28 +465,143 @@ function isBotChallenge() {
     || document.body.innerText.includes("確認您是人類");
 }
 
+// ── 日期選擇 ─────────────────────────────────────────────────
+// 輪詢等 date-picker 出現再點（最多 3 秒）
+function openDateDropdown(onOpened, onFail) {
+  const start = Date.now();
+  (function poll() {
+    if (paused) return;
+    const trigger = document.querySelector('[data-cy="date-picker"]') || document.querySelector('#date-picker');
+    if (trigger && trigger.offsetParent !== null) {
+      realClick(trigger);
+      onOpened();
+      return;
+    }
+    if (Date.now() - start > 3000) { onFail(); return; }
+    setTimeout(poll, 150);
+  })();
+}
+
+function clickDayInCalendar(month, day, onFound, onNotFound, attempts) {
+  attempts = attempts || 0;
+  if (attempts > 8) { onNotFound(); return; }
+
+  // 找目標月份的標題元素（純文字 "2026年6月" 或 "6月"）
+  const allEls = [...document.querySelectorAll("*")];
+  const monthHeader = allEls.find(el =>
+    new RegExp(`${month}月$`).test(el.textContent.trim())
+    && el.offsetParent !== null && el.children.length === 0
+  );
+
+  if (!monthHeader) {
+    // 目標月份不在畫面，點 > 往後翻
+    const nextBtn = [...document.querySelectorAll("button")]
+      .find(b => (b.textContent.trim() === ">" || b.textContent.trim() === "›")
+               && b.offsetParent !== null);
+    if (nextBtn) realClick(nextBtn);
+    setTimeout(() => clickDayInCalendar(month, day, onFound, onNotFound, attempts + 1), 400);
+    return;
+  }
+
+  // 在月份標題的上層容器裡找日期格
+  let container = monthHeader.parentElement;
+  for (let i = 0; i < 6; i++) {
+    if (!container) break;
+    const cells = [...container.querySelectorAll("*")]
+      .filter(el => el.textContent.trim() === String(day)
+                 && el.offsetParent !== null && el.children.length === 0);
+    if (cells.length > 0) {
+      realClick(cells[0]);
+      log(`✓ 選擇日期：${month}月${day}日`);
+      setTimeout(onFound, 600);
+      return;
+    }
+    container = container.parentElement;
+  }
+  onNotFound();
+}
+
+// 依序嘗試 TARGET_DATES，找到有空位的日期就停下來
+function tryNextDate(dates, idx, onAllDone) {
+  if (idx >= dates.length) { onAllDone(); return; }
+  const [month, day] = dates[idx].split("/").map(Number);
+  log(`嘗試日期 ${month}月${day}日…`);
+
+  clickDayInCalendar(month, day,
+    () => {
+      // 日期選好後等頁面更新，再看有沒有空位
+      setTimeout(() => {
+        const slot = findAvailableSlot();
+        if (slot) {
+          log(`${month}月${day}日 有空位：${getSlotTime(slot)}，搶位中…`);
+          onAllDone(slot);
+        } else {
+          log(`${month}月${day}日 無空位，試下一個日期…`);
+          // 重新打開日期選擇器試下一天
+          if (!openDateDropdown()) { onAllDone(); return; }
+          setTimeout(() => tryNextDate(dates, idx + 1, onAllDone), 600);
+        }
+      }, 800);
+    },
+    () => {
+      log(`⚠ 找不到 ${month}月${day}日 格子，跳過`);
+      tryNextDate(dates, idx + 1, onAllDone);
+    }
+  );
+}
+
+function selectDateAndFindSlot(onSlotFound, onNoSlot) {
+  if (!TARGET_DATES || TARGET_DATES.length === 0) {
+    // 不限日期，直接找
+    const slot = findAvailableSlot();
+    if (slot) onSlotFound(slot); else onNoSlot();
+    return;
+  }
+
+  // 等 date-picker 出現再打開
+  log(`等待日期選擇器…`);
+  openDateDropdown(
+    () => {
+      log(`開始嘗試指定日期：${TARGET_DATES.join("、")}`);
+      setTimeout(() => {
+        tryNextDate(TARGET_DATES, 0, (slot) => {
+          if (slot) onSlotFound(slot); else onNoSlot();
+        });
+      }, 600);
+    },
+    () => {
+      log("⚠ 找不到日期選擇器，直接掃目前時段");
+      const slot = findAvailableSlot();
+      if (slot) onSlotFound(slot); else onNoSlot();
+    }
+  );
+}
+// ─────────────────────────────────────────────────────────────
+
 log(`【${EXTENSION_NAME}】啟動！`);
 setStatus(`【${EXTENSION_NAME}】偵測中…`, "info");
-setTimeout(() => { // 200ms 等頁面渲染完成
+setTimeout(() => {
   if (isBotChallenge()) {
     log("⚠ 偵測到人類驗證畫面，自動重整已暫停，請手動通過後重新整理頁面");
     setStatus("🤖 需要人類驗證！請按住按鈕通過，再手動重整頁面", "error");
     return;
   }
   debugButtons();
-  const slot = findAvailableSlot();
-  if (slot) {
-    booked = true;
-    const t = getSlotTime(slot);
-    log(`找到今日可用時段：${t}，點擊中…`);
-    setStatus(`⚡ 找到 ${t}，搶位中…`, "warn");
-    realClick(slot);
-    setTimeout(afterSlotClick, 1500);
-  } else {
-    log(`目前無今日可用時段，${CHECK_INTERVAL / 1000} 秒後重整…`);
-    setStatus("😴 目前無空位，等待重整…", "info");
-    _reloadTimer = setTimeout(() => { if (!paused) window.location.reload(); }, CHECK_INTERVAL);
-  }
+  selectDateAndFindSlot(
+    (slot) => {
+      booked = true;
+      const t = getSlotTime(slot);
+      log(`找到可用時段：${t}，點擊中…`);
+      setStatus(`⚡ 找到 ${t}，搶位中…`, "warn");
+      realClick(slot);
+      setTimeout(afterSlotClick, 1500);
+    },
+    () => {
+      log(`目前無可用時段，${CHECK_INTERVAL / 1000} 秒後重整…`);
+      setStatus("😴 目前無空位，等待重整…", "info");
+      _reloadTimer = setTimeout(() => { if (!paused) window.location.reload(); }, CHECK_INTERVAL);
+    }
+  );
 }, 300);
 
 } // end window._grabSlotStarted guard

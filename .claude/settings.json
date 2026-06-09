@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "Bash(pdftotext \"API單一錢包對接文件v2.1.25.pdf\" -)",
+      "Bash(pdftotext \"API單一錢包對接文件v2.1.24\\(20250923\\).pdf\" -)"
+    ]
+  }
+}

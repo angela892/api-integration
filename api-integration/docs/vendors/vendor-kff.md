@@ -46,6 +46,7 @@
 | 認證方式 | X-Operator + X-Key（HTTP Header） | X-Operator + X-Key（HTTP Header） | X-Operator + X-Key（HTTP Header） |
 | Base URL | https://api.godeebxp.com/ | https://api.godeebxp.com/ | https://api.godeebxp.com/ |
 | 錢包模式 | 單一錢包 | 單一錢包 | 單一錢包 |
+| 玩家帳號模式 | 待補 | 待補 | 待補 |
 | Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/ATG/ATG1 | https://intg.devkimfafa.com/v2/3rdParty/Slot/ATG/ATG2 | https://intg.devkimfafa.com/v2/3rdParty/Slot/ATG/ATG3 |
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/ATG/ATG1 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/ATG/ATG2 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/ATG/ATG3 |
 | IP白名單需求 | 43.198.180.83 | 43.198.180.83 | 43.198.180.83 |
@@ -58,8 +59,8 @@
 | 商戶代碼（測試站）⚠️ | KFF_beta | KFFB6_dev | KFFC10_dev |
 | 商戶代碼（正式站）⚠️ | KFF_game_prod | KFFB_prd | KFFC_prd |
 | 文件收集 | 待補充 | 待補充 | 待補充 |
-| 測試環境 | 待補充 | 待補充 | 待補充 |
-| 正式上線 | 待補充 | 待補充 | 待補充 |
+| 測試環境 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
+| 正式上線 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
 
 ---
 
@@ -74,6 +75,7 @@
 | 認證方式 | JWT Bearer Token | JWT Bearer Token | JWT Bearer Token |
 | Base URL | 正式：https://api.rebirth.games / 測試：https://int-api.rebirth.games | 同左 | 同左 |
 | 錢包模式 | 單一錢包 | 單一錢包 | 單一錢包 |
+| 玩家帳號模式 | 待補 | 待補 | 待補 |
 | Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/BE/BE1 | https://intg.devkimfafa.com/v2/3rdParty/Slot/BE/BE2 | https://intg.devkimfafa.com/v2/3rdParty/Slot/BE/BE3 |
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BE/BE1 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BE/BE2 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BE/BE3 |
 | IP白名單需求 | 35.194.124.109 | 35.194.124.109 | 35.194.124.109 |
@@ -86,8 +88,8 @@
 | 商戶代碼（測試站）⚠️ | kimfafa1v1 | KFFB | KFFC |
 | 商戶代碼（正式站）⚠️ | KimfafaPRD | KFFBPrd | KFFCPrd |
 | 文件收集 | 待補充 | 待補充 | 待補充 |
-| 測試環境 | 待補充 | 待補充 | 待補充 |
-| 正式上線 | 待補充 | 待補充 | 待補充 |
+| 測試環境 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
+| 正式上線 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
 
 ---
 
@@ -102,6 +104,7 @@
 | 認證方式 | PROJECT_NAME + API_TOKEN + WL | 同左 | 同左 |
 | Base URL | 正式：https://gate.c4.bng.games/op/ / 測試：https://gate.stage1.bng.games/op | 同左 | 同左 |
 | 錢包模式 | 單一錢包 | 單一錢包 | 單一錢包 |
+| 玩家帳號模式 | 待補 | 待補 | 待補 |
 | Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/BNG/BNG1 | https://intg.devkimfafa.com/v2/3rdParty/Slot/BNG/BNG2 | https://intg.devkimfafa.com/v2/3rdParty/Slot/BNG/BNG3 |
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BNG/BNG1 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BNG/BNG2 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/BNG/BNG3 |
 | IP白名單需求 | 54.179.221.90 / 52.74.143.243 / 52.221.122.77 | 同左 | 同左 |
@@ -114,8 +117,8 @@
 | 商戶代碼（測試站）⚠️ | kimfafa-stage | kff6-stage | kff10-stage |
 | 商戶代碼（正式站）⚠️ | kimfafa | kff6 | kff10 |
 | 文件收集 | 待補充 | 待補充 | 待補充 |
-| 測試環境 | 待補充 | 待補充 | 待補充 |
-| 正式上線 | 待補充 | 待補充 | 待補充 |
+| 測試環境 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
+| 正式上線 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
 
 ---
 
@@ -129,6 +132,7 @@
 | 正式環境網址 | https://jj14t5com.com | — | — |
 | 認證方式 | API账號 + API密钥 | — | — |
 | 錢包模式 | 單一錢包 | — | — |
+| 玩家帳號模式 | 待補 | — | — |
 | Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Table/DG/DG1 | — | — |
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Table/DG/DG1 | — | — |
 | IP白名單需求 | 43.245.200.161 / 43.245.201.147 / 61.238.69.58 / 203.117.159.50 / 47.57.244.198 / 47.57.240.252 / 18.163.221.20 / 18.166.169.112 / 18.166.38.61 / 18.166.240.231 / 13.251.76.169 / 52.77.182.223 / 136.228.135.114 / 136.228.134.85 / 136.228.134.86 / 136.228.134.32 / 52.76.78.2 / 103.12.154.211 / 18.140.143.43 | — | — |
@@ -141,8 +145,8 @@
 | 商戶代碼（測試站）⚠️ | DGTE01075R | — | — |
 | 商戶代碼（正式站）⚠️ | DG08420201 | — | — |
 | 文件收集 | 待補充 | — | — |
-| 測試環境 | 待補充 | — | — |
-| 正式上線 | 待補充 | — | — |
+| 測試環境 | ✅ 已上線 | — | — |
+| 正式上線 | ✅ 已上線 | — | — |
 
 ---
 
@@ -154,6 +158,7 @@
 |------|-------|-------|--------|
 | 對接類型 | API（未對接） | — | — |
 | 錢包模式 | 單一錢包 | — | — |
+| 玩家帳號模式 | 待補 | — | — |
 | Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Table/L9/L91 | — | — |
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Table/L9/L91 | — | — |
 | 文件收集 | — | — | — |
@@ -173,6 +178,7 @@
 | 認證方式 | Client ID + Client Secret + DesKey + DesIV | — | — |
 | Base URL | 正式：https://goomen.ofapi168.net/api/sapphire/ / 測試：https://zone10.ofa16899.net/api/sapphire/ | — | — |
 | 錢包模式 | 單一錢包 | — | — |
+| 玩家帳號模式 | 待補 | — | — |
 | Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Table/MT/MT1 | — | — |
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Table/MT/MT1 | — | — |
 | 後台帳號（測試站） | KFF01 | — | — |
@@ -184,8 +190,8 @@
 | 商戶代碼（測試站）⚠️ | KFF01 | — | — |
 | 商戶代碼（正式站）⚠️ | KFFPRD0180355 | — | — |
 | 文件收集 | 待補充 | — | — |
-| 測試環境 | 待補充 | — | — |
-| 正式上線 | 待補充 | — | — |
+| 測試環境 | ✅ 已上線 | — | — |
+| 正式上線 | ✅ 已上線 | — | — |
 
 ---
 
@@ -199,6 +205,7 @@
 | 幣別支援 | TWD（1:1） | TWD（1:1） | TWD（1:1） |
 | 認證方式 | JWT Bearer Token | JWT Bearer Token | JWT Bearer Token |
 | 錢包模式 | 單一錢包 | 單一錢包 | 單一錢包 |
+| 玩家帳號模式 | 待補 | 待補 | 待補 |
 | Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/OKGO/OKGO1 | https://intg.devkimfafa.com/v2/3rdParty/Slot/OKGO/OKGO2 | https://intg.devkimfafa.com/v2/3rdParty/Slot/OKGO/OKGO3 |
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OKGO/OKGO1 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OKGO/OKGO2 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OKGO/OKGO3 |
 | 後台帳號（測試站） | KFFA3dev | KFFB6dev | KFFC10dev |
@@ -208,8 +215,8 @@
 | 商戶代碼（測試站）⚠️ | KFF | KFFB | KFFC |
 | 商戶代碼（正式站）⚠️ | KFF | KFFB | KFFC |
 | 文件收集 | 待補充 | 待補充 | 待補充 |
-| 測試環境 | 待補充 | 待補充 | 待補充 |
-| 正式上線 | 待補充 | 待補充 | 待補充 |
+| 測試環境 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
+| 正式上線 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
 
 ---
 
@@ -224,6 +231,7 @@
 | 認證方式 | JWT Bearer Token | JWT Bearer Token | JWT Bearer Token |
 | Base URL | 正式：https://apii.cqgame.cc / 測試：https://api.cqgame.games | 同左 | 同左 |
 | 錢包模式 | 單一錢包 | 單一錢包 | 單一錢包 |
+| 玩家帳號模式 | 待補 | 待補 | 待補 |
 | Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/OSEG/OSEG1 | https://intg.devkimfafa.com/v2/3rdParty/Slot/OSEG/OSEG2 | https://intg.devkimfafa.com/v2/3rdParty/Slot/OSEG/OSEG3 |
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OSEG/OSEG1 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OSEG/OSEG2 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/OSEG/OSEG3 |
 | IP白名單需求 | 34.80.150.142 / 104.199.254.127 / 175.98.168.194 | 同左 | 同左 |
@@ -234,8 +242,8 @@
 | 商戶代碼（測試站）⚠️ | devKimfafa | KFFB | KFFC |
 | 商戶代碼（正式站）⚠️ | kimfafa | KFFBPrd | KFFCPrd |
 | 文件收集 | 待補充 | 待補充 | 待補充 |
-| 測試環境 | 待補充 | 待補充 | 待補充 |
-| 正式上線 | 待補充 | 待補充 | 待補充 |
+| 測試環境 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
+| 正式上線 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
 
 ---
 
@@ -250,13 +258,14 @@
 | 正式環境網址（API） | https://api.qtplatform.com | — | — |
 | 正式環境網址（後台） | https://bo.qtplatform.com | — | — |
 | 認證方式 | Username / Password + Passkey | — | — |
-| Base URL | 測試：https://api-int.qtplatform.com / 正式：待補充 | — | — |
+| Base URL | 測試：https://api-int.qtplatform.com / 正式：https://api.qtplatform.com | — | — |
 | 錢包模式 | 單一錢包 | — | — |
-| Callback（測試站） | https://devkff8.com/v2/3rdParty/Slot/QT/QT1 | — | — |
-| Reward Callback（測試站） | https://devkff8.com/v2/3rdParty/Slot/QT/QT1/bonus/rewards | — | — |
-| Callback（正式站） | https://intg.kimfafa.com/v2/3rdParty/Slot/QT/QT1 | — | — |
-| Reward Callback（正式站） | https://intg.kimfafa.com/v2/3rdParty/Slot/QT/QT1/bonus/rewards | — | — |
-| IP白名單需求 | 待補充 | — | — |
+| 玩家帳號模式 | 待補 | — | — |
+| Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/QT/QT1 | — | — |
+| Reward Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/QT/QT1/bonus/rewards | — | — |
+| Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/QT/QT1 | — | — |
+| Reward Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/QT/QT1/bonus/rewards | — | — |
+| IP白名單需求 | 52.77.32.26 / 54.169.140.105 / 34.241.71.150 / 18.162.217.103 / 18.184.243.189 / 34.243.156.16 / 52.79.203.127 / 52.76.231.168 / 2.136.53.153 | — | — |
 | 商戶帳號（測試站）⚠️ | KFFN | — | — |
 | 商戶帳號（正式站）⚠️ | KFFN | — | — |
 | API 帳號（測試站） | api_kffn | — | — |
@@ -270,26 +279,12 @@
 | API Key/Secret ⚠️（正式） | TlttoroBKV29Xbj3（Passkey） | — | — |
 | API Key/Secret ⚠️（測試） | N9pfYWpLjWIi4YqS（Passkey） | — | — |
 | 文件收集 | 待補充 | — | — |
-| 測試環境 | 待補充 | — | — |
-| 正式上線 | 待補充 | — | — |
+| 測試環境 | ✅ 已上線 | — | — |
+| 正式上線 | ✅ 已上線 | — | — |
 
 #### 舊設置備存（kimfafa）
 
 <div style="background:#fffde7; border:1px solid #f9a825; border-radius:6px; padding:8px;">
-
-**測試站（KFFN — 舊 Callback）**
-
-| 欄位 | 內容 |
-|------|------|
-| Callback | https://intg.devkimfafa.com/v2/3rdParty/Slot/QT/QT1 |
-| Reward Callback | https://intg.devkimfafa.com/v2/3rdParty/Slot/QT/QT1/bonus/rewards |
-
-**正式站（KFFN — 舊 Callback）**
-
-| 欄位 | 內容 |
-|------|------|
-| Callback | https://kff8.tw/v2/3rdParty/Slot/QT/QT1 |
-| Reward Callback | https://kff8.tw/v2/3rdParty/Slot/QT/QT1/bonus/rewards |
 
 **測試站（kimfafa）**
 
@@ -306,7 +301,6 @@
 |------|------|
 | 正式環境網址 | https://api.qtplatform.com |
 | Base URL | https://api.qtplatform.com |
-| IP白名單需求 | 52.77.32.26 / 54.169.140.105 / 34.241.71.150 / 18.162.217.103 / 18.184.243.189 / 34.243.156.16 / 52.79.203.127 / 52.76.231.168 / 2.136.53.153 |
 | 後台帳號 | api_kimfafa |
 | 後台密碼 | nvtbrUz4 |
 | 商戶代碼 ⚠️ | manager_kimfafa |
@@ -328,6 +322,7 @@
 | 認證方式 | Client ID + Client Secret + DesKey + DesIV | 同左 | 同左 |
 | Base URL | 正式：http://kff-api.rsgaming888.com/SingleWallet / 測試：http://tskff-api.royalgaming777.com/SingleWallet | 同左 | 同左 |
 | 錢包模式 | 單一錢包 | 單一錢包 | 單一錢包 |
+| 玩家帳號模式 | 待補 | 待補 | 待補 |
 | Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/RSGSW | 同左 | 同左 |
 | Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/RSGSW | 同左 | 同左 |
 | IP白名單需求 | 正式：13.214.250.190 / 測試：52.76.139.21 | 同左 | 同左 |
@@ -340,35 +335,41 @@
 | 商戶代碼（測試站）⚠️ | dev | kimfafa6 | kimfafa10 |
 | 商戶代碼（正式站）⚠️ | prd | kimfafa6 | kimfafa10 |
 | 文件收集 | 待補充 | 待補充 | 待補充 |
-| 測試環境 | 待補充 | 待補充 | 待補充 |
-| 正式上線 | 待補充 | 待補充 | 待補充 |
+| 測試環境 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
+| 正式上線 | ✅ 已上線 | ✅ 已上線 | ✅ 已上線 |
 
 ---
 
 ### VA（Victory Art）
 
-> ⚠️ 正式站尚未申請，以下僅有測試站資料。6代理、10代理 暫無對接計畫。
+> ⚠️ 正式站尚未申請，6代理 僅有測試站資料。10代理 暫無對接計畫。
 
 | 欄位 | 3代理 | 6代理 | 10代理 |
 |------|-------|-------|--------|
-| 對接類型 | API | — | — |
-| 幣別支援 | VTW1 | — | — |
-| 測試環境網址 | https://vtw.victory-art.com/agent_manage/login | — | — |
-| 正式環境網址 | 尚未申請 | — | — |
-| 認證方式 | Authorization + APIKey | — | — |
-| Base URL | 測試：https://api.victory-art.com/ | — | — |
-| 錢包模式 | 單一錢包 | — | — |
-| Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/VA | — | — |
-| Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/VA | — | — |
-| 後台帳號（測試站） | kimfafa_3 | — | — |
-| 後台密碼（測試站） | W+6Q)$jf_N | — | — |
-| 後台帳號（正式站） | 尚未申請 | — | — |
-| 後台密碼（正式站） | 尚未申請 | — | — |
-| API Key/Secret ⚠️（正式） | 尚未申請 | — | — |
-| API Key/Secret ⚠️（測試） | Authorization：d787afc0a2b54e9a8739e00b1140b940 / APIKey：0a2b54 | — | — |
-| 文件收集 | [VA 介接文件](https://drive.google.com/file/d/1_xo7DK6OzHVnL6iPVyv0DDoArsduPfxA/view?usp=sharing) | — | — |
-| 測試環境 | 待補充 | — | — |
-| 正式上線 | 待補充 | — | — |
+| 對接類型 | API | API | API |
+| 幣別支援 | VTW1 | VTW1（1:1） | VTW1（1:1） |
+| 測試環境網址 | https://vtw.victory-art.com/agent_manage/login | 同左 | 同左 |
+| 正式環境網址 | 尚未申請 | 尚未申請 | 尚未申請 |
+| 認證方式 | Authorization + APIKey | 同左 | 同左 |
+| Base URL | 測試：https://api.victory-art.com/ | 同左 | 同左 |
+| 錢包模式 | 單一錢包 | 單一錢包 | 單一錢包 |
+| 玩家帳號模式 | 待補 | 待補 | 待補 |
+| Callback（測試站） | https://intg.devkimfafa.com/v2/3rdParty/Slot/VA/VA1 | https://intg.devkimfafa.com/v2/3rdParty/Slot/VA/VA2 | https://intg.devkimfafa.com/v2/3rdParty/Slot/VA/VA3 |
+| Callback（正式站） | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/VA/VA1 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/VA/VA2 | https://intg.kimfafa.com.tw/v2/3rdParty/Slot/VA/VA3 |
+| IP白名單需求 | 測試：18.138.181.203 / 18.141.122.251 / 43.213.9.12 / 正式：18.138.181.203 / 18.141.122.251 / 43.212.146.187 / 43.213.153.140 / 43.213.192.232 | 同左 | 同左 |
+| 後台帳號（測試站） | kimfafa_3 | kimfafa_6 | kimfafa_10 |
+| 後台密碼（測試站） | W+6Q)$jf_N | YsKOM@9k&5 | ZWeP^eq+0_ |
+| 平台帳號（測試站） | 待補 | KFF6 | KFF10 |
+| 平台密碼（測試站） | 待補 | 3sdJf0=NVb | nY2lT0^UX- |
+| 後台帳號（正式站） | 尚未申請 | 尚未申請 | 尚未申請 |
+| 後台密碼（正式站） | 尚未申請 | 尚未申請 | 尚未申請 |
+| API Key/Secret ⚠️（正式） | 尚未申請 | 尚未申請 | 尚未申請 |
+| API Key/Secret ⚠️（測試） | Authorization：d787afc0a2b54e9a8739e00b1140b940 / APIKey：0a2b54 | Authorization：116d42f26ec34d42824018fdbcf5ab33 / APIKey：26ec34 | Authorization：499b699ae9c740c1a61af70ae9e849f6 / APIKey：ae9c74 |
+| 商戶代碼（測試站）⚠️ | 待補充 | 待補充 | 待補充 |
+| 商戶代碼（正式站）⚠️ | 待補充 | 待補充 | 待補充 |
+| 文件收集 | [VA 介接文件](https://drive.google.com/file/d/1_xo7DK6OzHVnL6iPVyv0DDoArsduPfxA/view?usp=sharing) | 待補充 | 待補充 |
+| 測試環境 | 待補充 | 待補充 | 待補充 |
+| 正式上線 | 待補充 | 待補充 | 待補充 |
 
 ---
 
