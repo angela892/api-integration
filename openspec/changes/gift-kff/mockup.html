@@ -511,6 +511,7 @@
 <nav class="tab-nav">
   <button class="active" onclick="switchTab('liff')">LIFF 版</button>
   <button onclick="switchTab('kiosk')">機台版</button>
+  <button onclick="switchTab('outlet')">Outlet 管理列表</button>
 </nav>
 
 <div class="tab-panel active" id="tab-liff">
@@ -1460,6 +1461,125 @@
 
 </div><!-- end .kiosk-screens -->
 </div><!-- end #tab-kiosk -->
+
+<!-- ══════════════════════════════════════════════ -->
+<!--                Outlet 管理列表 tab             -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-outlet">
+<style>
+  .admin-wrap { background:#f0f2f5; min-height:100vh; padding:24px; font-family:'Noto Sans TC',sans-serif; font-size:14px; color:#333; }
+  .admin-card { background:#fff; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.10); padding:20px 24px; margin-bottom:16px; }
+  .admin-title { font-size:20px; font-weight:700; margin:0 0 20px; }
+  .filter-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px 20px; margin-bottom:16px; }
+  .filter-item label { display:block; font-weight:600; margin-bottom:6px; font-size:13px; }
+  .filter-item input, .filter-item select {
+    width:100%; padding:7px 10px; border:1px solid #d9d9d9; border-radius:4px;
+    font-size:13px; font-family:inherit; box-sizing:border-box; color:#333; background:#fff;
+  }
+  .filter-item select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 10px center; padding-right:28px; }
+  .btn-row { display:flex; gap:8px; margin-top:4px; }
+  .btn-primary { padding:7px 20px; background:#1677ff; color:#fff; border:none; border-radius:4px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .btn-default { padding:7px 20px; background:#1677ff; color:#fff; border:none; border-radius:4px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .btn-add { padding:6px 16px; background:#1677ff; color:#fff; border:none; border-radius:4px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; margin-bottom:12px; }
+  .admin-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .admin-table th { background:#fafafa; font-weight:600; padding:12px 10px; border-bottom:1px solid #f0f0f0; text-align:left; white-space:nowrap; }
+  .admin-table td { padding:12px 10px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+  .admin-table tr:last-child td { border-bottom:none; }
+  .tag-normal { color:#1677ff; font-weight:600; }
+  .qrcode-img { width:80px; height:80px; border:1px solid #eee; border-radius:4px; }
+  .qr-btn-row { display:flex; gap:4px; margin-top:4px; }
+  .btn-qr { padding:2px 8px; font-size:11px; border:none; border-radius:3px; cursor:pointer; font-family:inherit; font-weight:600; color:#fff; background:#1677ff; }
+  .action-col { display:flex; flex-direction:column; gap:4px; }
+  .btn-act { padding:4px 10px; font-size:12px; border:none; border-radius:4px; cursor:pointer; font-family:inherit; font-weight:600; color:#fff; background:#1677ff; white-space:nowrap; }
+  .win-limit-list { line-height:1.9; }
+  .score-list { line-height:1.9; }
+</style>
+<div class="admin-wrap">
+  <div class="admin-card">
+    <div class="admin-title">Outlet管理列表</div>
+    <div class="filter-grid">
+      <div class="filter-item">
+        <label>Outlet ID</label>
+        <input type="text" placeholder="請輸入Outlet ID">
+      </div>
+      <div class="filter-item">
+        <label>網咖名稱</label>
+        <select><option>請選擇Outlet名稱</option></select>
+      </div>
+      <div class="filter-item">
+        <label>狀態</label>
+        <select><option>請選擇狀態</option></select>
+      </div>
+      <div class="filter-item">
+        <label>玩家輸贏上限開關</label>
+        <select><option>全部</option></select>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-primary">搜尋</button>
+      <button class="btn-default">重置</button>
+    </div>
+  </div>
+
+  <div class="admin-card">
+    <button class="btn-add">新增</button>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Outlet ID</th>
+          <th>QRCode</th>
+          <th>網咖名稱</th>
+          <th>狀態</th>
+          <th>輸贏上限</th>
+          <th>限紅設置</th>
+          <th>開分設置（下限 100）</th>
+          <th>棄分設置（下限 100）</th>
+          <th>建立時間</th>
+          <th>更新</th>
+          <th>進階</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>
+            <img class="qrcode-img" src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=outlet-1-kff" alt="QR">
+            <div class="qr-btn-row">
+              <button class="btn-qr">SVG</button>
+              <button class="btn-qr">PNG</button>
+            </div>
+          </td>
+          <td>G13</td>
+          <td><span class="tag-normal">正常</span></td>
+          <td>
+            <div class="win-limit-list">
+              玩家輸贏上限開關：啟用<br>
+              贏上限：1,000<br>
+              輸上限：8,000<br>
+              贏上限（預設）：1,000<br>
+              輸上限（預設）：7,999
+            </div>
+          </td>
+          <td>100</td>
+          <td>
+            <div class="score-list">100<br>300<br>2000<br>10000</div>
+          </td>
+          <td>100</td>
+          <td>2025-09-24 16:44:56</td>
+          <td>2025-09-24 16:44:56</td>
+          <td>
+            <div class="action-col">
+              <button class="btn-act">更新</button>
+              <button class="btn-act">操作記錄</button>
+              <button class="btn-act">產出機台共用帳號</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div><!-- end #tab-outlet -->
 
 <script>
 function switchTab(id) {
