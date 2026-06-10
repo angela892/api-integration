@@ -1465,7 +1465,7 @@
 <!-- ══════════════════════════════════════════════ -->
 <!--                Outlet 管理列表 tab             -->
 <!-- ══════════════════════════════════════════════ -->
-<div class="tab-panel" id="tab-outlet">
+<div class="tab-panel" id="tab-outlet" style="overflow-x:hidden;">
 <style>
   .admin-wrap { background:#f0f2f5; padding:24px; font-family:'Noto Sans TC',sans-serif; font-size:14px; color:#333; max-width:1800px; overflow:hidden; }
   .admin-card { background:#fff; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.10); padding:20px 24px; margin-bottom:16px; }
@@ -1587,6 +1587,7 @@ function switchTab(id) {
   document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   event.target.classList.add('active');
+  document.body.style.minWidth = (id === 'outlet') ? '0' : '3200px';
 }
 </script>
 
