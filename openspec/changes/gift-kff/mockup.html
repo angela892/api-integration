@@ -504,6 +504,30 @@
   .tab-nav button:hover:not(.active) { color: #3A1A00; background: #FFF8F0; }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
+  /* ── Outlet 管理列表 ── */
+  .admin-wrap { background:#f0f2f5; padding:24px; font-family:'Noto Sans TC',sans-serif; font-size:14px; color:#333; max-width:1800px; overflow:hidden; }
+  .admin-card { background:#fff; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.10); padding:20px 24px; margin-bottom:16px; }
+  .admin-title { font-size:20px; font-weight:700; margin:0 0 20px; }
+  .filter-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px 20px; margin-bottom:16px; }
+  .filter-item label { display:block; font-weight:600; margin-bottom:6px; font-size:13px; }
+  .filter-item input, .filter-item select { width:100%; padding:7px 10px; border:1px solid #d9d9d9; border-radius:4px; font-size:13px; font-family:inherit; box-sizing:border-box; color:#333; background:#fff; }
+  .filter-item select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 10px center; padding-right:28px; }
+  .btn-row { display:flex; gap:8px; margin-top:4px; }
+  .btn-primary { padding:7px 20px; background:#1677ff; color:#fff; border:none; border-radius:4px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .btn-default { padding:7px 20px; background:#1677ff; color:#fff; border:none; border-radius:4px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .btn-add { padding:6px 16px; background:#1677ff; color:#fff; border:none; border-radius:4px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; margin-bottom:12px; }
+  .admin-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .admin-table th { background:#fafafa; font-weight:600; padding:12px 10px; border-bottom:1px solid #f0f0f0; text-align:left; white-space:nowrap; }
+  .admin-table td { padding:12px 10px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
+  .admin-table tr:last-child td { border-bottom:none; }
+  .tag-normal { color:#1677ff; font-weight:600; }
+  .qrcode-img { width:80px; height:80px; border:1px solid #eee; border-radius:4px; }
+  .qr-btn-row { display:flex; gap:4px; margin-top:4px; }
+  .btn-qr { padding:2px 8px; font-size:11px; border:none; border-radius:3px; cursor:pointer; font-family:inherit; font-weight:600; color:#fff; background:#1677ff; }
+  .action-col { display:flex; flex-direction:column; gap:4px; }
+  .btn-act { padding:4px 10px; font-size:12px; border:none; border-radius:4px; cursor:pointer; font-family:inherit; font-weight:600; color:#fff; background:#1677ff; white-space:nowrap; }
+  .win-limit-list { line-height:1.9; }
+  .score-list { line-height:1.9; }
 </style>
 </head>
 <body>
@@ -1465,35 +1489,7 @@
 <!-- ══════════════════════════════════════════════ -->
 <!--                Outlet 管理列表 tab             -->
 <!-- ══════════════════════════════════════════════ -->
-<div class="tab-panel" id="tab-outlet" style="overflow-x:hidden;">
-<style>
-  .admin-wrap { background:#f0f2f5; padding:24px; font-family:'Noto Sans TC',sans-serif; font-size:14px; color:#333; max-width:1800px; overflow:hidden; }
-  .admin-card { background:#fff; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,0.10); padding:20px 24px; margin-bottom:16px; }
-  .admin-title { font-size:20px; font-weight:700; margin:0 0 20px; }
-  .filter-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px 20px; margin-bottom:16px; }
-  .filter-item label { display:block; font-weight:600; margin-bottom:6px; font-size:13px; }
-  .filter-item input, .filter-item select {
-    width:100%; padding:7px 10px; border:1px solid #d9d9d9; border-radius:4px;
-    font-size:13px; font-family:inherit; box-sizing:border-box; color:#333; background:#fff;
-  }
-  .filter-item select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 10px center; padding-right:28px; }
-  .btn-row { display:flex; gap:8px; margin-top:4px; }
-  .btn-primary { padding:7px 20px; background:#1677ff; color:#fff; border:none; border-radius:4px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; }
-  .btn-default { padding:7px 20px; background:#1677ff; color:#fff; border:none; border-radius:4px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; }
-  .btn-add { padding:6px 16px; background:#1677ff; color:#fff; border:none; border-radius:4px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; margin-bottom:12px; }
-  .admin-table { width:100%; border-collapse:collapse; font-size:13px; }
-  .admin-table th { background:#fafafa; font-weight:600; padding:12px 10px; border-bottom:1px solid #f0f0f0; text-align:left; white-space:nowrap; }
-  .admin-table td { padding:12px 10px; border-bottom:1px solid #f0f0f0; vertical-align:top; }
-  .admin-table tr:last-child td { border-bottom:none; }
-  .tag-normal { color:#1677ff; font-weight:600; }
-  .qrcode-img { width:80px; height:80px; border:1px solid #eee; border-radius:4px; }
-  .qr-btn-row { display:flex; gap:4px; margin-top:4px; }
-  .btn-qr { padding:2px 8px; font-size:11px; border:none; border-radius:3px; cursor:pointer; font-family:inherit; font-weight:600; color:#fff; background:#1677ff; }
-  .action-col { display:flex; flex-direction:column; gap:4px; }
-  .btn-act { padding:4px 10px; font-size:12px; border:none; border-radius:4px; cursor:pointer; font-family:inherit; font-weight:600; color:#fff; background:#1677ff; white-space:nowrap; }
-  .win-limit-list { line-height:1.9; }
-  .score-list { line-height:1.9; }
-</style>
+<div class="tab-panel" id="tab-outlet">
 <div class="admin-wrap">
   <div class="admin-card">
     <div class="admin-title">Outlet管理列表</div>
