@@ -528,6 +528,29 @@
   .btn-act { padding:4px 10px; font-size:12px; border:none; border-radius:4px; cursor:pointer; font-family:inherit; font-weight:600; color:#fff; background:#1677ff; white-space:nowrap; }
   .win-limit-list { line-height:1.9; }
   .score-list { line-height:1.9; }
+  /* ── Edit Modal ── */
+  .edit-modal-mask { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:1000; align-items:center; justify-content:center; }
+  .edit-modal-mask.open { display:flex; }
+  .edit-modal { background:#fff; border-radius:8px; width:640px; max-height:90vh; overflow-y:auto; box-shadow:0 8px 32px rgba(0,0,0,0.18); font-family:'Noto Sans TC',sans-serif; font-size:14px; }
+  .edit-modal-header { display:flex; align-items:center; justify-content:space-between; padding:16px 24px; border-bottom:1px solid #f0f0f0; }
+  .edit-modal-header h2 { margin:0; font-size:16px; font-weight:700; }
+  .edit-modal-close { background:none; border:none; font-size:18px; cursor:pointer; color:#666; line-height:1; padding:4px; }
+  .edit-modal-body { padding:24px; display:flex; flex-direction:column; gap:18px; }
+  .edit-field label { display:block; font-size:13px; font-weight:600; margin-bottom:6px; }
+  .edit-field label .req { color:#e53935; margin-right:4px; }
+  .edit-field input, .edit-field select { width:100%; padding:8px 12px; border:1px solid #d9d9d9; border-radius:4px; font-size:14px; font-family:inherit; box-sizing:border-box; color:#333; }
+  .edit-field select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; padding-right:32px; background-color:#fff; }
+  .score-inputs { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  .score-input-wrap { display:flex; align-items:center; gap:0; }
+  .score-input-wrap input { width:100px; border-radius:4px 0 0 4px; border-right:none; }
+  .score-del-btn { padding:8px 10px; background:#1677ff; color:#fff; border:none; border-radius:0 4px 4px 0; cursor:pointer; font-size:13px; font-weight:700; }
+  .score-add-btn { padding:7px 16px; background:#1677ff; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:13px; font-weight:600; font-family:inherit; }
+  .score-hint { font-size:12px; color:#e53935; margin-top:4px; }
+  .edit-field-new { border:2px solid #e53935; border-radius:6px; padding:10px 12px; }
+  .edit-field-new label .new-badge { color:#e53935; font-size:11px; font-weight:700; margin-left:6px; }
+  .edit-modal-footer { display:flex; justify-content:flex-end; gap:8px; padding:16px 24px; border-top:1px solid #f0f0f0; }
+  .btn-modal-cancel { padding:7px 20px; background:#fff; color:#333; border:1px solid #d9d9d9; border-radius:4px; font-size:14px; cursor:pointer; font-family:inherit; }
+  .btn-modal-ok { padding:7px 20px; background:#1677ff; color:#fff; border:none; border-radius:4px; font-size:14px; font-weight:600; cursor:pointer; font-family:inherit; }
 </style>
 </head>
 <body>
@@ -1573,7 +1596,7 @@
           <td>2025-09-24 16:44:56</td>
           <td>
             <div class="action-col">
-              <button class="btn-act">更新</button>
+              <button class="btn-act" onclick="document.getElementById('editModal').classList.add('open')">更新</button>
               <button class="btn-act">操作記錄</button>
               <button class="btn-act">產出機台共用帳號</button>
             </div>
@@ -1583,6 +1606,60 @@
     </table>
   </div>
 </div>
+<!-- Edit Modal -->
+<div class="edit-modal-mask" id="editModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="edit-modal">
+    <div class="edit-modal-header">
+      <h2>編輯</h2>
+      <button class="edit-modal-close" onclick="document.getElementById('editModal').classList.remove('open')">✕</button>
+    </div>
+    <div class="edit-modal-body">
+      <div class="edit-field">
+        <label><span class="req">*</span>網咖名稱</label>
+        <input type="text" value="G13">
+      </div>
+      <div class="edit-field">
+        <label><span class="req">*</span>狀態</label>
+        <select><option>正常</option><option>停用</option></select>
+      </div>
+      <div class="edit-field">
+        <label>限紅設置</label>
+        <input type="text" value="100">
+      </div>
+      <div class="edit-field">
+        <label>開分設置 (下限100)</label>
+        <div class="score-inputs">
+          <div class="score-input-wrap"><input type="text" value="100"><button class="score-del-btn">✕</button></div>
+          <div class="score-input-wrap"><input type="text" value="300"><button class="score-del-btn">✕</button></div>
+          <div class="score-input-wrap"><input type="text" value="2000"><button class="score-del-btn">✕</button></div>
+          <div class="score-input-wrap"><input type="text" value="10000"><button class="score-del-btn">✕</button></div>
+        </div>
+        <div style="margin-top:8px;"><button class="score-add-btn">+ 新增</button></div>
+        <div class="score-hint">吸鈔可使用100、500、1000</div>
+      </div>
+      <div class="edit-field edit-field-new">
+        <label><span class="req">*</span>贈禮開關<span class="new-badge">NEW</span></label>
+        <select>
+          <option>啟用</option>
+          <option>停用</option>
+        </select>
+      </div>
+      <div class="edit-field">
+        <label><span class="req">*</span>棄分設置 (下限100)</label>
+        <input type="text" value="100">
+      </div>
+      <div class="edit-field">
+        <label><span class="req">*</span>備註</label>
+        <input type="text" value="公司開發">
+      </div>
+    </div>
+    <div class="edit-modal-footer">
+      <button class="btn-modal-cancel" onclick="document.getElementById('editModal').classList.remove('open')">取消</button>
+      <button class="btn-modal-ok">確認</button>
+    </div>
+  </div>
+</div>
+
 </div><!-- end #tab-outlet -->
 
 <script>
