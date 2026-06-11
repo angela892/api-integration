@@ -1596,7 +1596,7 @@
           <td>2025-09-24 16:44:56</td>
           <td>
             <div class="action-col">
-              <button class="btn-act" onclick="document.getElementById('editModal').classList.add('open')">更新</button>
+              <button class="btn-act">更新</button>
               <button class="btn-act">操作記錄</button>
               <button class="btn-act">產出機台共用帳號</button>
             </div>
@@ -1606,57 +1606,51 @@
     </table>
   </div>
 </div>
-<!-- Edit Modal -->
-<div class="edit-modal-mask" id="editModal" onclick="if(event.target===this)this.classList.remove('open')">
-  <div class="edit-modal">
-    <div class="edit-modal-header">
-      <h2>編輯</h2>
-      <button class="edit-modal-close" onclick="document.getElementById('editModal').classList.remove('open')">✕</button>
+<!-- 編輯畫面（點更新後） -->
+<div class="admin-card" style="max-width:640px;">
+  <div class="edit-modal-header" style="padding:0 0 16px;border-bottom:1px solid #f0f0f0;margin-bottom:20px;">
+    <h2 style="margin:0;font-size:16px;font-weight:700;">編輯</h2>
+  </div>
+  <div class="edit-modal-body" style="padding:0;">
+    <div class="edit-field">
+      <label><span class="req">*</span>網咖名稱</label>
+      <input type="text" value="G13">
     </div>
-    <div class="edit-modal-body">
-      <div class="edit-field">
-        <label><span class="req">*</span>網咖名稱</label>
-        <input type="text" value="G13">
-      </div>
-      <div class="edit-field">
-        <label><span class="req">*</span>狀態</label>
-        <select><option>正常</option><option>停用</option></select>
-      </div>
-      <div class="edit-field">
-        <label>限紅設置</label>
-        <input type="text" value="100">
-      </div>
-      <div class="edit-field">
-        <label>開分設置 (下限100)</label>
-        <div class="score-inputs">
-          <div class="score-input-wrap"><input type="text" value="100"><button class="score-del-btn">✕</button></div>
-          <div class="score-input-wrap"><input type="text" value="300"><button class="score-del-btn">✕</button></div>
-          <div class="score-input-wrap"><input type="text" value="2000"><button class="score-del-btn">✕</button></div>
-          <div class="score-input-wrap"><input type="text" value="10000"><button class="score-del-btn">✕</button></div>
-        </div>
-        <div style="margin-top:8px;"><button class="score-add-btn">+ 新增</button></div>
-        <div class="score-hint">吸鈔可使用100、500、1000</div>
-      </div>
-      <div class="edit-field edit-field-new">
-        <label><span class="req">*</span>贈禮開關<span class="new-badge">NEW</span></label>
-        <select>
-          <option>啟用</option>
-          <option>停用</option>
-        </select>
-      </div>
-      <div class="edit-field">
-        <label><span class="req">*</span>棄分設置 (下限100)</label>
-        <input type="text" value="100">
-      </div>
-      <div class="edit-field">
-        <label><span class="req">*</span>備註</label>
-        <input type="text" value="公司開發">
-      </div>
+    <div class="edit-field">
+      <label><span class="req">*</span>狀態</label>
+      <select><option>正常</option><option>停用</option></select>
     </div>
-    <div class="edit-modal-footer">
-      <button class="btn-modal-cancel" onclick="document.getElementById('editModal').classList.remove('open')">取消</button>
-      <button class="btn-modal-ok">確認</button>
+    <div class="edit-field">
+      <label>限紅設置</label>
+      <input type="text" value="100">
     </div>
+    <div class="edit-field">
+      <label>開分設置 (下限100)</label>
+      <div class="score-inputs">
+        <div class="score-input-wrap"><input type="text" value="100"><button class="score-del-btn">✕</button></div>
+        <div class="score-input-wrap"><input type="text" value="300"><button class="score-del-btn">✕</button></div>
+        <div class="score-input-wrap"><input type="text" value="2000"><button class="score-del-btn">✕</button></div>
+        <div class="score-input-wrap"><input type="text" value="10000"><button class="score-del-btn">✕</button></div>
+      </div>
+      <div style="margin-top:8px;"><button class="score-add-btn">+ 新增</button></div>
+      <div class="score-hint">吸鈔可使用100、500、1000</div>
+    </div>
+    <div class="edit-field edit-field-new">
+      <label><span class="req">*</span>贈禮開關<span class="new-badge">NEW</span></label>
+      <select><option>啟用</option><option>停用</option></select>
+    </div>
+    <div class="edit-field">
+      <label><span class="req">*</span>棄分設置 (下限100)</label>
+      <input type="text" value="100">
+    </div>
+    <div class="edit-field">
+      <label><span class="req">*</span>備註</label>
+      <input type="text" value="公司開發">
+    </div>
+  </div>
+  <div class="edit-modal-footer" style="padding:20px 0 0;margin-top:8px;">
+    <button class="btn-modal-cancel">取消</button>
+    <button class="btn-modal-ok">確認</button>
   </div>
 </div>
 
