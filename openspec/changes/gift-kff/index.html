@@ -559,6 +559,7 @@
   <button class="active" onclick="switchTab('liff')">LIFF 版</button>
   <button onclick="switchTab('kiosk')">機台版</button>
   <button onclick="switchTab('outlet')">Outlet 管理列表</button>
+  <button onclick="switchTab('report')">會員贈禮報表</button>
 </nav>
 
 <div class="tab-panel active" id="tab-liff">
@@ -1694,6 +1695,101 @@
 
 </div><!-- end #tab-outlet -->
 
+<!-- ══════════════════════════════════════════════ -->
+<!--              會員贈禮報表 tab                -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-report">
+<div class="admin-wrap" style="margin-right:0;">
+  <div class="admin-card">
+    <div class="admin-title">會員贈禮報表</div>
+    <div class="filter-grid">
+      <div class="filter-item">
+        <label>會員帳號</label>
+        <input type="text" placeholder="請輸入會員帳號">
+      </div>
+      <div class="filter-item">
+        <label>會員暱稱</label>
+        <input type="text" placeholder="請輸入會員暱稱">
+      </div>
+      <div class="filter-item">
+        <label>完成時間</label>
+        <div style="display:flex;align-items:center;gap:4px;">
+          <input type="text" value="2025-06-01 00:00:00" style="flex:1;min-width:0;font-size:12px;">
+          <span style="color:#999;flex-shrink:0;">→</span>
+          <input type="text" value="2026-06-11 23:59:59" style="flex:1;min-width:0;font-size:12px;">
+        </div>
+      </div>
+      <div class="filter-item">
+        <label>推廣碼</label>
+        <select><option value="">請選擇推廣碼</option></select>
+      </div>
+      <div class="filter-item">
+        <label>交易對象帳號</label>
+        <input type="text" placeholder="請輸入交易對象帳號">
+      </div>
+      <div class="filter-item">
+        <label>交易對象暱稱</label>
+        <input type="text" placeholder="請輸入交易對象暱稱">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-primary">搜尋</button>
+      <button class="btn-default">重置</button>
+      <button class="btn-default" style="background:#fff;border:1px solid #d9d9d9;color:#333;">匯出 csv 檔</button>
+    </div>
+  </div>
+
+  <div class="admin-card" style="overflow-x:auto;">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>會員帳號</th>
+          <th>會員暱稱</th>
+          <th>贈禮總金額 <span style="font-size:11px;color:#aaa;">⇅</span></th>
+          <th>收禮總額 <span style="font-size:11px;color:#aaa;">⇅</span></th>
+          <th>總合計</th>
+          <th>進階</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>zZg1950</td>
+          <td>木下冰恭</td>
+          <td>25,988,022</td>
+          <td>0</td>
+          <td>25,988,022</td>
+          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;">進入細單</button></td>
+        </tr>
+        <tr style="background:#fafafa;">
+          <td>AAA54878</td>
+          <td style="color:#e53935;">我是芭樂啦！</td>
+          <td style="color:#e53935;">2,538,901</td>
+          <td style="color:#e53935;">40,000</td>
+          <td style="color:#e53935;">2,498,901</td>
+          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;">進入細單</button></td>
+        </tr>
+        <tr>
+          <td>test5555</td>
+          <td>阿難得沒午休r</td>
+          <td>500,000</td>
+          <td>0</td>
+          <td>500,000</td>
+          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;">進入細單</button></td>
+        </tr>
+        <tr style="background:#fafafa;">
+          <td>test279</td>
+          <td>新竹爆肝工程</td>
+          <td>130,000</td>
+          <td>20,000</td>
+          <td>110,000</td>
+          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;">進入細單</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div><!-- end #tab-report -->
+
 <!-- 指定贈禮設定固定右側面板 -->
 <div id="gift-panel" style="display:none;position:fixed;right:0;top:48px;bottom:0;width:380px;overflow-y:auto;background:#f0f2f5;border-left:2px solid #e53935;padding:16px;z-index:200;box-shadow:-4px 0 12px rgba(0,0,0,0.12);">
   <div class="admin-card">
@@ -1756,7 +1852,8 @@ function switchTab(id) {
   document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   event.target.classList.add('active');
-  document.body.style.minWidth = (id === 'outlet') ? '0' : '3200px';
+  const isAdmin = (id === 'outlet' || id === 'report');
+  document.body.style.minWidth = isAdmin ? '0' : '3200px';
   document.getElementById('gift-panel').style.display = (id === 'outlet') ? 'block' : 'none';
 }
 </script>
