@@ -560,6 +560,7 @@
   <button onclick="switchTab('kiosk')">機台版</button>
   <button onclick="switchTab('outlet')">Outlet 管理列表</button>
   <button onclick="switchTab('report')">會員贈禮報表</button>
+  <button onclick="switchTab('discard')">棄分紀錄查詢</button>
 </nav>
 
 <div class="tab-panel active" id="tab-liff">
@@ -1877,6 +1878,129 @@
 </div>
 </div><!-- end #tab-report -->
 
+<!-- ══════════════════════════════════════════════ -->
+<!--              棄分紀錄查詢 tab               -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="tab-panel" id="tab-discard">
+<div class="admin-wrap" style="margin-right:0;">
+  <div class="admin-card">
+    <div class="admin-title">棄分紀錄查詢</div>
+    <div class="filter-grid">
+      <div class="filter-item">
+        <label>會員帳號</label>
+        <input type="text" placeholder="請輸入會員帳號">
+      </div>
+      <div class="filter-item">
+        <label>交易時間</label>
+        <div style="display:flex;align-items:center;gap:4px;">
+          <input type="text" value="2026-06-01 00:00:00" style="flex:1;min-width:0;font-size:12px;">
+          <span style="color:#999;flex-shrink:0;">→</span>
+          <input type="text" value="2026-06-30 23:59:59" style="flex:1;min-width:0;font-size:12px;">
+        </div>
+      </div>
+      <div class="filter-item">
+        <label>網咖名稱</label>
+        <select><option value="">請選擇Outlet ID</option></select>
+      </div>
+      <div class="filter-item">
+        <label>機台名稱</label>
+        <select><option value="">請選擇</option></select>
+      </div>
+      <div class="filter-item">
+        <label>帳號類型</label>
+        <select><option value="">請選擇帳號類型</option></select>
+      </div>
+      <div class="filter-item">
+        <label>操作IP</label>
+        <input type="text" placeholder="請輸入操作IP">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-primary">搜尋</button>
+      <button class="btn-default">重置</button>
+    </div>
+  </div>
+
+  <div class="admin-card" style="overflow-x:auto;">
+    <div style="margin-bottom:16px;">
+      <button class="btn-default" style="background:#1677ff;color:#fff;border-color:#1677ff;">匯出 csv 檔</button>
+    </div>
+    <table class="admin-table" style="margin-bottom:0;">
+      <thead>
+        <tr>
+          <th>棄分總額</th>
+          <th>棄分筆數</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>27,100.00</td>
+          <td>6</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="admin-table" style="margin-top:16px;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>網咖名稱</th>
+          <th>機台名稱</th>
+          <th>會員帳號</th>
+          <th>帳號類型</th>
+          <th>交易時間</th>
+          <th>交易前餘額</th>
+          <th>棄分金額</th>
+          <th>交易後餘額</th>
+          <th>完成時間</th>
+          <th>操作IP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>260</td>
+          <td>一二三</td>
+          <td style="color:#1677ff;">123</td>
+          <td style="color:#1677ff;">UxX8775</td>
+          <td>預設帳號</td>
+          <td>2026-06-02 15:10:13</td>
+          <td>1,200.00</td>
+          <td>1,200.00</td>
+          <td>0.00</td>
+          <td>2026-06-02 15:10:13</td>
+          <td>114.34.170.104</td>
+        </tr>
+        <tr style="background:#fafafa;">
+          <td>259</td>
+          <td style="color:#1677ff;">上班出車禍</td>
+          <td>小心慢騎</td>
+          <td style="color:#1677ff;">jMA1090</td>
+          <td>預設帳號</td>
+          <td>2026-06-02 14:49:46</td>
+          <td>2,400.00</td>
+          <td>2,400.00</td>
+          <td>0.00</td>
+          <td>2026-06-02 14:49:46</td>
+          <td>114.34.170.104</td>
+        </tr>
+        <tr>
+          <td>258</td>
+          <td>大網紅</td>
+          <td>蕉蕉</td>
+          <td style="color:#1677ff;">ebt3894</td>
+          <td>預設帳號</td>
+          <td>2026-06-02 14:45:36</td>
+          <td>1,300.00</td>
+          <td>1,300.00</td>
+          <td>0.00</td>
+          <td>2026-06-02 14:45:36</td>
+          <td>114.34.170.104</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div><!-- end #tab-discard -->
+
 <!-- 指定贈禮設定固定右側面板 -->
 <div id="gift-panel" style="display:none;position:fixed;right:0;top:48px;bottom:0;width:380px;overflow-y:auto;background:#f0f2f5;border-left:2px solid #e53935;padding:16px;z-index:200;box-shadow:-4px 0 12px rgba(0,0,0,0.12);">
   <div class="admin-card">
@@ -1939,7 +2063,7 @@ function switchTab(id) {
   document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   event.target.classList.add('active');
-  const isAdmin = (id === 'outlet' || id === 'report');
+  const isAdmin = (id === 'outlet' || id === 'report' || id === 'discard');
   document.body.style.minWidth = isAdmin ? '0' : '3200px';
   document.getElementById('gift-panel').style.display = (id === 'outlet') ? 'block' : 'none';
 }
