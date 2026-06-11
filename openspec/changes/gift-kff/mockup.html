@@ -1513,10 +1513,7 @@
 <!--                Outlet 管理列表 tab             -->
 <!-- ══════════════════════════════════════════════ -->
 <div class="tab-panel" id="tab-outlet">
-<div class="admin-wrap" style="display:flex;gap:16px;align-items:flex-start;">
-
-<!-- 左欄：搜尋 + 列表 + 編輯 -->
-<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:16px;">
+<div class="admin-wrap">
   <div class="admin-card">
     <div class="admin-title">Outlet管理列表</div>
     <div class="filter-grid">
@@ -1551,7 +1548,7 @@
     </div>
   </div>
 
-  <div class="admin-card" style="overflow-x:auto;">
+  <div class="admin-card">
     <button class="btn-add">新增</button>
     <table class="admin-table">
       <thead>
@@ -1610,7 +1607,7 @@
     </table>
   </div>
   <!-- 編輯畫面（點更新後） -->
-  <div style="display:flex;gap:16px;align-items:flex-start;">
+  <div style="display:flex;gap:20px;align-items:flex-start;">
 <div class="admin-card" style="width:640px;flex-shrink:0;">
   <div class="edit-modal-header" style="padding:0 0 16px;border-bottom:1px solid #f0f0f0;margin-bottom:20px;">
     <h2 style="margin:0;font-size:16px;font-weight:700;">編輯</h2>
@@ -1693,12 +1690,14 @@
 </div>
   </div><!-- end 編輯 flex row -->
 
-</div><!-- end 左欄 -->
+</div><!-- end admin-wrap -->
 
-<!-- 右欄：指定贈禮設定 -->
-<div style="width:380px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;">
+</div><!-- end #tab-outlet -->
+
+<!-- 指定贈禮設定固定右側面板 -->
+<div id="gift-panel" style="display:none;position:fixed;right:0;top:48px;bottom:0;width:380px;overflow-y:auto;background:#f0f2f5;border-left:2px solid #e53935;padding:16px;z-index:200;box-shadow:-4px 0 12px rgba(0,0,0,0.12);">
   <div class="admin-card">
-    <div style="font-size:16px;font-weight:700;margin-bottom:24px;">指定贈禮設定 <span style="font-size:11px;background:#e53935;color:#fff;border-radius:3px;padding:1px 5px;vertical-align:middle;">NEW</span></div>
+    <div style="font-size:15px;font-weight:700;margin-bottom:20px;">指定贈禮設定 <span style="font-size:11px;background:#e53935;color:#fff;border-radius:3px;padding:1px 5px;vertical-align:middle;">NEW</span></div>
     <div style="display:flex;flex-direction:column;gap:18px;">
       <div class="edit-field">
         <label>贈禮報表機台</label>
@@ -1739,10 +1738,7 @@
       </ul>
     </div>
   </div>
-</div><!-- end 右欄 -->
-
-</div><!-- end admin-wrap flex -->
-</div><!-- end #tab-outlet -->
+</div>
 
 <script>
 function switchTab(id) {
@@ -1751,6 +1747,7 @@ function switchTab(id) {
   document.getElementById('tab-' + id).classList.add('active');
   event.target.classList.add('active');
   document.body.style.minWidth = (id === 'outlet') ? '0' : '3200px';
+  document.getElementById('gift-panel').style.display = (id === 'outlet') ? 'block' : 'none';
 }
 </script>
 
