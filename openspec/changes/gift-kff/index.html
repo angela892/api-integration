@@ -1548,7 +1548,8 @@
     </div>
   </div>
 
-  <div class="admin-card">
+  <div style="display:flex;gap:16px;align-items:flex-start;">
+  <div class="admin-card" style="flex:1;min-width:0;overflow-x:auto;">
     <button class="btn-add">新增</button>
     <table class="admin-table">
       <thead>
@@ -1606,6 +1607,52 @@
       </tbody>
     </table>
   </div>
+  <!-- 指定贈禮設定（右側） -->
+  <div style="width:380px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;">
+    <div class="admin-card">
+      <div style="font-size:16px;font-weight:700;margin-bottom:24px;">指定贈禮設定 <span style="font-size:11px;background:#e53935;color:#fff;border-radius:3px;padding:1px 5px;vertical-align:middle;">NEW</span></div>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div class="edit-field">
+          <label>贈禮報表機台</label>
+          <input type="text" value="xxxx機台">
+        </div>
+        <div class="edit-field">
+          <label>指定可收禮玩家</label>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;gap:6px;align-items:center;">
+              <input type="text" value="a代理" style="flex:1;">
+              <button class="score-del-btn" style="border-radius:4px;">✕</button>
+            </div>
+            <div style="display:flex;gap:6px;align-items:center;">
+              <input type="text" value="B代理" style="flex:1;">
+              <button class="score-del-btn" style="border-radius:4px;">✕</button>
+            </div>
+            <div style="display:flex;gap:6px;align-items:center;">
+              <input type="text" value="C代理" style="flex:1;">
+              <button class="score-del-btn" style="border-radius:4px;">✕</button>
+            </div>
+            <div><button class="score-add-btn">+ 新增</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="edit-modal-footer" style="padding:24px 0 0;margin-top:8px;">
+        <button class="btn-modal-cancel">取消</button>
+        <button class="btn-modal-ok">確定</button>
+      </div>
+    </div>
+    <div class="admin-card">
+      <div style="font-size:13px;font-weight:700;margin-bottom:12px;color:#333;">欄位說明</div>
+      <div style="border-left:3px solid #e53935;padding-left:12px;">
+        <ul style="margin:0;padding-left:16px;line-height:2;font-size:13px;color:#444;">
+          <li><strong style="color:#1677ff;">贈禮報表機台</strong>：贈禮成功後寫入棄分紀錄時，紀錄所歸屬的機台 ID。</li>
+          <li><strong style="color:#1677ff;">指定可收禮玩家</strong>：設定該 Outlet 下哪些玩家帳號可以收禮。</li>
+          <li>LIFF 與機台的收禮玩家清單皆來自此設定。</li>
+          <li>可新增多筆；未設定時玩家選單為空。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div><!-- end table+form flex row -->
 </div>
 <!-- 編輯畫面（點更新後） -->
 <div style="display:flex;gap:20px;align-items:flex-start;">
@@ -1691,55 +1738,6 @@
 </div>
 </div><!-- end flex row -->
 
-<!-- 指定贈禮設定 -->
-<div style="display:flex;gap:20px;align-items:flex-start;margin-top:4px;">
-  <div class="admin-card" style="width:640px;flex-shrink:0;">
-    <div style="font-size:16px;font-weight:700;margin-bottom:24px;">指定贈禮設定</div>
-    <div style="display:flex;flex-direction:column;gap:18px;">
-      <div class="edit-field">
-        <label>贈禮報表機台</label>
-        <input type="text" value="xxxx機台">
-      </div>
-      <div class="edit-field">
-        <label>指定可收禮玩家</label>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div style="display:flex;gap:6px;align-items:center;">
-            <input type="text" value="a代理" style="flex:1;">
-            <button class="score-del-btn" style="border-radius:4px;">✕</button>
-          </div>
-          <div style="display:flex;gap:6px;align-items:center;">
-            <input type="text" value="B代理" style="flex:1;">
-            <button class="score-del-btn" style="border-radius:4px;">✕</button>
-          </div>
-          <div style="display:flex;gap:6px;align-items:center;">
-            <input type="text" value="C代理" style="flex:1;">
-            <button class="score-del-btn" style="border-radius:4px;">✕</button>
-          </div>
-          <div><button class="score-add-btn">+ 新增</button></div>
-        </div>
-      </div>
-    </div>
-    <div class="edit-modal-footer" style="padding:24px 0 0;margin-top:8px;">
-      <button class="btn-modal-cancel">取消</button>
-      <button class="btn-modal-ok">確定</button>
-    </div>
-  </div>
-  <!-- 說明欄 -->
-  <div class="admin-card" style="flex:1;min-width:280px;">
-    <div style="font-size:14px;font-weight:700;margin-bottom:16px;color:#333;">欄位說明</div>
-    <div style="display:flex;flex-direction:column;gap:16px;">
-      <div style="border-left:3px solid #e53935;padding-left:12px;">
-        <div style="font-weight:700;color:#e53935;margin-bottom:6px;">指定贈禮設定 <span style="font-size:11px;background:#e53935;color:#fff;border-radius:3px;padding:1px 5px;">NEW</span></div>
-        <ul style="margin:0;padding-left:16px;line-height:2;font-size:13px;color:#444;">
-          <li><strong style="color:#1677ff;">贈禮報表機台</strong>：贈禮成功後寫入棄分紀錄時，紀錄所歸屬的機台 ID。</li>
-          <li><strong style="color:#1677ff;">指定可收禮玩家</strong>：設定該 Outlet 下哪些玩家帳號可以收禮。</li>
-          <li>LIFF 與機台的收禮玩家清單皆來自此設定。</li>
-          <li>可新增多筆；未設定時玩家選單為空。</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
 </div><!-- end #tab-outlet -->
 
