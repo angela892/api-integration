@@ -1758,7 +1758,7 @@
           <td>25,988,022</td>
           <td>0</td>
           <td>25,988,022</td>
-          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;" onclick="openGiftDetail()">進入細單</button></td>
+          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;">進入細單</button></td>
         </tr>
         <tr style="background:#fafafa;">
           <td>AAA54878</td>
@@ -1766,7 +1766,7 @@
           <td style="color:#e53935;">2,538,901</td>
           <td style="color:#e53935;">40,000</td>
           <td style="color:#e53935;">2,498,901</td>
-          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;" onclick="openGiftDetail()">進入細單</button></td>
+          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;">進入細單</button></td>
         </tr>
         <tr>
           <td>test5555</td>
@@ -1774,7 +1774,7 @@
           <td>500,000</td>
           <td>0</td>
           <td>500,000</td>
-          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;" onclick="openGiftDetail()">進入細單</button></td>
+          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;">進入細單</button></td>
         </tr>
         <tr style="background:#fafafa;">
           <td>test279</td>
@@ -1782,10 +1782,88 @@
           <td>130,000</td>
           <td>20,000</td>
           <td>110,000</td>
-          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;" onclick="openGiftDetail()">進入細單</button></td>
+          <td><button class="btn-act" style="background:#1677ff;color:#fff;border-color:#1677ff;">進入細單</button></td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <!-- 細單（點進入細單後顯示於下方） -->
+  <div class="admin-card">
+    <div style="font-size:16px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #f0f0f0;">
+      zZg1950 &nbsp;<span style="font-size:13px;color:#888;font-weight:400;">/ 木下冰恭</span> &nbsp;細單
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;margin-bottom:16px;">
+      <div class="filter-item">
+        <label>交易對象帳號</label>
+        <input type="text" placeholder="請輸入交易對象帳號">
+      </div>
+      <div class="filter-item">
+        <label>交易對象暱稱</label>
+        <input type="text" placeholder="請輸入交易對象暱稱">
+      </div>
+    </div>
+    <div class="btn-row" style="margin-bottom:20px;">
+      <button class="btn-primary">搜尋</button>
+      <button class="btn-default">重置</button>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>交易對象帳號</th>
+            <th>交易對象暱稱</th>
+            <th>贈禮總金額</th>
+            <th>收禮總額</th>
+            <th>更新時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BHF0425</td>
+            <td>野格冬槐</td>
+            <td>20,000</td>
+            <td>0</td>
+            <td>2025-09-24 16:44:56</td>
+          </tr>
+          <tr style="background:#fafafa;">
+            <td>AAA5488</td>
+            <td>好天氣老鼠</td>
+            <td>20,000</td>
+            <td>0</td>
+            <td>2025-09-24 16:44:56</td>
+          </tr>
+          <tr>
+            <td>BHF0425</td>
+            <td>野格冬槐</td>
+            <td>0</td>
+            <td>20,000</td>
+            <td>2025-09-24 16:44:56</td>
+          </tr>
+          <tr style="background:#fafafa;">
+            <td>AAA5489</td>
+            <td>戴靖老鼠</td>
+            <td>0</td>
+            <td>20,000</td>
+            <td>2025-09-24 16:44:56</td>
+          </tr>
+          <tr>
+            <td>AAA5489</td>
+            <td>戴靖老鼠</td>
+            <td>0</td>
+            <td>40,000</td>
+            <td>2025-09-24 16:44:56</td>
+          </tr>
+          <tr style="background:#fafafa;">
+            <td>AAA5489</td>
+            <td>戴靖老鼠</td>
+            <td>0</td>
+            <td>20,000</td>
+            <td>2025-09-24 16:44:56</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 </div><!-- end #tab-report -->
@@ -1846,93 +1924,7 @@
   </div>
 </div>
 
-<!-- 細單 Modal -->
-<div class="edit-modal-mask" id="gift-detail-mask">
-  <div class="edit-modal" style="width:min(1200px,92vw);max-height:85vh;display:flex;flex-direction:column;">
-    <div class="edit-modal-header">
-      <h2>會員贈禮細單</h2>
-      <button class="edit-modal-close" onclick="closeGiftDetail()">×</button>
-    </div>
-    <div style="padding:20px 24px;border-bottom:1px solid #f0f0f0;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;margin-bottom:16px;">
-        <div class="filter-item">
-          <label>交易對象帳號</label>
-          <input type="text" placeholder="請輸入交易對象帳號">
-        </div>
-        <div class="filter-item">
-          <label>交易對象暱稱</label>
-          <input type="text" placeholder="請輸入交易對象暱稱">
-        </div>
-      </div>
-      <div class="btn-row" style="margin:0;">
-        <button class="btn-primary">搜尋</button>
-        <button class="btn-default">重置</button>
-      </div>
-    </div>
-    <div style="overflow-y:auto;flex:1;padding:0 24px 24px;">
-      <table class="admin-table" style="margin-top:16px;">
-        <thead>
-          <tr>
-            <th>交易對象帳號</th>
-            <th>交易對象暱稱</th>
-            <th>贈禮總金額</th>
-            <th>收禮總額</th>
-            <th>更新時間</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>BHF0425</td>
-            <td>野格冬槐</td>
-            <td>20,000</td>
-            <td>0</td>
-            <td>2025-09-24 16:44:56</td>
-          </tr>
-          <tr style="background:#fafafa;">
-            <td>AAA5488</td>
-            <td>好天氣老鼠</td>
-            <td>20,000</td>
-            <td>0</td>
-            <td>2025-09-24 16:44:56</td>
-          </tr>
-          <tr>
-            <td>BHF0425</td>
-            <td>野格冬槐</td>
-            <td>0</td>
-            <td>20,000</td>
-            <td>2025-09-24 16:44:56</td>
-          </tr>
-          <tr style="background:#fafafa;">
-            <td>AAA5489</td>
-            <td>戴靖老鼠</td>
-            <td>0</td>
-            <td>20,000</td>
-            <td>2025-09-24 16:44:56</td>
-          </tr>
-          <tr>
-            <td>AAA5489</td>
-            <td>戴靖老鼠</td>
-            <td>0</td>
-            <td>40,000</td>
-            <td>2025-09-24 16:44:56</td>
-          </tr>
-          <tr style="background:#fafafa;">
-            <td>AAA5489</td>
-            <td>戴靖老鼠</td>
-            <td>0</td>
-            <td>20,000</td>
-            <td>2025-09-24 16:44:56</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
 <script>
-function openGiftDetail() { document.getElementById('gift-detail-mask').classList.add('open'); }
-function closeGiftDetail() { document.getElementById('gift-detail-mask').classList.remove('open'); }
-
 function switchTab(id) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
