@@ -558,6 +558,7 @@
 <nav class="tab-nav">
   <button onclick="switchTab('roles')">角色關係圖</button>
   <button class="active" onclick="switchTab('liff')">LIFF 版</button>
+  <button onclick="switchTab('vip5')">LIFF（VIP5 流程）</button>
   <button onclick="switchTab('kiosk')">機台版</button>
   <button onclick="switchTab('outlet')">Outlet 管理列表</button>
   <button onclick="switchTab('report')">會員贈禮報表</button>
@@ -1146,6 +1147,331 @@
 
 </div><!-- end .all-screens -->
 </div><!-- end #tab-liff -->
+
+<div class="tab-panel" id="tab-vip5">
+<h1 class="page-title">GC — 贈禮功能（金發發）Mockup — VIP5 贈禮流程</h1>
+<p class="page-subtitle">VIP5（指定可收禮玩家）贈禮給全部玩家 · 手動輸入帳號與金額</p>
+
+<div class="all-screens">
+
+<!-- ══════════════ VIP5 畫面 1：贈禮主畫面 ══════════════ -->
+<div class="screen-block">
+  <div class="screen-label"><span style="background:#1677ff;color:#fff;font-size:10px;border-radius:3px;padding:1px 5px;margin-right:6px;vertical-align:middle;">VIP5</span>畫面 1 — 贈禮主畫面</div>
+  <div class="screen-row">
+    <div class="phone-wrap">
+      <div class="phone-shot">
+        <div class="game-bg"></div>
+        <div class="popup-overlay">
+          <div class="popup">
+            <div class="p-header">
+              <div class="headerBox">
+                <div class="active"><span>贈禮</span></div>
+                <div><span>贈禮紀錄</span></div>
+              </div>
+            </div>
+            <div class="popupBg">
+              <div class="p-body">
+                <div class="currentBox">
+                  <div class="userBox">
+                    <div class="userImg"><img src="https://i.pravatar.cc/60?img=5" alt=""></div>
+                    <div>
+                      <div class="userName">代理帳號X <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;margin-left:4px;">VIP5</span></div>
+                      <div class="pointBox"><span class="count">50,000 點</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="formBox">
+                  <div>
+                    <p class="itemName">收禮玩家 <span class="ann">1</span></p>
+                    <div class="select-btn">
+                      <span class="select-placeholder">輸入帳號或暱稱搜尋</span>
+                      <span class="select-arrow">›</span>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="itemName">贈送點數 <span class="ann">2</span></p>
+                    <div style="background:#FFFAF4;border:1.5px solid #DDCFBE;border-radius:10px;padding:10px 14px;font-size:14px;color:#aaa;">請輸入點數</div>
+                  </div>
+                </div>
+                <div class="btns">
+                  <div class="btn-confirm" style="background:linear-gradient(135deg,#ccc,#aaa);box-shadow:none;cursor:not-allowed;opacity:0.6;"><div class="text">確認</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <h3>畫面 1 說明</h3>
+      <div class="note-item">
+        <div class="note-num">1</div>
+        <div class="note-body"><strong>收禮玩家</strong><br>1. 點擊後彈出搜尋視窗（見畫面 2）。<br>2. 可搜尋全部玩家帳號，不限定 VIP5 清單。</div>
+      </div>
+      <div class="note-item">
+        <div class="note-num">2</div>
+        <div class="note-body"><strong>贈送點數</strong><br>1. 手動輸入，無公式計算。<br>2. 下限由 Outlet 棄分/贈禮設置控制（最低 100）。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ VIP5 畫面 2：搜尋收禮玩家 ══════════════ -->
+<div class="screen-block">
+  <div class="screen-label"><span style="background:#1677ff;color:#fff;font-size:10px;border-radius:3px;padding:1px 5px;margin-right:6px;vertical-align:middle;">VIP5</span>畫面 2 — 搜尋收禮玩家</div>
+  <div class="screen-row">
+    <div class="phone-wrap">
+      <div class="phone-shot">
+        <div class="game-bg"></div>
+        <div class="popup-overlay">
+          <div class="popup" style="position:relative;">
+            <div class="p-header">
+              <div class="headerBox">
+                <div class="active"><span>贈禮</span></div>
+                <div><span>贈禮紀錄</span></div>
+              </div>
+            </div>
+            <div class="popupBg">
+              <div class="p-body">
+                <div class="currentBox">
+                  <div class="userBox">
+                    <div class="userImg"><img src="https://i.pravatar.cc/60?img=5" alt=""></div>
+                    <div>
+                      <div class="userName">代理帳號X <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;margin-left:4px;">VIP5</span></div>
+                      <div class="pointBox"><span class="count">50,000 點</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="formBox">
+                  <div>
+                    <p class="itemName">收禮玩家</p>
+                    <div class="select-btn"><span class="select-placeholder">輸入帳號或暱稱搜尋</span><span class="select-arrow">›</span></div>
+                  </div>
+                  <div>
+                    <p class="itemName">贈送點數</p>
+                    <div style="background:#FFFAF4;border:1.5px solid #DDCFBE;border-radius:10px;padding:10px 14px;font-size:14px;color:#aaa;">請輸入點數</div>
+                  </div>
+                </div>
+                <div class="btns">
+                  <div class="btn-confirm" style="background:linear-gradient(135deg,#ccc,#aaa);box-shadow:none;cursor:not-allowed;opacity:0.6;"><div class="text">確認</div></div>
+                </div>
+              </div>
+            </div>
+            <!-- 玩家搜尋 overlay -->
+            <div class="player-modal">
+              <div class="player-modal-header">
+                <span class="player-modal-title">搜尋收禮玩家 <span class="ann">3</span></span>
+                <span class="player-modal-close">✕</span>
+              </div>
+              <div class="player-search-row">
+                <div class="player-search-wrap">
+                  <input type="text" placeholder="輸入帳號或暱稱" value="玩家">
+                  <span class="player-search-clear">✕</span>
+                </div>
+                <div class="player-search-btn">🔍</div>
+              </div>
+              <div class="player-modal-body">
+                <div class="recipient-item">
+                  <div class="r-avatar"><img src="https://i.pravatar.cc/34?img=10" alt=""></div>
+                  <div class="r-info">
+                    <div class="r-name">玩家A <span style="font-size:10px;background:#888;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP1</span></div>
+                  </div>
+                </div>
+                <div class="recipient-item">
+                  <div class="r-avatar"><img src="https://i.pravatar.cc/34?img=12" alt=""></div>
+                  <div class="r-info">
+                    <div class="r-name">玩家B <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP5</span></div>
+                  </div>
+                </div>
+                <div class="recipient-item">
+                  <div class="r-avatar"><img src="https://i.pravatar.cc/34?img=20" alt=""></div>
+                  <div class="r-info">
+                    <div class="r-name">玩家C <span style="font-size:10px;background:#fa8c16;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP6</span></div>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex;gap:10px;padding:12px 16px;border-top:1px solid #F0E6D8;">
+                <div class="btn-cancel" style="flex:1;"><div class="text">取消</div></div>
+                <div class="btn-confirm" style="flex:1;"><div class="text">確認</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <h3>畫面 2 說明</h3>
+      <div class="note-item">
+        <div class="note-num">3</div>
+        <div class="note-body"><strong>搜尋收禮玩家</strong><br>1. 可搜尋全部玩家（不限 VIP5 清單）。<br>2. 每筆結果顯示 VIP 等級 badge（VIP1 / VIP5 / VIP6）。<br>3. 點選後按「確認」帶回主畫面。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ VIP5 畫面 3：已選玩家 + 輸入金額 ══════════════ -->
+<div class="screen-block">
+  <div class="screen-label"><span style="background:#1677ff;color:#fff;font-size:10px;border-radius:3px;padding:1px 5px;margin-right:6px;vertical-align:middle;">VIP5</span>畫面 3 — 已選玩家 + 輸入金額</div>
+  <div class="screen-row">
+    <div class="phone-wrap">
+      <div class="phone-shot">
+        <div class="game-bg"></div>
+        <div class="popup-overlay">
+          <div class="popup">
+            <div class="p-header">
+              <div class="headerBox">
+                <div class="active"><span>贈禮</span></div>
+                <div><span>贈禮紀錄</span></div>
+              </div>
+            </div>
+            <div class="popupBg">
+              <div class="p-body">
+                <div class="currentBox">
+                  <div class="userBox">
+                    <div class="userImg"><img src="https://i.pravatar.cc/60?img=5" alt=""></div>
+                    <div>
+                      <div class="userName">代理帳號X <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;margin-left:4px;">VIP5</span></div>
+                      <div class="pointBox"><span class="count">50,000 點</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="formBox">
+                  <div>
+                    <p class="itemName">收禮玩家</p>
+                    <div class="select-btn" style="border-color:#FF9500;">
+                      <span style="font-size:14px;font-weight:700;color:#3A1A00;">玩家A</span>
+                      <span class="select-arrow">›</span>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="itemName">贈送點數 <span class="ann">4</span></p>
+                    <div style="background:#FFFAF4;border:1.5px solid #FF9500;border-radius:10px;padding:10px 14px;font-size:14px;font-weight:700;color:#3A1A00;">1,000</div>
+                  </div>
+                </div>
+                <div class="btns">
+                  <div class="btn-confirm"><div class="text">確認</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <h3>畫面 3 說明</h3>
+      <div class="note-item">
+        <div class="note-num">4</div>
+        <div class="note-body"><strong>贈送點數（手動輸入）</strong><br>1. VIP5 自行輸入贈禮金額，無公式限制。<br>2. 不可超過目前餘額；下限由 Outlet 設定。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ VIP5 畫面 4：確認贈禮 ══════════════ -->
+<div class="screen-block">
+  <div class="screen-label"><span style="background:#1677ff;color:#fff;font-size:10px;border-radius:3px;padding:1px 5px;margin-right:6px;vertical-align:middle;">VIP5</span>畫面 4 — 確認贈禮</div>
+  <div class="screen-row">
+    <div class="phone-wrap">
+      <div class="phone-shot">
+        <div class="game-bg"></div>
+        <div class="popup-overlay">
+          <div class="popup">
+            <div class="p-header">
+              <div class="headerBox">
+                <div class="active"><span>贈禮</span></div>
+                <div><span>贈禮紀錄</span></div>
+              </div>
+            </div>
+            <div class="popupBg">
+              <div class="p-body">
+                <div class="confirm-card">
+                  <div class="r-avatar" style="width:48px;height:48px;border-radius:50%;overflow:hidden;border:2px solid #FF8C00;flex-shrink:0;">
+                    <img src="https://i.pravatar.cc/48?img=10" style="width:100%;height:100%;object-fit:cover;" alt="">
+                  </div>
+                  <div>
+                    <div class="c-label">收禮玩家</div>
+                    <div class="c-name">玩家A</div>
+                  </div>
+                </div>
+                <div class="confirm-amount">
+                  <div class="label">贈送金額</div>
+                  <div style="display:flex;align-items:baseline;justify-content:center;gap:4px;">
+                    <div class="amount">1,000</div>
+                    <div class="unit" style="margin-top:0;">點</div>
+                  </div>
+                </div>
+                <div class="giftInfoBox" style="margin-bottom:16px;">
+                  <ul>
+                    <li><div class="text">贈禮後餘額</div><div class="count" style="color:#1976D2;">49,000 點</div></li>
+                  </ul>
+                </div>
+                <div class="btns">
+                  <div class="btn-cancel"><div class="text">取消</div></div>
+                  <div class="btn-confirm"><div class="text">確認贈禮</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="close-footer"><div class="btn-close"><span class="icon-close"></span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <h3>畫面 4 說明</h3>
+      <div class="note-item">
+        <div class="note-num" style="background:#FF8C00;">!</div>
+        <div class="note-body"><strong>確認贈禮後</strong><br>點數直接入帳到收禮玩家餘額，寫入<strong>開分紀錄</strong>（收禮方為 VIP1/VIP5）。若收禮方為 VIP6，則不寫入任何紀錄。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ VIP5 畫面 5：贈禮成功 ══════════════ -->
+<div class="screen-block">
+  <div class="screen-label"><span style="background:#1677ff;color:#fff;font-size:10px;border-radius:3px;padding:1px 5px;margin-right:6px;vertical-align:middle;">VIP5</span>畫面 5 — 贈禮成功</div>
+  <div class="screen-row">
+    <div class="phone-wrap">
+      <div class="phone-shot">
+        <div class="game-bg"></div>
+        <div class="popup-overlay">
+          <div class="popup">
+            <div class="p-header">
+              <div class="headerBox">
+                <div class="active"><span>贈禮</span></div>
+                <div><span>贈禮紀錄</span></div>
+              </div>
+            </div>
+            <div class="popupBg">
+              <div class="p-body" style="text-align:center;padding:24px 16px;">
+                <div style="font-size:40px;margin-bottom:8px;">🎁</div>
+                <div style="font-size:16px;font-weight:700;color:#3A1A00;margin-bottom:4px;">贈禮成功</div>
+                <div style="font-size:13px;color:#888;margin-bottom:16px;">已贈送 <strong>1,000 點</strong> 給 <strong>玩家A</strong></div>
+                <div class="giftInfoBox">
+                  <ul>
+                    <li><div class="text">目前餘額</div><div class="count">49,000</div></li>
+                  </ul>
+                </div>
+                <div class="btns" style="margin-top:16px;">
+                  <div class="btn-confirm"><div class="text">完成</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <h3>畫面 5 說明</h3>
+      <div class="note-item">
+        <div class="note-num" style="background:#52c41a;">✓</div>
+        <div class="note-body"><strong>贈禮成功畫面</strong><br>顯示收禮玩家名稱與贈送金額，按「完成」關閉回主畫面。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .all-screens -->
+</div><!-- end #tab-vip5 -->
 
 <div class="tab-panel" id="tab-kiosk">
 <h1 class="page-title">GC — 贈禮功能（金發發）Mockup — 機台版</h1>
