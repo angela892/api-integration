@@ -303,6 +303,83 @@ npx playwright test openspec/changes/<change-name>/take-screenshot.js --headed
 - **元件庫** → 在 `PIECE_TEMPLATES` 加模板，`DELETABLE_SELECTORS` 加選取器，palette HTML 加按鈕
   - ⚠️ `PIECE_TEMPLATES` 的模板**不要加 `pointer-events:none`**，否則新增元件的文字無法雙擊編輯
 
+---
+
+## 後台 SRS Mockup 標注規範
+
+> 適用於後台管理頁面（非 GC 前台）的 HTML mockup，例如 Outlet管理列表、報表頁等。
+
+### 標注元件
+
+#### NEW 欄位 / 篩選（紅框 + NEW 徽章）
+```html
+<!-- filter 篩選項 -->
+<div class="filter-item" style="border:2px solid #e53935;border-radius:6px;padding:8px 10px;">
+  <label>欄位名稱 <span style="color:#e53935;font-size:11px;font-weight:700;">NEW</span></label>
+  <input ...>
+</div>
+
+<!-- 表格欄位標題 -->
+<th style="border:2px solid #e53935;">欄位名稱 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">NEW</span></th>
+
+<!-- 編輯表單 — 一個框包多個欄位 -->
+<div style="border:2px solid #e53935;border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:18px;">
+  <div style="font-size:11px;font-weight:700;color:#e53935;margin-bottom:-6px;">NEW</div>
+  <!-- 欄位們 -->
+</div>
+```
+
+#### 注意標記（紅框 + 注意徽章）
+```html
+<th style="border:2px solid #e53935;">欄位名稱 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">注意</span></th>
+```
+
+#### 功能說明框（紅色，給 PM / 跨站說明）
+```html
+<div style="background:#fff0f0;border:1px solid #e53935;border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#c0392b;">
+  📌 <strong>功能說明：</strong>說明文字。
+</div>
+```
+
+#### 工程師注意框（黃色，給 RD 的實作提醒）
+```html
+<div style="background:#fffbe6;border:1px solid #ffe58f;border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#614700;">
+  ⚠️ <strong>工程師注意：</strong>提醒文字。
+</div>
+```
+
+#### 欄位說明（藍色左邊框）
+```html
+<div style="border-left:3px solid #1677ff;padding-left:12px;">
+  <div style="font-weight:700;color:#1677ff;margin-bottom:6px;">欄位名稱</div>
+  <ul style="margin:0;padding-left:16px;line-height:2;font-size:13px;color:#444;">
+    <li>說明文字，粗體關鍵字用 <strong style="color:#1677ff;">藍字</strong>。</li>
+  </ul>
+</div>
+```
+
+---
+
+### 版面原則
+
+| 情境 | 做法 |
+|------|------|
+| 不影響主內容的浮動面板 | `position:fixed; right:0` 固定在畫面右側，`admin-wrap` 加 `margin-right:390px` 讓主內容不被蓋住 |
+| 點擊後展開的細節（如編輯表單、細單） | **不用 modal**，直接在列表下方顯示靜態區塊 |
+| 後台 tab 切換時寬度管理 | `switchTab()` 切到後台 tab 時 `body.style.minWidth = '0'`；切回 LIFF / 機台 tab 時恢復 `'3200px'` |
+| 說明框順序 | 功能說明（紅）在上，工程師注意（黃）在下 |
+
+---
+
+### 文字規範
+
+- 每句說明結尾加 `。`
+- 粗體關鍵字用藍字 `<strong style="color:#1677ff;">`
+- NEW / 注意 徽章用紅底白字
+- 不在資料列（tbody td）使用紅字或藍字，避免誤解為狀態標記
+
+---
+
 ### Step 6 — 存檔與上傳
 
 完成後提示使用者：
@@ -315,3 +392,91 @@ npx playwright test openspec/changes/<change-name>/take-screenshot.js --headed
 ```
 
 詢問是否要上傳 GitHub，若要則執行 git-sync skill（push）。
+
+---
+
+## KFF GC Mockup 規範（LIFF / 機台版）
+
+> 適用於金發發（KFF）前台 GC 畫面的 HTML mockup，例如 LIFF 贈禮流程、機台版贈禮流程等。
+
+### 色彩系統
+
+| 用途 | 色碼 |
+|------|------|
+| 主色（金橙） | `#FF8C00` |
+| 背景（米白） | `#FFF8F0` |
+| 邊框（淺棕） | `#DDCFBE` |
+| 深棕文字 | `#3A1A00` |
+| 中灰文字 | `#888` |
+
+### VIP Badge 樣式
+
+```html
+<!-- VIP1（一般玩家）灰色 -->
+<span style="font-size:10px;background:#888;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP1</span>
+
+<!-- VIP5（指定可收禮玩家）藍色 -->
+<span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP5</span>
+
+<!-- VIP6（公司帳號）橘色 -->
+<span style="font-size:10px;background:#fa8c16;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP6</span>
+```
+
+### Tab 導覽列（多 tab 畫面）
+
+Tab nav 使用 `position: fixed` 固定在頂部，body 加 `padding-top: 80px`。切換 tab 時同步調整 `body.style.minWidth`。
+
+```css
+.tab-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; gap: 4px; flex-wrap: wrap;
+  background: #fff; border-bottom: 2px solid #DDCFBE;
+  padding: 0 24px; box-sizing: border-box;
+}
+```
+
+```javascript
+function switchTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+  // 後台 / 角色圖 / 名片 等靜態頁用 '0'；LIFF / 機台 tab 用 '3200px' 橫向並排多個手機
+  const isAdmin = /* 列出後台 tab id */ true;
+  document.body.style.minWidth = isAdmin ? '0' : '3200px';
+}
+```
+
+- LIFF / 機台 tab：`min-width: 3200px`（橫向並排多個手機畫面）
+- 後台 / 角色關係圖 / 名片 tab：`min-width: 0`
+
+### 標注系統（ann + note-num）
+
+標注圓圈放在 UI 元素附近，右側 notes 欄對應說明。ann 數字從 1 開始，每個 tab 獨立編號。
+
+```html
+<!-- UI 上的紅色圓圈標注（行內） -->
+<span class="ann">1</span>
+
+<!-- UI 上的紅色圓圈標注（絕對定位疊在按鈕上） -->
+<span style="position:relative;display:inline-block;">
+  按鈕文字
+  <span class="ann" style="position:absolute;top:-26px;right:-18px;">1</span>
+</span>
+
+<!-- 右側說明欄 -->
+<div class="note-item">
+  <div class="note-num">1</div>
+  <div class="note-body"><strong>標題</strong><br>說明文字。</div>
+</div>
+```
+
+### VIPx 文字自動藍字粗體
+
+在 `</script>` 前加入，讓說明文字中所有 VIPx 自動套用藍字粗體：
+
+```javascript
+document.querySelectorAll('.note-body, .notes li, .admin-wrap li, .admin-wrap p').forEach(el => {
+  el.innerHTML = el.innerHTML.replace(/VIP(\d)/g, '<strong style="color:#1677ff;">VIP$1</strong>');
+});
+```
