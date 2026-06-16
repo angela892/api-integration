@@ -2020,7 +2020,7 @@
     📌 <strong>功能說明：</strong>原有功能，VIP5 贈禮給玩家成功後，寫入一筆開分紀錄，開分方式標記為「贈禮」，機台 ID 歸屬為 Outlet 指定贈禮設定中的「贈禮報表機台」。
   </div>
   <div style="background:#fffbe6;border:1px solid #ffe58f;border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#614700;">
-    ⚠️ <strong>工程師注意：</strong>開分方式需新增「贈禮」選項（NEW）。VIP6 ↔ VIP5 交易不寫入此頁。彙總列需額外加上「贈禮開分」欄位。
+    ⚠️ <strong>工程師注意：</strong>VIP5 贈禮成功後，開分方式歸類為「手動開分」，不需新增類型。機台 ID 歸屬為贈禮報表機台。VIP6 ↔ VIP5 交易不寫入此頁。
   </div>
   <div class="admin-card">
     <div class="admin-title">開分紀錄查詢</div>
@@ -2046,8 +2046,8 @@
         <select><option value="">請選擇</option></select>
       </div>
       <div class="filter-item">
-        <label>開分方式 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">NEW</span></label>
-        <select><option value="">請選擇開分方式</option><option>贈禮</option></select>
+        <label>開分方式</label>
+        <select><option value="">請選擇開分方式</option></select>
       </div>
       <div class="filter-item">
         <label>帳號類型</label>
@@ -2076,7 +2076,6 @@
           <th>吸鈔開分</th>
           <th>手動開分</th>
           <th>活動分數</th>
-          <th style="border:2px solid #e53935;">贈禮開分 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">NEW</span></th>
         </tr>
       </thead>
       <tbody>
@@ -2085,7 +2084,6 @@
           <td>935,100.00</td>
           <td>11,100.00</td>
           <td>924,000.00</td>
-          <td>0.00</td>
           <td>0.00</td>
         </tr>
       </tbody>
@@ -2098,7 +2096,7 @@
           <th style="border:2px solid #e53935;">機台名稱 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">注意</span></th>
           <th>會員帳號</th>
           <th>帳號類型</th>
-          <th style="border:2px solid #e53935;">開分方式 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">NEW</span></th>
+          <th>開分方式</th>
           <th>交易時間</th>
           <th>交易前餘額</th>
           <th>儲值金額</th>
@@ -2148,7 +2146,7 @@
           <td>贈禮報表機台</td>
           <td>UxX8775</td>
           <td>玩家帳號</td>
-          <td style="color:#e53935;font-weight:600;">贈禮</td>
+          <td>手動開分</td>
           <td>2026-06-02 15:10:13</td>
           <td>0.00</td>
           <td>1,200.00</td>
