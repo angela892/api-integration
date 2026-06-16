@@ -623,7 +623,7 @@
         </div>
         <div style="font-size:11px;color:#fa8c16;margin-bottom:8px;">公司帳號</div>
         <ul style="font-size:12px;color:#444;padding-left:14px;margin:0;line-height:2;">
-          <li>只能與 VIP5 互動</li>
+          <li>可與 VIP5 / VIP6 互動</li>
           <li>金額：手動輸入</li>
           <li>不寫入棄分 / 開分紀錄</li>
           <li>寫入<strong>贈禮紀錄</strong></li>
@@ -678,7 +678,7 @@
         </tr>
         <tr style="background:#fafafa;">
           <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP6</td>
-          <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP5 only</td>
+          <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP5 / VIP6</td>
           <td style="padding:7px 10px;border:1px solid #e8e8e8;">手動輸入</td>
           <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#bbb;">—</td>
           <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#bbb;">—</td>
@@ -1616,9 +1616,9 @@
 
 <div class="tab-panel" id="tab-vip6">
 <h1 class="page-title">GC — 贈禮功能（金發發）Mockup</h1>
-<p class="page-subtitle">KFF Outlet 贈禮功能 · VIP6 流程 · 僅限與 VIP5 互動</p>
+<p class="page-subtitle">KFF Outlet 贈禮功能 · VIP6 流程 · 可與 VIP5 / VIP6 互動</p>
 <div style="margin:0 0 20px;padding:12px 16px;background:#fff7e6;border:1.5px solid #ffc53d;border-radius:8px;font-size:13px;color:#7c5200;line-height:1.8;">
-  📌 <strong>功能說明：</strong>VIP6 畫面流程與 VIP1 相同，唯一差異為 VIP6 的贈送點數可自行輸入（無公式計算限制）。
+  📌 <strong>功能說明：</strong>VIP6 畫面流程與 VIP1 相同，唯一差異為 VIP6 的贈送點數可自行輸入（無公式計算限制）。VIP6 可贈禮給 VIP5 或 VIP6，規則相同：僅寫贈禮紀錄，不寫棄分 / 開分。
 </div>
 
 <div class="all-screens">
@@ -1683,7 +1683,7 @@
       <h3>畫面 1 說明</h3>
       <div class="note-item">
         <div class="note-num">1</div>
-        <div class="note-body"><strong>收禮玩家選擇按鈕</strong><br>點擊後跳出玩家選擇視窗（見畫面 2）。僅顯示 VIP5 玩家清單。</div>
+        <div class="note-body"><strong>收禮玩家選擇按鈕</strong><br>點擊後跳出玩家選擇視窗（見畫面 2）。顯示 VIP5 / VIP6 玩家清單。</div>
       </div>
       <div class="note-item">
         <div class="note-num">2</div>
@@ -1754,7 +1754,7 @@
               </div>
               <div class="player-search-row">
                 <div class="player-search-wrap">
-                  <input type="text" placeholder="搜尋 VIP5 玩家" value="">
+                  <input type="text" placeholder="搜尋 VIP5 / VIP6 玩家" value="">
                   <span class="player-search-clear">✕</span>
                 </div>
                 <div class="player-search-btn">🔍</div>
@@ -1779,6 +1779,12 @@
                     <div class="r-name">玩家C <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP5</span></div>
                   </div>
                 </div>
+                <div class="recipient-item">
+                  <div class="r-avatar"><img src="https://i.pravatar.cc/34?img=45" alt=""></div>
+                  <div class="r-info">
+                    <div class="r-name">公司帳號Y <span style="font-size:10px;background:#fa8c16;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP6</span></div>
+                  </div>
+                </div>
               </div>
               <div style="display:flex;gap:10px;padding:12px 16px;border-top:1px solid #F0E6D8;">
                 <div class="btn-cancel" style="flex:1;"><div class="text">取消</div></div>
@@ -1794,7 +1800,7 @@
       <h3>玩家選擇視窗 說明</h3>
       <div class="note-item">
         <div class="note-num">2</div>
-        <div class="note-body"><strong>玩家選擇視窗</strong><br>1. 點擊「請選擇收禮玩家」按鈕後彈出玩家列表。<br>2. 僅列出 VIP5 玩家（Outlet 管理列表 &gt; 指定贈禮設定 &gt; 指定可收禮玩家）。<br>3. 點選玩家後按「確認」帶回主畫面，按「取消」關閉視窗不變更。</div>
+        <div class="note-body"><strong>玩家選擇視窗</strong><br>1. 點擊「請選擇收禮玩家」按鈕後彈出玩家列表。<br>2. 列出 VIP5 及 VIP6 玩家（Outlet 管理列表 &gt; 指定贈禮設定）。<br>3. 點選玩家後按「確認」帶回主畫面，按「取消」關閉視窗不變更。</div>
       </div>
     </div>
   </div>
