@@ -9,7 +9,7 @@
   body {
     background: #ffffff;
     font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-    padding: 32px 24px;
+    padding: 80px 24px 32px;
     min-width: 3200px;
   }
 
@@ -489,10 +489,12 @@
 
   /* ── tab navigation ── */
   .tab-nav {
-    position: sticky; top: 0; z-index: 100;
-    display: flex; gap: 4px;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; gap: 4px; flex-wrap: wrap;
     background: #fff; border-bottom: 2px solid #DDCFBE;
-    padding: 0 24px; margin: -32px -24px 28px;
+    padding: 0 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    box-sizing: border-box;
   }
   .tab-nav button {
     padding: 12px 22px; font-size: 14px; font-weight: 700;
