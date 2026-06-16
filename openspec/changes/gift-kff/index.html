@@ -3278,6 +3278,11 @@ function switchTab(id) {
   document.body.style.minWidth = isAdmin ? '0' : '3200px';
   document.getElementById('gift-panel').style.display = (id === 'outlet') ? 'block' : 'none';
 }
+
+// VIPx → blue bold in all note/description text
+document.querySelectorAll('.note-body, .notes li, .admin-wrap li, .admin-wrap p').forEach(el => {
+  el.innerHTML = el.innerHTML.replace(/VIP(\d)/g, '<strong style="color:#1677ff;">VIP$1</strong>');
+});
 </script>
 
 </body>
