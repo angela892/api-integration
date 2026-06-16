@@ -561,6 +561,7 @@
   <button onclick="switchTab('outlet')">Outlet 管理列表</button>
   <button onclick="switchTab('report')">會員贈禮報表</button>
   <button onclick="switchTab('discard')">棄分紀錄查詢</button>
+  <button onclick="switchTab('open')">開分紀錄查詢</button>
 </nav>
 
 <div class="tab-panel active" id="tab-liff">
@@ -1890,7 +1891,7 @@
 <div class="tab-panel" id="tab-discard">
 <div class="admin-wrap" style="margin-right:0;">
   <div style="background:#fff0f0;border:1px solid #e53935;border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#c0392b;">
-    📌 <strong>功能說明：</strong>原有功能，贈禮發生時棄分紀錄需寫入「贈禮報表機台」的機台 ID，讓報表可正確歸類。
+    📌 <strong>功能說明：</strong>原有功能。VIP1 贈禮給 VIP5 成功後，寫入一筆棄分紀錄，機台 ID 歸屬為 Outlet 指定贈禮設定中的「贈禮報表機台」。VIP6 ↔ VIP5 交易不寫入此頁。
   </div>
   <div class="admin-card">
     <div class="admin-title">棄分紀錄查詢</div>
@@ -2013,6 +2014,159 @@
 </div>
 </div><!-- end #tab-discard -->
 
+<div class="tab-panel" id="tab-open">
+<div class="admin-wrap" style="margin-right:0;">
+  <div style="background:#fff0f0;border:1px solid #e53935;border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#c0392b;">
+    📌 <strong>功能說明：</strong>原有功能，VIP5 贈禮給玩家成功後，寫入一筆開分紀錄，開分方式標記為「贈禮」，機台 ID 歸屬為 Outlet 指定贈禮設定中的「贈禮報表機台」。
+  </div>
+  <div style="background:#fffbe6;border:1px solid #ffe58f;border-radius:6px;padding:10px 14px;margin-bottom:16px;font-size:13px;color:#614700;">
+    ⚠️ <strong>工程師注意：</strong>開分方式需新增「贈禮」選項（NEW）。VIP6 ↔ VIP5 交易不寫入此頁。彙總列需額外加上「贈禮開分」欄位。
+  </div>
+  <div class="admin-card">
+    <div class="admin-title">開分紀錄查詢</div>
+    <div class="filter-grid">
+      <div class="filter-item">
+        <label>會員帳號</label>
+        <input type="text" placeholder="請輸入會員帳號">
+      </div>
+      <div class="filter-item">
+        <label>交易時間</label>
+        <div style="display:flex;align-items:center;gap:4px;">
+          <input type="text" value="2026-06-01 00:00:00" style="flex:1;min-width:0;font-size:12px;">
+          <span style="color:#999;flex-shrink:0;">→</span>
+          <input type="text" value="2026-06-30 23:59:59" style="flex:1;min-width:0;font-size:12px;">
+        </div>
+      </div>
+      <div class="filter-item">
+        <label>網咖名稱</label>
+        <select><option value="">請選擇Outlet ID</option></select>
+      </div>
+      <div class="filter-item">
+        <label>機台名稱</label>
+        <select><option value="">請選擇</option></select>
+      </div>
+      <div class="filter-item">
+        <label>開分方式 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">NEW</span></label>
+        <select><option value="">請選擇開分方式</option><option>贈禮</option></select>
+      </div>
+      <div class="filter-item">
+        <label>帳號類型</label>
+        <select><option value="">請選擇帳號類型</option></select>
+      </div>
+      <div class="filter-item">
+        <label>操作IP</label>
+        <input type="text" placeholder="請輸入操作IP">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-primary">搜尋</button>
+      <button class="btn-default">重置</button>
+    </div>
+  </div>
+
+  <div class="admin-card" style="overflow-x:auto;">
+    <div style="margin-bottom:16px;">
+      <button class="btn-default" style="background:#1677ff;color:#fff;border-color:#1677ff;">匯出 csv 檔</button>
+    </div>
+    <table class="admin-table" style="margin-bottom:0;">
+      <thead>
+        <tr>
+          <th>開分總額</th>
+          <th>點數總額</th>
+          <th>吸鈔開分</th>
+          <th>手動開分</th>
+          <th>活動分數</th>
+          <th style="border:2px solid #e53935;">贈禮開分 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">NEW</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>935,100.00</td>
+          <td>935,100.00</td>
+          <td>11,100.00</td>
+          <td>924,000.00</td>
+          <td>0.00</td>
+          <td>0.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="admin-table" style="margin-top:16px;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>網咖名稱</th>
+          <th style="border:2px solid #e53935;">機台名稱 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">注意</span></th>
+          <th>會員帳號</th>
+          <th>帳號類型</th>
+          <th style="border:2px solid #e53935;">開分方式 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">NEW</span></th>
+          <th>交易時間</th>
+          <th>交易前餘額</th>
+          <th>儲值金額</th>
+          <th>獲得點數</th>
+          <th>交易後餘額</th>
+          <th>完成時間</th>
+          <th>是否首儲</th>
+          <th>操作IP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1505</td>
+          <td>D場TEST</td>
+          <td>028線上</td>
+          <td>aRG4261</td>
+          <td>玩家帳號</td>
+          <td>手動開分</td>
+          <td>2026-06-11 21:06:29</td>
+          <td>0.00</td>
+          <td>100,000.00</td>
+          <td>100,000.00</td>
+          <td>100,000.00</td>
+          <td>2026-06-11 21:06:29</td>
+          <td>是</td>
+          <td>220.135.43.14</td>
+        </tr>
+        <tr style="background:#fafafa;">
+          <td>1504</td>
+          <td>D場TEST</td>
+          <td>028線上</td>
+          <td>nMC7274</td>
+          <td>玩家帳號</td>
+          <td>手動開分</td>
+          <td>2026-06-11 21:06:07</td>
+          <td>0.00</td>
+          <td>100,000.00</td>
+          <td>100,000.00</td>
+          <td>100,000.00</td>
+          <td>2026-06-11 21:06:07</td>
+          <td>是</td>
+          <td>220.135.43.14</td>
+        </tr>
+        <tr>
+          <td>1503</td>
+          <td>一二三</td>
+          <td>贈禮報表機台</td>
+          <td>UxX8775</td>
+          <td>玩家帳號</td>
+          <td style="color:#e53935;font-weight:600;">贈禮</td>
+          <td>2026-06-02 15:10:13</td>
+          <td>0.00</td>
+          <td>1,200.00</td>
+          <td>1,200.00</td>
+          <td>1,200.00</td>
+          <td>2026-06-02 15:10:13</td>
+          <td>否</td>
+          <td>114.34.170.104</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="background:#fffbe6;border:1px solid #ffe58f;border-radius:6px;padding:10px 14px;margin-top:4px;font-size:13px;color:#614700;">
+    ⚠️ <strong>說明：</strong>VIP5 贈禮給玩家成功後，收禮玩家獲得一筆開分紀錄，機台 ID 歸屬為 Outlet 指定贈禮設定中的「贈禮報表機台」。VIP6 ↔ VIP5 交易不寫入此頁。
+  </div>
+</div>
+</div><!-- end #tab-open -->
+
 <!-- 指定贈禮設定固定右側面板 -->
 <div id="gift-panel" style="display:none;position:fixed;right:0;top:48px;bottom:0;width:380px;overflow-y:auto;background:#f0f2f5;border-left:2px solid #e53935;padding:16px;z-index:200;box-shadow:-4px 0 12px rgba(0,0,0,0.12);">
   <div class="admin-card">
@@ -2023,7 +2177,7 @@
         <input type="text" value="xxxx機台">
       </div>
       <div class="edit-field">
-        <label>指定可收禮玩家</label>
+        <label>指定可收禮玩家 <span style="font-size:10px;background:#333;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">VIP5</span></label>
         <div style="display:flex;flex-direction:column;gap:8px;">
           <div style="display:flex;gap:6px;align-items:center;">
             <input type="text" value="a代理" style="flex:1;">
@@ -2035,6 +2189,16 @@
           </div>
           <div style="display:flex;gap:6px;align-items:center;">
             <input type="text" value="C代理" style="flex:1;">
+            <button class="score-del-btn" style="border-radius:4px;">✕</button>
+          </div>
+          <div><button class="score-add-btn">+ 新增</button></div>
+        </div>
+      </div>
+      <div class="edit-field" style="border:2px solid #e53935;border-radius:6px;padding:10px;">
+        <label style="display:flex;align-items:center;gap:6px;">指定公司帳號 <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;">NEW</span> <span style="font-size:10px;background:#333;color:#fff;border-radius:3px;padding:1px 4px;vertical-align:middle;">VIP6</span></label>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:6px;align-items:center;">
+            <input type="text" value="公司帳號001" style="flex:1;">
             <button class="score-del-btn" style="border-radius:4px;">✕</button>
           </div>
           <div><button class="score-add-btn">+ 新增</button></div>
@@ -2058,11 +2222,22 @@
         </ul>
       </div>
       <div style="border-left:3px solid #1677ff;padding-left:12px;">
-        <div style="font-weight:700;color:#1677ff;margin-bottom:4px;">指定可收禮玩家</div>
+        <div style="font-weight:700;color:#1677ff;margin-bottom:4px;">指定可收禮玩家（VIP5）</div>
         <ul style="margin:0;padding-left:16px;line-height:2;font-size:13px;color:#444;">
           <li>設定該 Outlet 下哪些玩家帳號可以收禮。</li>
           <li>LIFF 與機台的收禮玩家清單皆來自此設定。</li>
+          <li>加入此清單 → 玩家帳號壓為 VIP5；移除 → 回 VIP1。</li>
+          <li>VIP5 可收禮，也可贈禮給全部玩家（手動輸入帳號）。</li>
           <li>可新增多筆；未設定時玩家選單為空。</li>
+        </ul>
+      </div>
+      <div style="border-left:3px solid #e53935;padding-left:12px;">
+        <div style="font-weight:700;color:#e53935;margin-bottom:4px;">指定公司帳號（VIP6）<span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;margin-left:4px;">NEW</span></div>
+        <ul style="margin:0;padding-left:16px;line-height:2;font-size:13px;color:#444;">
+          <li>後台人員手動指定公司使用帳號。</li>
+          <li>加入此清單 → 玩家帳號壓為 VIP6；移除 → 回 VIP1。</li>
+          <li>VIP6 只能與 VIP5 互動（互相贈禮）。</li>
+          <li>VIP6 ↔ VIP5 交易不寫入棄分 / 開分紀錄，僅寫入贈禮紀錄。</li>
         </ul>
       </div>
     </div>
@@ -2075,7 +2250,7 @@ function switchTab(id) {
   document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   event.target.classList.add('active');
-  const isAdmin = (id === 'outlet' || id === 'report' || id === 'discard');
+  const isAdmin = (id === 'outlet' || id === 'report' || id === 'discard' || id === 'open');
   document.body.style.minWidth = isAdmin ? '0' : '3200px';
   document.getElementById('gift-panel').style.display = (id === 'outlet') ? 'block' : 'none';
 }
