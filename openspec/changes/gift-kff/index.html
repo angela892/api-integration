@@ -2227,54 +2227,31 @@
         </div>
       </div>
       <div class="m-status-bar">✅ 🔊 18+ ✦ ✦ 45+ ✦ 全部網咖公告 ✦ 只有G13網咖看得到</div>
-      <!-- overlay: 贈禮 popup + 選玩家底部彈窗 -->
+      <!-- overlay: 選玩家 popup -->
       <div class="m-overlay">
-        <div class="popup" style="width:320px;position:relative;">
-          <div class="p-header" style="visibility:hidden;"><div class="headerBox">
-            <div class="active"><span>贈禮</span></div>
+        <div class="popup" style="width:320px;">
+          <div class="p-header"><div class="headerBox">
+            <div class="active"><span>選擇收禮玩家 <span class="ann">3</span></span></div>
           </div></div>
           <div class="popupBg">
-            <div class="p-body" style="padding-bottom:0;">
-              <div class="currentBox"><div class="userBox">
-                <div class="userImg"><img src="https://i.pravatar.cc/60?img=3" alt=""></div>
-                <div><div class="userName">阿難得沒午休r</div><div class="pointBox"><span class="count">13,580 點</span></div></div>
-              </div></div>
-              <div class="giftInfoBox"><ul>
-                <li><div class="text">可送禮數量</div><div class="count">13,000</div></li>
-                <li><div class="text">剩餘點數</div><div class="count">580</div></li>
-              </ul></div>
-              <div class="formBox" style="margin-bottom:0;">
-                <div>
-                  <p class="itemName">收禮玩家</p>
-                  <div class="select-btn"><span class="select-placeholder">請選擇收禮玩家</span><span class="select-arrow">›</span></div>
-                </div>
+            <div class="player-modal-body" style="max-height:220px;">
+              <div class="recipient-item selected">
+                <div class="r-avatar"><img src="https://i.pravatar.cc/34?img=12" alt=""></div>
+                <div class="r-info"><div class="r-name">玩家A <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP5</span></div></div>
+                <div class="r-check">✓</div>
+              </div>
+              <div class="recipient-item">
+                <div class="r-avatar"><img src="https://i.pravatar.cc/34?img=15" alt=""></div>
+                <div class="r-info"><div class="r-name">玩家B <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP5</span></div></div>
+              </div>
+              <div class="recipient-item">
+                <div class="r-avatar"><img src="https://i.pravatar.cc/34?img=22" alt=""></div>
+                <div class="r-info"><div class="r-name">玩家C <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP5</span></div></div>
               </div>
             </div>
-            <!-- 選玩家底部彈窗 -->
-            <div class="player-modal">
-              <div class="player-modal-header">
-                <span class="player-modal-title">選擇收禮玩家 <span class="ann">3</span></span>
-                <span class="player-modal-close">✕</span>
-              </div>
-              <div class="player-modal-body">
-                <div class="recipient-item selected">
-                  <div class="r-avatar"><img src="https://i.pravatar.cc/34?img=12" alt=""></div>
-                  <div class="r-info"><div class="r-name">玩家A <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP5</span></div></div>
-                  <div class="r-check">✓</div>
-                </div>
-                <div class="recipient-item">
-                  <div class="r-avatar"><img src="https://i.pravatar.cc/34?img=15" alt=""></div>
-                  <div class="r-info"><div class="r-name">玩家B <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP5</span></div></div>
-                </div>
-                <div class="recipient-item">
-                  <div class="r-avatar"><img src="https://i.pravatar.cc/34?img=22" alt=""></div>
-                  <div class="r-info"><div class="r-name">玩家C <span style="font-size:10px;background:#1677ff;color:#fff;border-radius:3px;padding:1px 5px;font-weight:700;vertical-align:middle;">VIP5</span></div></div>
-                </div>
-              </div>
-              <div style="display:flex;gap:8px;padding:10px 14px;">
-                <div class="btn-cancel" style="flex:1;"><div class="text">取消</div></div>
-                <div class="btn-confirm" style="flex:1;"><div class="text">確認</div></div>
-              </div>
+            <div style="display:flex;gap:8px;padding:10px 14px;border-top:1px solid #F0E8DC;">
+              <div class="btn-cancel" style="flex:1;"><div class="text">取消</div></div>
+              <div class="btn-confirm" style="flex:1;"><div class="text">確認</div></div>
             </div>
           </div>
         </div>
