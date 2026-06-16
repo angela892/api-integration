@@ -555,6 +555,117 @@
 </head>
 <body>
 
+<!-- ══════════════ 贈禮角色關係圖 ══════════════ -->
+<div style="background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:20px 24px;margin-bottom:12px;max-width:900px;">
+  <div style="font-size:15px;font-weight:700;color:#1a1a1a;margin-bottom:16px;">贈禮角色關係圖</div>
+
+  <!-- 三個角色橫排 -->
+  <div style="display:flex;align-items:stretch;margin-bottom:20px;">
+
+    <!-- VIP1 -->
+    <div style="flex:1;background:#fafafa;border:2px solid #d9d9d9;border-radius:8px 0 0 8px;padding:14px 16px;">
+      <div style="font-weight:700;font-size:13px;color:#595959;">VIP1</div>
+      <div style="font-size:11px;color:#aaa;margin-bottom:8px;">一般玩家（預設）</div>
+      <ul style="font-size:12px;color:#595959;padding-left:14px;margin:0;line-height:2;">
+        <li>只能贈禮給 VIP5</li>
+        <li>金額：公式計算</li>
+        <li>寫入：棄分紀錄</li>
+      </ul>
+    </div>
+
+    <!-- VIP1 ↔ VIP5 箭頭 -->
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:72px;background:#f5f5f5;border-top:2px solid #d9d9d9;border-bottom:2px solid #d9d9d9;gap:6px;padding:0 6px;">
+      <span style="font-size:11px;color:#888;white-space:nowrap;">→ 棄分紀錄</span>
+      <span style="font-size:11px;color:#888;white-space:nowrap;">開分紀錄 ←</span>
+    </div>
+
+    <!-- VIP5 -->
+    <div style="flex:1.3;background:#e6f7ff;border:2px solid #91caff;padding:14px 16px;">
+      <div style="font-weight:700;font-size:13px;color:#0958d9;margin-bottom:2px;">VIP5</div>
+      <div style="font-size:11px;color:#4096ff;margin-bottom:8px;">指定可收禮玩家</div>
+      <ul style="font-size:12px;color:#444;padding-left:14px;margin:0;line-height:2;">
+        <li>可收禮；可贈禮給<strong>全部玩家</strong>（手動輸入帳號）</li>
+        <li>金額：手動輸入</li>
+        <li>→ VIP1 / VIP5：寫入開分紀錄</li>
+        <li>→ VIP6：不寫棄分 / 開分紀錄</li>
+      </ul>
+    </div>
+
+    <!-- VIP5 ↔ VIP6 箭頭 -->
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:80px;background:#fff7e6;border-top:2px solid #ffc53d;border-bottom:2px solid #ffc53d;gap:4px;padding:0 6px;">
+      <span style="font-size:11px;color:#d46b08;white-space:nowrap;">⇄ 僅贈禮紀錄</span>
+      <span style="font-size:11px;color:#d46b08;white-space:nowrap;">不寫棄分/開分</span>
+    </div>
+
+    <!-- VIP6 -->
+    <div style="flex:1;background:#fff7e6;border:2px solid #ffc53d;border-radius:0 8px 8px 0;padding:14px 16px;">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+        <span style="font-weight:700;font-size:13px;color:#d46b08;">VIP6</span>
+        <span style="font-size:10px;background:#e53935;color:#fff;border-radius:3px;padding:1px 4px;">NEW</span>
+      </div>
+      <div style="font-size:11px;color:#fa8c16;margin-bottom:8px;">公司帳號</div>
+      <ul style="font-size:12px;color:#444;padding-left:14px;margin:0;line-height:2;">
+        <li>只能與 VIP5 互動</li>
+        <li>金額：手動輸入</li>
+        <li>不寫入棄分 / 開分紀錄</li>
+        <li>正常寫入贈禮紀錄</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 互動矩陣 -->
+  <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:12px;">
+    <thead>
+      <tr style="background:#f5f5f5;">
+        <th style="padding:7px 10px;border:1px solid #e8e8e8;text-align:left;font-weight:600;">送禮方</th>
+        <th style="padding:7px 10px;border:1px solid #e8e8e8;text-align:left;font-weight:600;">收禮方</th>
+        <th style="padding:7px 10px;border:1px solid #e8e8e8;text-align:left;font-weight:600;">金額輸入</th>
+        <th style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;font-weight:600;">棄分紀錄</th>
+        <th style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;font-weight:600;">開分紀錄</th>
+        <th style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;font-weight:600;">贈禮紀錄</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP1</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP5 only</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">公式計算</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#52c41a;font-size:14px;">✓</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#bbb;">—</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#52c41a;font-size:14px;">✓</td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP5</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP1 / VIP5</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">手動輸入</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#bbb;">—</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#52c41a;font-size:14px;">✓</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#52c41a;font-size:14px;">✓</td>
+      </tr>
+      <tr>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP5</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP6</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">手動輸入</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#bbb;">—</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#bbb;">—</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#52c41a;font-size:14px;">✓</td>
+      </tr>
+      <tr style="background:#fafafa;">
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP6</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">VIP5 only</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;">手動輸入</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#bbb;">—</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#bbb;">—</td>
+        <td style="padding:7px 10px;border:1px solid #e8e8e8;text-align:center;color:#52c41a;font-size:14px;">✓</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:12px;color:#888;border-top:1px solid #f0f0f0;padding-top:10px;">
+    🔧 VIP5 / VIP6 均由後台 <strong>Outlet 管理列表 → 指定贈禮設定</strong> 設定；從清單移除後自動回 VIP1。
+  </div>
+</div>
+
 <nav class="tab-nav">
   <button class="active" onclick="switchTab('liff')">LIFF 版</button>
   <button onclick="switchTab('kiosk')">機台版</button>
