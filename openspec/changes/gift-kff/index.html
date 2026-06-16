@@ -567,6 +567,7 @@
   <button onclick="switchTab('report')">會員贈禮報表</button>
   <button onclick="switchTab('discard')">棄分紀錄查詢</button>
   <button onclick="switchTab('open')">開分紀錄查詢</button>
+  <button onclick="switchTab('card')">名片</button>
 </nav>
 
 <div class="tab-panel" id="tab-roles">
@@ -3161,6 +3162,104 @@
 </div>
 </div><!-- end #tab-open -->
 
+<div class="tab-panel" id="tab-card">
+<div class="admin-wrap" style="max-width:900px;">
+  <h2 style="font-size:16px;font-weight:700;color:#3A1A00;margin-bottom:6px;">名片</h2>
+  <p style="font-size:13px;color:#888;margin-bottom:24px;">VIP5 / VIP6 玩家的名片會顯示對應 VIP 標籤；一般玩家（VIP1）不顯示。</p>
+
+  <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;">
+
+    <!-- VIP5 名片 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+      <div style="font-size:12px;color:#1677ff;font-weight:700;">VIP5 玩家</div>
+      <div style="width:240px;border:2px solid #E8A000;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.12);background:#fff;">
+        <div style="background:linear-gradient(180deg,#3a7d1e 0%,#5aad2a 100%);padding:10px 0 6px;text-align:center;">
+          <div style="color:#fff;font-size:15px;font-weight:800;letter-spacing:2px;text-shadow:0 1px 3px rgba(0,0,0,0.3);">我的</div>
+        </div>
+        <div style="padding:18px 16px 14px;display:flex;flex-direction:column;align-items:center;">
+          <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:3px solid #FF8C00;box-shadow:0 2px 8px rgba(255,140,0,0.4);margin-bottom:10px;">
+            <img src="https://i.pravatar.cc/64?img=12" style="width:100%;height:100%;object-fit:cover;" alt="">
+          </div>
+          <div style="font-size:16px;font-weight:800;color:#3A1A00;margin-bottom:12px;display:flex;align-items:center;gap:6px;">
+            玩家A
+            <span style="font-size:11px;background:#1677ff;color:#fff;border-radius:4px;padding:2px 7px;font-weight:700;">VIP5</span>
+          </div>
+          <div style="width:100%;border:1px solid #E8D5B0;border-radius:10px;overflow:hidden;font-size:13px;">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid #F0E8DC;background:#FFFAF4;">
+              <span style="color:#888;">會員帳號</span><span style="font-weight:700;color:#3A1A00;">AFn4216</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid #F0E8DC;background:#fff;">
+              <span style="color:#888;">會員餘額</span><span style="font-weight:700;color:#3A1A00;">403.58</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:#FFFAF4;">
+              <span style="color:#888;">所屬店家</span><span style="font-weight:700;color:#3A1A00;">QQAA麻吉店</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIP6 名片 -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+      <div style="font-size:12px;color:#fa8c16;font-weight:700;">VIP6 玩家</div>
+      <div style="width:240px;border:2px solid #E8A000;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.12);background:#fff;">
+        <div style="background:linear-gradient(180deg,#3a7d1e 0%,#5aad2a 100%);padding:10px 0 6px;text-align:center;">
+          <div style="color:#fff;font-size:15px;font-weight:800;letter-spacing:2px;text-shadow:0 1px 3px rgba(0,0,0,0.3);">我的</div>
+        </div>
+        <div style="padding:18px 16px 14px;display:flex;flex-direction:column;align-items:center;">
+          <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:3px solid #FF8C00;box-shadow:0 2px 8px rgba(255,140,0,0.4);margin-bottom:10px;">
+            <img src="https://i.pravatar.cc/64?img=33" style="width:100%;height:100%;object-fit:cover;" alt="">
+          </div>
+          <div style="font-size:16px;font-weight:800;color:#3A1A00;margin-bottom:12px;display:flex;align-items:center;gap:6px;">
+            玩家C
+            <span style="font-size:11px;background:#fa8c16;color:#fff;border-radius:4px;padding:2px 7px;font-weight:700;">VIP6</span>
+          </div>
+          <div style="width:100%;border:1px solid #E8D5B0;border-radius:10px;overflow:hidden;font-size:13px;">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid #F0E8DC;background:#FFFAF4;">
+              <span style="color:#888;">會員帳號</span><span style="font-weight:700;color:#3A1A00;">BKz0091</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid #F0E8DC;background:#fff;">
+              <span style="color:#888;">會員餘額</span><span style="font-weight:700;color:#3A1A00;">1,200.00</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:#FFFAF4;">
+              <span style="color:#888;">所屬店家</span><span style="font-weight:700;color:#3A1A00;">QQAA麻吉店</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIP1 名片（對照） -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+      <div style="font-size:12px;color:#888;font-weight:700;">VIP1 一般玩家（無標籤）</div>
+      <div style="width:240px;border:2px solid #E8A000;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.12);background:#fff;">
+        <div style="background:linear-gradient(180deg,#3a7d1e 0%,#5aad2a 100%);padding:10px 0 6px;text-align:center;">
+          <div style="color:#fff;font-size:15px;font-weight:800;letter-spacing:2px;text-shadow:0 1px 3px rgba(0,0,0,0.3);">我的</div>
+        </div>
+        <div style="padding:18px 16px 14px;display:flex;flex-direction:column;align-items:center;">
+          <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:3px solid #FF8C00;box-shadow:0 2px 8px rgba(255,140,0,0.4);margin-bottom:10px;">
+            <img src="https://i.pravatar.cc/64?img=3" style="width:100%;height:100%;object-fit:cover;" alt="">
+          </div>
+          <div style="font-size:16px;font-weight:800;color:#3A1A00;margin-bottom:12px;">霍靖晴</div>
+          <div style="width:100%;border:1px solid #E8D5B0;border-radius:10px;overflow:hidden;font-size:13px;">
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid #F0E8DC;background:#FFFAF4;">
+              <span style="color:#888;">會員帳號</span><span style="font-weight:700;color:#3A1A00;">AFn4216</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid #F0E8DC;background:#fff;">
+              <span style="color:#888;">會員餘額</span><span style="font-weight:700;color:#3A1A00;">403.58</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;padding:8px 12px;background:#FFFAF4;">
+              <span style="color:#888;">所屬店家</span><span style="font-weight:700;color:#3A1A00;">QQAA麻吉店</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div><!-- end #tab-card -->
+
 <!-- 指定贈禮設定固定右側面板 -->
 <div id="gift-panel" style="display:none;position:fixed;right:0;top:48px;bottom:0;width:380px;overflow-y:auto;background:#f0f2f5;border-left:2px solid #e53935;padding:16px;z-index:200;box-shadow:-4px 0 12px rgba(0,0,0,0.12);">
   <div class="admin-card">
@@ -3245,7 +3344,7 @@ function switchTab(id) {
   document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   event.target.classList.add('active');
-  const isAdmin = (id === 'roles' || id === 'outlet' || id === 'report' || id === 'discard' || id === 'open');
+  const isAdmin = (id === 'roles' || id === 'outlet' || id === 'report' || id === 'discard' || id === 'open' || id === 'card');
   document.body.style.minWidth = isAdmin ? '0' : '3200px';
   document.getElementById('gift-panel').style.display = (id === 'outlet') ? 'block' : 'none';
 }
