@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>會員列表 Mockup - 自訂名稱 + 凍結</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #ffffff;
+    font-family: 'Microsoft JhengHei', sans-serif;
+    min-width: 1600px;
+    padding: 40px;
+    color: #000;
+  }
+
+  .screens { display: flex; gap: 0; align-items: flex-start; }
+  .screen-block { padding: 0 40px; border-right: 1px solid #ccc; display: flex; gap: 24px; align-items: flex-start; }
+  .screen-block:first-child { padding-left: 0; }
+  .screen-block:last-child  { border-right: none; }
+  .screen-inner { display: flex; flex-direction: column; }
+  .screen-label { font-size: 12px; color: #888; margin-bottom: 12px; font-weight: bold; letter-spacing: 0.5px; }
+
+  /* Popup 卡片 */
+  .popup-card { border: 1px solid #ccc; box-shadow: 0 4px 20px rgba(0,0,0,0.12); border-radius: 8px; overflow: hidden; width: 620px; }
+  .popup-header { background: linear-gradient(180deg, #6B3A10 0%, #8B4A15 100%); padding: 12px 16px; text-align: center; }
+  .popup-header-title { color: #FFD700; font-size: 16px; font-weight: bold; letter-spacing: 2px; }
+  .popup-body { background: #FFF8F0; padding: 16px; }
+
+  /* 搜尋列 */
+  .search-wrap { background: #f5e9c8; border-radius: 24px; display: flex; align-items: center; padding: 7px 14px; margin-bottom: 10px; border: 1px solid #d4b87a; }
+  .search-icon { color: #888; margin-right: 8px; font-size: 15px; }
+  .search-placeholder { flex: 1; font-size: 13px; color: #aaa; }
+  .search-clear { width: 20px; height: 20px; background: #ccc; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; }
+
+  /* 狀態篩選 */
+  .filter-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .filter-label { font-size: 12px; color: #888; white-space: nowrap; }
+  .filter-tabs { display: flex; gap: 0; border: 1px solid #d4b87a; border-radius: 20px; overflow: hidden; }
+  .filter-tab { padding: 4px 16px; font-size: 12px; font-weight: 600; cursor: pointer; background: #fff8ef; color: #8a6a4a; border: none; white-space: nowrap; }
+  .filter-tab.active { background: linear-gradient(180deg, #6B3A10 0%, #8B4A15 100%); color: #FFD700; }
+  .filter-tab:not(:last-child) { border-right: 1px solid #d4b87a; }
+
+  /* 表格 */
+  .member-table { width: 100%; border-collapse: collapse; }
+  .member-table thead tr { background: linear-gradient(180deg, #5c2d0a 0%, #3d1a05 100%); }
+  .member-table thead th { color: #fff; font-size: 13px; font-weight: bold; padding: 9px 10px; text-align: center; white-space: nowrap; }
+  .member-table thead th.left { text-align: left; }
+  .member-table tbody tr:nth-child(odd)  { background: #fdf5e4; }
+  .member-table tbody tr:nth-child(even) { background: #fff8ef; }
+  .member-table tbody tr.frozen-row { background: #f5f5f5; }
+  .member-table tbody td { padding: 9px 10px; font-size: 13px; vertical-align: middle; border-bottom: 1px solid #e8dcc8; text-align: center; }
+  .member-table tbody td.left { text-align: left; }
+
+  /* 功能欄按鈕群 */
+  .func-cell { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+
+  /* 登入按鈕 */
+  .btn-login {
+    background: linear-gradient(135deg, #5dddb0 0%, #1fa876 100%);
+    border: 1.5px solid #17976a;
+    border-radius: 20px; color: #fff; font-size: 12px; font-weight: 800;
+    padding: 5px 16px; cursor: pointer;
+    box-shadow: 0 3px 8px rgba(30,168,118,0.4);
+    white-space: nowrap; text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+  .btn-login.disabled {
+    background: #ccc; border-color: #bbb;
+    box-shadow: none; cursor: not-allowed; color: #fff;
+  }
+
+  /* 凍結按鈕 */
+  .btn-freeze {
+    background: linear-gradient(135deg, #ef5350 0%, #c62828 100%);
+    border: 1.5px solid #b71c1c;
+    border-radius: 20px; color: #fff; font-size: 12px; font-weight: 800;
+    padding: 5px 16px; cursor: pointer;
+    box-shadow: 0 3px 8px rgba(198,40,40,0.35);
+    white-space: nowrap;
+  }
+
+  /* 解凍按鈕 */
+  .btn-unfreeze {
+    background: linear-gradient(135deg, #42a5f5 0%, #1565c0 100%);
+    border: 1.5px solid #0d47a1;
+    border-radius: 20px; color: #fff; font-size: 12px; font-weight: 800;
+    padding: 5px 16px; cursor: pointer;
+    box-shadow: 0 3px 8px rgba(21,101,192,0.35);
+    white-space: nowrap;
+  }
+
+  /* 狀態 badge */
+  .badge { display: inline-block; border-radius: 20px; font-size: 11px; font-weight: 700; padding: 3px 10px; white-space: nowrap; }
+  .badge-normal  { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+  .badge-frozen  { background: #fce4ec; color: #c62828; border: 1px solid #ef9a9a; }
+
+  /* 會員資訊 */
+  .member-name { font-weight: bold; color: #333; font-size: 13px; }
+  .member-name.frozen { color: #aaa; }
+  .member-id   { font-size: 11px; color: #999; margin-top: 1px; }
+  .balance { text-align: right; font-weight: bold; color: #5c2d0a; font-size: 13px; padding-right: 12px; }
+  .balance.frozen { color: #bbb; }
+
+  /* 自訂名稱欄 */
+  .custom-name-cell { display: flex; align-items: center; gap: 6px; justify-content: center; }
+  .custom-name-text  { font-size: 13px; color: #333; }
+  .custom-name-empty { font-size: 12px; color: #bbb; }
+  .btn-edit-popup { background: none; border: 1px solid #bbb; border-radius: 4px; padding: 2px 8px; font-size: 11px; color: #555; cursor: pointer; white-space: nowrap; }
+  .btn-edit-popup .pen { display: inline-block; transform: rotate(45deg); }
+
+  /* 標注圓圈 inline */
+  .ann {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #D32F2F; color: #fff; border-radius: 50%;
+    width: 20px; height: 20px; font-size: 11px; font-weight: 700;
+    vertical-align: middle; margin-left: 6px; flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  /* 修改自訂名稱 popup */
+  .screen-with-popup { position: relative; }
+  .overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.35); border-radius: 8px; z-index: 1; }
+  .edit-popup { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: 320px; border: 1px solid #ccc; box-shadow: 0 4px 20px rgba(0,0,0,0.25); border-radius: 8px; overflow: hidden; }
+  .edit-popup-header { background: linear-gradient(180deg, #6B3A10 0%, #8B4A15 100%); padding: 10px 16px; text-align: center; }
+  .edit-popup-title { color: #FFD700; font-size: 14px; font-weight: bold; letter-spacing: 1px; }
+  .edit-popup-body { background: #FFF8F0; padding: 20px 20px 16px; }
+  .edit-popup-member { font-size: 12px; color: #888; margin-bottom: 14px; text-align: center; }
+  .edit-popup-member strong { color: #333; font-size: 13px; }
+  .edit-popup-label { font-size: 12px; color: #555; margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
+  .edit-popup-input { width: 100%; border: 1px solid #26b887; border-radius: 6px; padding: 8px 10px; font-size: 13px; font-family: inherit; outline: none; margin-bottom: 6px; }
+  .edit-popup-hint { font-size: 11px; color: #aaa; margin-bottom: 18px; text-align: right; }
+  .edit-popup-btns { display: flex; gap: 10px; justify-content: center; }
+  .btn-cancel { background: #f0f0f0; border: 1px solid #ccc; border-radius: 20px; color: #555; font-size: 13px; padding: 7px 24px; cursor: pointer; }
+  .btn-confirm { background: linear-gradient(180deg, #FF9500 0%, #FF6600 100%); border: none; border-radius: 20px; color: #fff; font-size: 13px; font-weight: bold; padding: 7px 24px; cursor: pointer; }
+
+  /* 側欄說明 */
+  .notes { min-width: 200px; max-width: 260px; padding-top: 28px; }
+  .notes h3 { color: #FF8C00; font-size: 14px; margin-bottom: 14px; }
+  .note-item { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+  .note-num { flex-shrink: 0; width: 22px; height: 22px; background: #D32F2F; color: #fff; border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+  .note-body { font-size: 13px; color: #333; line-height: 1.55; }
+  .note-body strong { color: #1a1a1a; }
+</style>
+</head>
+<body>
+
+<div class="screens">
+
+  <!-- 畫面一：預設狀態 -->
+  <div class="screen-block">
+    <div class="screen-inner">
+      <div class="screen-label">畫面 1 — 預設狀態</div>
+      <div class="popup-card">
+        <div class="popup-header"><div class="popup-header-title">會員列表</div></div>
+        <div class="popup-body">
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <span class="search-placeholder">搜尋玩家暱稱 / 自訂名稱</span>
+            <span class="ann">1</span>
+            <div class="search-clear">✕</div>
+          </div>
+          <div class="filter-row">
+            <span class="filter-label">狀態篩選 <span class="ann">2</span></span>
+            <div class="filter-tabs">
+              <button class="filter-tab active">全部</button>
+              <button class="filter-tab">正常</button>
+              <button class="filter-tab">凍結</button>
+            </div>
+          </div>
+          <table class="member-table">
+            <thead>
+              <tr>
+                <th style="width:110px">功能 <span class="ann">2</span></th>
+                <th style="width:80px">狀態 <span class="ann">3</span></th>
+                <th style="width:130px">自訂名稱 <span class="ann">4</span></th>
+                <th class="left" style="width:150px">會員資訊</th>
+                <th style="width:90px; text-align:right; padding-right:12px">餘額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 正常 -->
+              <tr>
+                <td>
+                  <div class="func-cell">
+                    <button class="btn-login">登入</button>
+                    <button class="btn-freeze">凍結</button>
+                  </div>
+                </td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-text">小冰店長</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">多冰</div><div class="member-id">TFZ9941</div></td>
+                <td class="balance">700.00</td>
+              </tr>
+              <!-- 凍結中 -->
+              <tr class="frozen-row">
+                <td>
+                  <div class="func-cell">
+                    <button class="btn-login disabled" disabled>登入</button>
+                    <button class="btn-unfreeze">解凍</button>
+                  </div>
+                </td>
+                <td><span class="badge badge-frozen">凍結中</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name frozen">怪奇恬然</div><div class="member-id">uby1941</div></td>
+                <td class="balance frozen">114.10</td>
+              </tr>
+              <!-- 正常 -->
+              <tr>
+                <td>
+                  <div class="func-cell">
+                    <button class="btn-login">登入</button>
+                    <button class="btn-freeze">凍結</button>
+                  </div>
+                </td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">052001</div><div class="member-id">Neh3674</div></td>
+                <td class="balance">1,000.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="func-cell">
+                    <button class="btn-login">登入</button>
+                    <button class="btn-freeze">凍結</button>
+                  </div>
+                </td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">051101</div><div class="member-id">bZr5328</div></td>
+                <td class="balance">25,944.54</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="func-cell">
+                    <button class="btn-login">登入</button>
+                    <button class="btn-freeze">凍結</button>
+                  </div>
+                </td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">042301</div><div class="member-id">ZjH3161</div></td>
+                <td class="balance">76,177.15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <h3>畫面 1 說明</h3>
+      <div class="note-item">
+        <div class="note-num">1</div>
+        <div class="note-body"><strong>搜尋列</strong><br>支援以「玩家暱稱」或「自訂名稱」查詢，兩者皆可。</div>
+      </div>
+      <div class="note-item">
+        <div class="note-num">2</div>
+        <div class="note-body"><strong>狀態篩選</strong><br>可依狀態過濾會員清單：全部／正常／凍結。</div>
+      </div>
+      <div class="note-item">
+        <div class="note-num">3</div>
+        <div class="note-body"><strong>功能欄</strong><br>每列顯示「登入」及「凍結／解凍」按鈕。凍結中的會員，登入按鈕呈灰色不可點擊。</div>
+      </div>
+      <div class="note-item">
+        <div class="note-num">4</div>
+        <div class="note-body"><strong>狀態欄</strong><br>顯示會員目前狀態：正常（綠）／凍結中（紅）。</div>
+      </div>
+      <div class="note-item">
+        <div class="note-num">5</div>
+        <div class="note-body"><strong>自訂名稱欄</strong><br>獨立於原暱稱，最多 15 字，無字元限制。點「✏ 修改」跳出 Popup。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 畫面二：修改自訂名稱 Popup -->
+  <div class="screen-block">
+    <div class="screen-inner">
+      <div class="screen-label">畫面 2 — 修改自訂名稱</div>
+      <div class="popup-card screen-with-popup">
+        <div class="popup-header"><div class="popup-header-title">會員列表</div></div>
+        <div class="popup-body">
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <span class="search-placeholder">搜尋玩家暱稱 / 自訂名稱</span>
+            <div class="search-clear">✕</div>
+          </div>
+          <table class="member-table">
+            <thead>
+              <tr>
+                <th style="width:110px">功能</th>
+                <th style="width:80px">狀態</th>
+                <th style="width:130px">自訂名稱</th>
+                <th class="left" style="width:150px">會員資訊</th>
+                <th style="width:90px; text-align:right; padding-right:12px">餘額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-text">小冰店長</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">多冰</div><div class="member-id">TFZ9941</div></td>
+                <td class="balance">700.00</td>
+              </tr>
+              <tr class="frozen-row">
+                <td><div class="func-cell"><button class="btn-login disabled" disabled>登入</button><button class="btn-unfreeze">解凍</button></div></td>
+                <td><span class="badge badge-frozen">凍結中</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name frozen">怪奇恬然</div><div class="member-id">uby1941</div></td>
+                <td class="balance frozen">114.10</td>
+              </tr>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">052001</div><div class="member-id">Neh3674</div></td>
+                <td class="balance">1,000.00</td>
+              </tr>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">051101</div><div class="member-id">bZr5328</div></td>
+                <td class="balance">25,944.54</td>
+              </tr>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">042301</div><div class="member-id">ZjH3161</div></td>
+                <td class="balance">76,177.15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="overlay"></div>
+        <div class="edit-popup">
+          <div class="edit-popup-header"><div class="edit-popup-title">修改自訂名稱</div></div>
+          <div class="edit-popup-body">
+            <div class="edit-popup-member">玩家：<strong>多冰</strong>（TFZ9941）</div>
+            <div class="edit-popup-label">自訂名稱 <span class="ann">6</span></div>
+            <input class="edit-popup-input" type="text" value="小冰店長" maxlength="15">
+            <div class="edit-popup-hint">最多 15 個字</div>
+            <div class="edit-popup-btns">
+              <button class="btn-cancel">取消</button>
+              <button class="btn-confirm">確認</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <h3>畫面 2 說明</h3>
+      <div class="note-item">
+        <div class="note-num">6</div>
+        <div class="note-body"><strong>修改自訂名稱 Popup</strong><br>顯示玩家暱稱與 ID，輸入框最多 15 個字，無字元類型限制。按「確認」儲存，列表即時更新；按「取消」關閉不變更。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 畫面三：凍結二次確認 -->
+  <div class="screen-block">
+    <div class="screen-inner">
+      <div class="screen-label">畫面 3 — 點擊「凍結」後</div>
+      <div class="popup-card screen-with-popup">
+        <div class="popup-header"><div class="popup-header-title">會員列表</div></div>
+        <div class="popup-body">
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <span class="search-placeholder">搜尋玩家暱稱 / 自訂名稱</span>
+            <div class="search-clear">✕</div>
+          </div>
+          <div class="filter-row">
+            <span class="filter-label">狀態篩選</span>
+            <div class="filter-tabs">
+              <button class="filter-tab active">全部</button>
+              <button class="filter-tab">正常</button>
+              <button class="filter-tab">凍結</button>
+            </div>
+          </div>
+          <table class="member-table">
+            <thead>
+              <tr>
+                <th style="width:110px">功能</th>
+                <th style="width:80px">狀態</th>
+                <th style="width:130px">自訂名稱</th>
+                <th class="left" style="width:150px">會員資訊</th>
+                <th style="width:90px; text-align:right; padding-right:12px">餘額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-text">小冰店長</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">多冰</div><div class="member-id">TFZ9941</div></td>
+                <td class="balance">700.00</td>
+              </tr>
+              <tr class="frozen-row">
+                <td><div class="func-cell"><button class="btn-login disabled" disabled>登入</button><button class="btn-unfreeze">解凍</button></div></td>
+                <td><span class="badge badge-frozen">凍結中</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name frozen">怪奇恬然</div><div class="member-id">uby1941</div></td>
+                <td class="balance frozen">114.10</td>
+              </tr>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">052001</div><div class="member-id">Neh3674</div></td>
+                <td class="balance">1,000.00</td>
+              </tr>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">051101</div><div class="member-id">bZr5328</div></td>
+                <td class="balance">25,944.54</td>
+              </tr>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">042301</div><div class="member-id">ZjH3161</div></td>
+                <td class="balance">76,177.15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay"></div>
+
+        <!-- 凍結二次確認 Popup -->
+        <div class="edit-popup">
+          <div class="edit-popup-header"><div class="edit-popup-title">凍結會員確認</div></div>
+          <div class="edit-popup-body">
+            <div class="edit-popup-member">玩家：<strong>多冰</strong>（TFZ9941）</div>
+            <p style="font-size:13px; color:#333; text-align:center; line-height:1.7; margin-bottom:20px;">
+              請問是否要凍結此會員？<br>
+              <span style="color:#c62828; font-weight:700;">此會員將無法登入。</span>
+            </p>
+            <div class="edit-popup-btns">
+              <button class="btn-cancel">取消</button>
+              <button class="btn-confirm" style="background: linear-gradient(180deg, #ef5350 0%, #c62828 100%);">確認凍結</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <h3>畫面 3 說明</h3>
+      <div class="note-item">
+        <div class="note-num">7</div>
+        <div class="note-body"><strong>凍結二次確認</strong><br>點擊「凍結」後跳出確認視窗，顯示玩家資訊與警示文字。按「確認凍結」執行；按「取消」關閉不變更。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 畫面四：解凍二次確認 -->
+  <div class="screen-block">
+    <div class="screen-inner">
+      <div class="screen-label">畫面 4 — 點擊「解凍」後</div>
+      <div class="popup-card screen-with-popup">
+        <div class="popup-header"><div class="popup-header-title">會員列表</div></div>
+        <div class="popup-body">
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <span class="search-placeholder">搜尋玩家暱稱 / 自訂名稱</span>
+            <div class="search-clear">✕</div>
+          </div>
+          <div class="filter-row">
+            <span class="filter-label">狀態篩選</span>
+            <div class="filter-tabs">
+              <button class="filter-tab active">全部</button>
+              <button class="filter-tab">正常</button>
+              <button class="filter-tab">凍結</button>
+            </div>
+          </div>
+          <table class="member-table">
+            <thead>
+              <tr>
+                <th style="width:110px">功能</th>
+                <th style="width:80px">狀態</th>
+                <th style="width:130px">自訂名稱</th>
+                <th class="left" style="width:150px">會員資訊</th>
+                <th style="width:90px; text-align:right; padding-right:12px">餘額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-text">小冰店長</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name">多冰</div><div class="member-id">TFZ9941</div></td>
+                <td class="balance">700.00</td>
+              </tr>
+              <tr class="frozen-row">
+                <td><div class="func-cell"><button class="btn-login disabled" disabled>登入</button><button class="btn-unfreeze">解凍</button></div></td>
+                <td><span class="badge badge-frozen">凍結中</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span><button class="btn-edit-popup"><span class="pen">✏</span> 修改</button></div></td>
+                <td class="left"><div class="member-name frozen">怪奇恬然</div><div class="member-id">uby1941</div></td>
+                <td class="balance frozen">114.10</td>
+              </tr>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span></div></td>
+                <td class="left"><div class="member-name">052001</div><div class="member-id">Neh3674</div></td>
+                <td class="balance">1,000.00</td>
+              </tr>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span></div></td>
+                <td class="left"><div class="member-name">051101</div><div class="member-id">bZr5328</div></td>
+                <td class="balance">25,944.54</td>
+              </tr>
+              <tr>
+                <td><div class="func-cell"><button class="btn-login">登入</button><button class="btn-freeze">凍結</button></div></td>
+                <td><span class="badge badge-normal">正常</span></td>
+                <td><div class="custom-name-cell"><span class="custom-name-empty">未設定</span></div></td>
+                <td class="left"><div class="member-name">042301</div><div class="member-id">ZjH3161</div></td>
+                <td class="balance">76,177.15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="overlay"></div>
+
+        <!-- 解凍二次確認 Popup -->
+        <div class="edit-popup">
+          <div class="edit-popup-header"><div class="edit-popup-title">解凍會員確認</div></div>
+          <div class="edit-popup-body">
+            <div class="edit-popup-member">玩家：<strong>怪奇恬然</strong>（uby1941）</div>
+            <p style="font-size:13px; color:#333; text-align:center; line-height:1.7; margin-bottom:20px;">
+              請問是否解凍此會員？<br>
+              <span style="color:#1565c0; font-weight:700;">此會員可正常登入。</span>
+            </p>
+            <div class="edit-popup-btns">
+              <button class="btn-cancel">取消</button>
+              <button class="btn-confirm">確認解凍</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <h3>畫面 4 說明</h3>
+      <div class="note-item">
+        <div class="note-num">8</div>
+        <div class="note-body"><strong>解凍二次確認</strong><br>點擊「解凍」後跳出確認視窗。按「確認解凍」執行，會員恢復正常登入；按「取消」關閉不變更。</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
