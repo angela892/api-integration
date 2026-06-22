@@ -26,18 +26,19 @@
     margin-bottom: 16px;
   }
   .search-row { display: flex; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
-  .search-field { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 160px; }
-  .search-field.wide { flex: 2; }
+  .search-field { display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto; }
+  .search-field.wide { flex: 0 0 auto; }
   .search-label { font-size: 13px; color: #555; font-weight: 500; }
   .search-input {
     border: 1px solid #ccc; border-radius: 4px;
-    padding: 6px 10px; font-size: 13px; color: #333;
+    padding: 6px 8px; font-size: 13px; color: #333;
     background: #fff; font-family: inherit;
+    width: 160px;
   }
   .search-input.placeholder { color: #bbb; }
   .required { color: #D32F2F; font-size: 12px; font-weight: 400; margin-left: 4px; }
   .date-range { display: flex; align-items: center; gap: 8px; }
-  .date-range .search-input { flex: 1; }
+  .date-range .search-input { flex: 0 0 auto; width: 160px; }
   .date-arrow { color: #999; font-size: 12px; }
 
   /* 按鈕 */
