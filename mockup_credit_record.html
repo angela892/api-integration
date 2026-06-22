@@ -14,8 +14,8 @@
   }
 
   /* 整體版面 */
-  .page { padding: 24px 32px; display: flex; gap: 32px; align-items: flex-start; }
-  .main-content { flex: 1; min-width: 0; }
+  .page { padding: 24px 32px; }
+  .main-content { width: 100%; }
   .page-title { font-size: 20px; font-weight: bold; color: #222; margin-bottom: 20px; }
 
   /* 搜尋區塊 */
@@ -79,8 +79,9 @@
   .page-btn { width: 30px; height: 30px; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 13px; cursor: pointer; background: #fff; }
   .page-btn.active { background: #1976d2; color: #fff; border-color: #1976d2; }
 
-  /* 側欄說明 */
-  .notes { min-width: 220px; max-width: 260px; padding-top: 54px; }
+  /* 說明區 */
+  .notes-section { margin-top: 28px; display: flex; gap: 48px; }
+  .notes { flex: 1; }
   .notes h3 { color: #FF8C00; font-size: 14px; margin-bottom: 14px; font-weight: 600; }
   .note-item { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
   .note-num { flex-shrink: 0; width: 22px; height: 22px; background: #D32F2F; color: #fff; border-radius: 50%; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
@@ -185,7 +186,8 @@
     </div>
   </div>
 
-  <!-- 側欄說明 -->
+  <!-- 說明區 -->
+  <div class="notes-section">
   <div class="notes">
     <h3>查詢條件</h3>
     <div class="note-item">
@@ -201,7 +203,9 @@
       <div class="note-body"><strong>交易時間</strong><br>篩選紀錄的時間區間。</div>
     </div>
 
-    <h3 style="margin-top: 20px;">列表欄位</h3>
+  </div>
+  <div class="notes">
+    <h3>列表欄位</h3>
     <div class="note-item">
       <div class="note-num">4</div>
       <div class="note-body"><strong>交易時間</strong><br>該筆開洗分的發生時間。</div>
@@ -230,6 +234,7 @@
       <div class="note-num">10</div>
       <div class="note-body"><strong>操作人員</strong><br>執行此次交易的帳號＋暱稱。</div>
     </div>
+  </div>
   </div>
 
 </div>
