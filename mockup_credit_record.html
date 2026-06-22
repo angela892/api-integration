@@ -59,11 +59,12 @@
   /* 表格 */
   .data-table { width: 100%; border-collapse: collapse; }
   .data-table thead tr { background: #f0f0f0; }
-  .data-table thead th { padding: 10px 12px; font-size: 13px; font-weight: 600; color: #444; text-align: left; border-bottom: 2px solid #ccc; border-right: 1px solid #ddd; white-space: nowrap; }
+  .data-table { width: auto; }
+  .data-table thead th { padding: 8px 10px; font-size: 12px; font-weight: 600; color: #444; text-align: left; border-bottom: 2px solid #ccc; border-right: 1px solid #ddd; white-space: nowrap; }
   .data-table thead th:last-child { border-right: none; }
   .data-table tbody tr { border-bottom: 1px solid #e8e8e8; }
   .data-table tbody tr:hover { background: #fafafa; }
-  .data-table tbody td { padding: 10px 12px; font-size: 13px; color: #333; white-space: nowrap; border-right: 1px solid #e8e8e8; }
+  .data-table tbody td { padding: 7px 10px; font-size: 12px; color: #333; white-space: nowrap; border-right: 1px solid #e8e8e8; }
   .data-table tbody td:last-child { border-right: none; }
   .data-table tbody td.num { text-align: right; font-variant-numeric: tabular-nums; }
   .data-table tbody td.center { text-align: center; }
@@ -101,11 +102,11 @@
   <div class="search-block">
     <div class="search-row">
       <div class="search-field">
-        <div class="search-label">玩家帳號 <span class="ann">1</span> <span class="required">* 二擇一必填</span></div>
+        <div class="search-label">玩家帳號 <span class="ann">1</span></div>
         <input class="search-input" type="text" placeholder="請輸入玩家帳號">
       </div>
       <div class="search-field">
-        <div class="search-label">玩家暱稱 <span class="ann">2</span> <span class="required">* 二擇一必填</span></div>
+        <div class="search-label">玩家暱稱 <span class="ann">2</span></div>
         <input class="search-input" type="text" placeholder="請輸入玩家暱稱">
       </div>
       <div class="search-field wide">
@@ -125,9 +126,7 @@
 
   <!-- 結果區 -->
   <div class="result-block">
-    <div class="result-toolbar">
-      <button class="btn-export">匯出 csv 檔</button>
-    </div>
+    <div class="result-toolbar"></div>
     <div style="overflow-x: auto;">
       <table class="data-table">
         <thead>
@@ -194,11 +193,11 @@
       <h3>欄位說明</h3>
       <div class="note-item">
         <div class="note-num">1</div>
-        <div class="note-body"><strong>玩家帳號（查詢條件）</strong><br>必填（與暱稱二擇一）。輸入玩家帳號查詢該玩家的開洗分紀錄。</div>
+        <div class="note-body"><strong>玩家帳號（查詢條件）</strong><br>輸入玩家帳號查詢該玩家的開洗分紀錄。</div>
       </div>
       <div class="note-item">
         <div class="note-num">2</div>
-        <div class="note-body"><strong>玩家暱稱（查詢條件）</strong><br>必填（與帳號二擇一）。輸入暱稱查詢。</div>
+        <div class="note-body"><strong>玩家暱稱（查詢條件）</strong><br>輸入玩家暱稱查詢。</div>
       </div>
       <div class="note-item">
         <div class="note-num">3</div>
