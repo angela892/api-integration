@@ -14,9 +14,19 @@
   }
 
   /* Tab 列 */
-  .tab-bar { display: flex; border-bottom: 2px solid #1976d2; margin-bottom: 20px; }
-  .tab { padding: 8px 20px; font-size: 14px; cursor: pointer; color: #666; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; }
-  .tab.active { background: #1976d2; color: #fff; border-color: #1976d2; font-weight: 600; }
+  .tab-bar {
+    display: flex; gap: 4px; flex-wrap: wrap;
+    background: #fff; border-bottom: 2px solid #e0e0e0;
+    padding: 0 4px; margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+  .tab {
+    padding: 12px 22px; font-size: 14px; font-weight: 700;
+    border: none; background: none; cursor: pointer;
+    color: #999; border-bottom: 3px solid transparent; margin-bottom: -2px;
+    white-space: nowrap;
+  }
+  .tab.active { color: #1976d2; border-bottom-color: #1976d2; }
 
   /* 整體版面 */
   .page { padding: 24px 32px; }
