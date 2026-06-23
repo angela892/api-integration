@@ -121,11 +121,8 @@
   .gc-table tbody td.left { text-align: left; }
   .gc-table tbody td.num { text-align: right; font-variant-numeric: tabular-nums; }
 
-  /* 資料夾樣式 */
-  .folder-title { font-size: 13px; font-weight: 700; color: #5a3e2b; cursor: pointer; padding: 6px 8px; border-radius: 4px; list-style: none; display: flex; align-items: center; gap: 4px; user-select: none; }
-  .folder-title:hover { background: #f5ede0; }
-  details[open] > .folder-title { color: #FF8C00; }
-  .folder-body { padding-left: 8px; margin-top: 8px; }
+  /* 資料夾標籤 */
+  .folder-label { font-size: 13px; font-weight: 700; color: #5a3e2b; padding: 4px 0 12px; }
 
   /* GC 說明欄 */
   .gc-notes { flex-shrink: 0; width: 240px; }
@@ -156,8 +153,17 @@
           <label>玩家暱稱 <span class="ann">2</span></label>
           <input type="text" placeholder="請輸入玩家暱稱">
         </div>
+        <div class="filter-item">
+          <label>Outlet 名稱 <span class="ann">3</span></label>
+          <select style="width:100%;padding:7px 10px;border:1px solid #d9d9d9;border-radius:4px;font-size:13px;font-family:inherit;color:#333;background:#fff;">
+            <option value="">全部</option>
+            <option>台北信義店</option>
+            <option>新北板橋店</option>
+            <option>台中西屯店</option>
+          </select>
+        </div>
         <div class="filter-item" style="grid-column: span 2;">
-          <label>交易時間 <span class="ann">3</span></label>
+          <label>交易時間 <span class="ann">4</span></label>
           <div class="date-range">
             <input type="text" value="2026-06-22 00:00:00">
             <span class="date-arrow">→</span>
@@ -175,13 +181,13 @@
       <table class="admin-table">
         <thead>
           <tr>
-            <th>交易時間 <span class="ann">4</span></th>
-            <th>異動前餘額 <span class="ann">5</span></th>
-            <th>開分金額 <span class="ann">6</span></th>
-            <th>棄分金額 <span class="ann">7</span></th>
-            <th>方式 <span class="ann">8</span></th>
-            <th>異動後餘額 <span class="ann">9</span></th>
-            <th>操作人員 <span class="ann">10</span></th>
+            <th>交易時間 <span class="ann">5</span></th>
+            <th>異動前餘額 <span class="ann">6</span></th>
+            <th>開分金額 <span class="ann">7</span></th>
+            <th>棄分金額 <span class="ann">8</span></th>
+            <th>方式 <span class="ann">9</span></th>
+            <th>異動後餘額 <span class="ann">10</span></th>
+            <th>操作人員 <span class="ann">11</span></th>
           </tr>
         </thead>
         <tbody>
@@ -209,27 +215,24 @@
   </div><!-- /bo-main -->
 
   <div class="bo-side">
-    <details open>
-    <summary class="folder-title">📁 點數管理</summary>
-    <div class="folder-body">
+    <div class="folder-label">📁 點數管理</div>
     <div class="notes">
       <h3>查詢條件</h3>
       <div class="note-item"><div class="note-num">1</div><div class="note-body"><strong>玩家帳號</strong><br>輸入玩家帳號查詢該玩家的開洗分紀錄。</div></div>
       <div class="note-item"><div class="note-num">2</div><div class="note-body"><strong>玩家暱稱</strong><br>輸入玩家暱稱查詢。</div></div>
-      <div class="note-item"><div class="note-num">3</div><div class="note-body"><strong>交易時間</strong><br>篩選紀錄的時間區間。</div></div>
+      <div class="note-item"><div class="note-num">3</div><div class="note-body"><strong>Outlet 名稱</strong><br>依 Outlet 篩選，預設為全部。</div></div>
+      <div class="note-item"><div class="note-num">4</div><div class="note-body"><strong>交易時間</strong><br>篩選紀錄的時間區間。</div></div>
     </div>
     <div class="notes" style="margin-top: 20px;">
       <h3>列表欄位</h3>
-      <div class="note-item"><div class="note-num">4</div><div class="note-body"><strong>交易時間</strong><br>該筆開洗分的發生時間，預設由新到舊排序。</div></div>
-      <div class="note-item"><div class="note-num">5</div><div class="note-body"><strong>異動前餘額</strong><br>交易前玩家帳戶餘額。</div></div>
-      <div class="note-item"><div class="note-num">6</div><div class="note-body"><strong>開分金額</strong><br>本次開分的金額，棄分時為 0。</div></div>
-      <div class="note-item"><div class="note-num">7</div><div class="note-body"><strong>棄分金額</strong><br>本次棄分的金額，開分時為 0。</div></div>
-      <div class="note-item"><div class="note-num">8</div><div class="note-body"><strong>方式</strong><br>開分方式，例如：手動開分、吸鈔開分、棄分。</div></div>
-      <div class="note-item"><div class="note-num">9</div><div class="note-body"><strong>異動後餘額</strong><br>交易後玩家帳戶餘額。</div></div>
-      <div class="note-item"><div class="note-num">10</div><div class="note-body"><strong>操作人員</strong><br>執行此次交易的機台帳號＋機台暱稱。</div></div>
+      <div class="note-item"><div class="note-num">5</div><div class="note-body"><strong>交易時間</strong><br>該筆開洗分的發生時間，預設由新到舊排序。</div></div>
+      <div class="note-item"><div class="note-num">6</div><div class="note-body"><strong>異動前餘額</strong><br>交易前玩家帳戶餘額。</div></div>
+      <div class="note-item"><div class="note-num">7</div><div class="note-body"><strong>開分金額</strong><br>本次開分的金額，棄分時為 0。</div></div>
+      <div class="note-item"><div class="note-num">8</div><div class="note-body"><strong>棄分金額</strong><br>本次棄分的金額，開分時為 0。</div></div>
+      <div class="note-item"><div class="note-num">9</div><div class="note-body"><strong>方式</strong><br>開分方式，例如：手動開分、吸鈔開分、棄分。</div></div>
+      <div class="note-item"><div class="note-num">10</div><div class="note-body"><strong>異動後餘額</strong><br>交易後玩家帳戶餘額。</div></div>
+      <div class="note-item"><div class="note-num">11</div><div class="note-body"><strong>操作人員</strong><br>執行此次交易的機台帳號＋機台暱稱。</div></div>
     </div>
-    </div><!-- /folder-body -->
-    </details>
   </div><!-- /bo-side -->
 
   </div><!-- /bo-layout -->
