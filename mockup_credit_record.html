@@ -121,6 +121,12 @@
   .gc-table tbody td.left { text-align: left; }
   .gc-table tbody td.num { text-align: right; font-variant-numeric: tabular-nums; }
 
+  /* 資料夾樣式 */
+  .folder-title { font-size: 13px; font-weight: 700; color: #5a3e2b; cursor: pointer; padding: 6px 8px; border-radius: 4px; list-style: none; display: flex; align-items: center; gap: 4px; user-select: none; }
+  .folder-title:hover { background: #f5ede0; }
+  details[open] > .folder-title { color: #FF8C00; }
+  .folder-body { padding-left: 8px; margin-top: 8px; }
+
   /* GC 說明欄 */
   .gc-notes { flex-shrink: 0; width: 240px; }
 </style>
@@ -203,6 +209,9 @@
   </div><!-- /bo-main -->
 
   <div class="bo-side">
+    <details open>
+    <summary class="folder-title">📁 點數管理</summary>
+    <div class="folder-body">
     <div class="notes">
       <h3>查詢條件</h3>
       <div class="note-item"><div class="note-num">1</div><div class="note-body"><strong>玩家帳號</strong><br>輸入玩家帳號查詢該玩家的開洗分紀錄。</div></div>
@@ -219,6 +228,8 @@
       <div class="note-item"><div class="note-num">9</div><div class="note-body"><strong>異動後餘額</strong><br>交易後玩家帳戶餘額。</div></div>
       <div class="note-item"><div class="note-num">10</div><div class="note-body"><strong>操作人員</strong><br>執行此次交易的機台帳號＋機台暱稱。</div></div>
     </div>
+    </div><!-- /folder-body -->
+    </details>
   </div><!-- /bo-side -->
 
   </div><!-- /bo-layout -->
