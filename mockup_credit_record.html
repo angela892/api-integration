@@ -82,48 +82,42 @@
   .note-body { font-size: 13px; color: #333; line-height: 1.55; }
   .note-body strong { color: #1a1a1a; }
 
-  /* GC 畫面容器 */
+  /* GC 版面 */
+  .gc-layout { display: flex; gap: 32px; align-items: flex-start; }
   .gc-wrap {
     background: linear-gradient(180deg, #C0392B 0%, #96281B 100%);
-    border-radius: 12px; padding: 24px; width: 680px;
+    border-radius: 12px; padding: 20px; width: 820px; flex-shrink: 0;
   }
-  .gc-popup-card {
-    border: 2px solid #d4a843; border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.25); overflow: hidden;
-  }
-  .gc-popup-header {
-    background: linear-gradient(180deg, #6B3A10 0%, #8B4A15 100%);
-    padding: 12px 16px; text-align: center;
-  }
+  .gc-popup-card { border: 2px solid #d4a843; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+  .gc-popup-header { background: linear-gradient(180deg, #6B3A10 0%, #8B4A15 100%); padding: 12px 16px; text-align: center; border-radius: 8px 8px 0 0; }
   .gc-popup-title { color: #FFD700; font-size: 16px; font-weight: bold; letter-spacing: 2px; }
-  .gc-popup-body { background: #FFF8F0; padding: 16px; }
+  .gc-popup-body { background: #FFF8F0; padding: 16px; border-radius: 0 0 8px 8px; }
 
   /* GC 玩家資訊列 */
-  .gc-player-bar {
-    background: #f5e9c8; border: 1px solid #d4b87a; border-radius: 8px;
-    padding: 10px 14px; margin-bottom: 12px;
-    display: flex; align-items: center; gap: 16px; font-size: 13px;
-  }
+  .gc-player-bar { background: #f5e9c8; border: 1px solid #d4b87a; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; font-size: 13px; flex-wrap: wrap; }
   .gc-player-bar .plabel { color: #8A6A4A; font-weight: 600; }
   .gc-player-bar .pvalue { color: #333; font-weight: 700; }
   .gc-player-bar .pdivider { color: #d4b87a; }
 
   /* GC 日期篩選 */
-  .gc-filter-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .gc-filter-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
   .gc-filter-label { font-size: 13px; color: #8A6A4A; font-weight: 600; white-space: nowrap; }
-  .gc-date-input { padding: 6px 10px; border: 1px solid #d4b87a; border-radius: 6px; font-size: 12px; font-family: inherit; background: #fff; color: #333; width: 155px; }
+  .gc-date-input { padding: 6px 10px; border: 1px solid #d4b87a; border-radius: 6px; font-size: 12px; font-family: inherit; background: #fff; color: #333; width: 148px; }
   .gc-btn-search { padding: 6px 16px; background: linear-gradient(180deg, #FF9500 0%, #FF6600 100%); color: #fff; border: none; border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap; }
 
   /* GC 表格 */
-  .gc-table { width: 100%; border-collapse: collapse; }
+  .gc-table-wrap { overflow-x: auto; }
+  .gc-table { width: 100%; border-collapse: collapse; min-width: 700px; }
   .gc-table thead tr { background: linear-gradient(180deg, #5c2d0a 0%, #3d1a05 100%); }
   .gc-table thead th { color: #fff; font-size: 12px; font-weight: bold; padding: 9px 10px; text-align: center; white-space: nowrap; }
-  .gc-table thead th.left { text-align: left; }
   .gc-table tbody tr:nth-child(odd)  { background: #fdf5e4; }
   .gc-table tbody tr:nth-child(even) { background: #fff8ef; }
-  .gc-table tbody td { padding: 9px 10px; font-size: 12px; text-align: center; border-bottom: 1px solid #e8dcc8; }
+  .gc-table tbody td { padding: 9px 10px; font-size: 12px; text-align: center; border-bottom: 1px solid #e8dcc8; white-space: nowrap; }
   .gc-table tbody td.left { text-align: left; }
   .gc-table tbody td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  /* GC 說明欄 */
+  .gc-notes { flex-shrink: 0; width: 240px; }
 </style>
 </head>
 <body>
@@ -221,7 +215,7 @@
 
   <!-- GC Tab -->
   <div class="tab-panel" id="tab-gc">
-    <div style="display: flex; gap: 32px; align-items: flex-start;">
+    <div class="gc-layout">
 
       <!-- GC 畫面 -->
       <div class="gc-wrap">
@@ -250,6 +244,7 @@
             </div>
 
             <!-- 表格 -->
+            <div class="gc-table-wrap">
             <table class="gc-table">
               <thead>
                 <tr>
@@ -277,6 +272,7 @@
                 </tr>
               </tbody>
             </table>
+            </div>
 
           </div>
         </div>
